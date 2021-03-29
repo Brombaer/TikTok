@@ -25,7 +25,8 @@ public class CharacterMovement : MonoBehaviour
     private float _sprintModifier = 2;
     private bool _isMoving = false;
     private bool _isJumping = false;
-    private bool _isSprinting =false;
+    private bool _isSprinting = false;
+    private bool _isSneaking = false;
 
     private void Awake()
     {
@@ -64,6 +65,16 @@ public class CharacterMovement : MonoBehaviour
                     _animator.SetFloat("vertical", z * _sprintModifier);
                 }
             }
+            else if (_isSneaking)
+            {
+                _characterController.Move(move * _movementSpeed / _sprintModifier * Time.deltaTime);
+
+                if (!_isJumping)
+                {
+                    _animator.SetFloat("horizontal", x / _sprintModifier);
+                    _animator.SetFloat("vertical", z / _sprintModifier);
+                }
+            }
             else
             {
                 _characterController.Move(move * _movementSpeed * Time.deltaTime);
@@ -91,11 +102,7 @@ public class CharacterMovement : MonoBehaviour
         _characterInput.Player.Movement.performed += context => Move();
         _characterInput.Player.Jump.performed += context => Jump();
         _characterInput.Player.Sprint.performed += context => Sprint();
-    }
-
-    private void Move()
-    {
-        _isMoving = !_isMoving;
+        _characterInput.Player.Sneak.performed += context => Sneak();
     }
 
     private void GroundCheck()
@@ -106,6 +113,11 @@ public class CharacterMovement : MonoBehaviour
         {
             _isJumping = false;
         }
+    }
+
+    private void Move()
+    {
+        _isMoving = !_isMoving;
     }
 
     private void Jump()
@@ -123,6 +135,21 @@ public class CharacterMovement : MonoBehaviour
     private void Sprint()
     {
         _isSprinting = !_isSprinting;
+    }
+
+    private void Sneak()
+    {
+        _isSneaking = !_isSneaking;
+        bool isCrouching = _animator.GetBool("isSneaking");
+
+        if (!_isSneaking)
+        {
+            _animator.SetBool("isSneaking", false);
+        }
+        else
+        {
+            _animator.SetBool("isSneaking", true);
+        }
     }
 
     private void ApplyGravity()
