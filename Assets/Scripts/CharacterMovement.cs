@@ -140,7 +140,6 @@ public class CharacterMovement : MonoBehaviour
     private void Sneak()
     {
         _isSneaking = !_isSneaking;
-        bool isCrouching = _animator.GetBool("isSneaking");
 
         if (!_isSneaking)
         {
