@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] Camera _characterCamera;
-    [SerializeField] Transform _followedTransform;
+    [SerializeField] private Transform _cameraTransform;
     private CharacterController _characterController;
 
     private Vector3 _gravity = Physics.gravity;
@@ -28,6 +28,7 @@ public class CharacterMovement : MonoBehaviour
     private bool _isSprinting = false;
     private bool _isSneaking = false;
 
+
     private void Awake()
     {
         _characterCamera.gameObject.SetActive(true);
@@ -46,12 +47,12 @@ public class CharacterMovement : MonoBehaviour
             float x = _characterInput.Player.Movement.ReadValue<Vector2>().x;
             float z = _characterInput.Player.Movement.ReadValue<Vector2>().y;
 
-            float cam = _followedTransform.rotation.eulerAngles.x;
-            transform.rotation = Quaternion.Euler(0, _followedTransform.rotation.eulerAngles.y, 0);
-            _followedTransform.localEulerAngles = new Vector3(cam, 0, 0);
+            float cam = _cameraTransform.rotation.eulerAngles.x;
+            transform.rotation = Quaternion.Euler(0, _cameraTransform.rotation.eulerAngles.y, 0);
+            _cameraTransform.localEulerAngles = new Vector3(cam, 0, 0);
 
-            Vector3 moveX = new Vector3(_followedTransform.right.x, 0, _followedTransform.right.z) * x;
-            Vector3 moveZ = new Vector3(_followedTransform.forward.x, 0, _followedTransform.forward.z) * z;
+            Vector3 moveX = new Vector3(_cameraTransform.right.x, 0, _cameraTransform.right.z) * x;
+            Vector3 moveZ = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z) * z;
 
             Vector3 move = moveX + moveZ;
 
