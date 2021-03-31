@@ -26,7 +26,7 @@ public class CharacterMovement : MonoBehaviour
     private bool _isMoving = false;
     private bool _isJumping = false;
     private bool _isSprinting = false;
-    private bool _isSneaking = false;
+    private bool _isCrouching = false;
 
 
     private void Awake()
@@ -66,7 +66,7 @@ public class CharacterMovement : MonoBehaviour
                     _animator.SetFloat("vertical", z * _sprintModifier);
                 }
             }
-            else if (_isSneaking)
+            else if (_isCrouching)
             {
                 _characterController.Move(move * _movementSpeed / _sprintModifier * Time.deltaTime);
 
@@ -103,7 +103,7 @@ public class CharacterMovement : MonoBehaviour
         _characterInput.Player.Movement.performed += context => Move();
         _characterInput.Player.Jump.performed += context => Jump();
         _characterInput.Player.Sprint.performed += context => Sprint();
-        _characterInput.Player.Sneak.performed += context => Sneak();
+        _characterInput.Player.Crouch.performed += context => Crouch();
     }
 
     private void GroundCheck()
@@ -125,7 +125,7 @@ public class CharacterMovement : MonoBehaviour
     {
         GroundCheck();
 
-        if (_isGrounded)
+        if (_isGrounded && !_isCrouching)
         {
             _velocity.y = Mathf.Sqrt(_jumpHeight * -2 * _gravity.y);
             _animator.SetTrigger("jump");
@@ -135,20 +135,24 @@ public class CharacterMovement : MonoBehaviour
 
     private void Sprint()
     {
-        _isSprinting = !_isSprinting;
+        if (!_isCrouching)
+        {
+            _isSprinting = !_isSprinting;
+        }
+
     }
 
-    private void Sneak()
+    private void Crouch()
     {
-        _isSneaking = !_isSneaking;
+        _isCrouching = !_isCrouching;
 
-        if (!_isSneaking)
+        if (!_isCrouching)
         {
-            _animator.SetBool("isSneaking", false);
+            _animator.SetBool("isCrouching", false);
         }
         else
         {
-            _animator.SetBool("isSneaking", true);
+            _animator.SetBool("isCrouching", true);
         }
     }
 

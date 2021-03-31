@@ -43,7 +43,7 @@ public class @CharacterInput : IInputActionCollection, IDisposable
                     ""interactions"": ""Press(behavior=2)""
                 },
                 {
-                    ""name"": ""Sneak"",
+                    ""name"": ""Crouch"",
                     ""type"": ""Button"",
                     ""id"": ""0f4af0ba-264d-4464-ae50-1b66b10ef0c5"",
                     ""expectedControlType"": ""Button"",
@@ -199,7 +199,7 @@ public class @CharacterInput : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Sneak"",
+                    ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -241,7 +241,7 @@ public class @CharacterInput : IInputActionCollection, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
-        m_Player_Sneak = m_Player.FindAction("Sneak", throwIfNotFound: true);
+        m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
     }
 
@@ -295,7 +295,7 @@ public class @CharacterInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Sprint;
-    private readonly InputAction m_Player_Sneak;
+    private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_Look;
     public struct PlayerActions
     {
@@ -304,7 +304,7 @@ public class @CharacterInput : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
-        public InputAction @Sneak => m_Wrapper.m_Player_Sneak;
+        public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -324,9 +324,9 @@ public class @CharacterInput : IInputActionCollection, IDisposable
                 @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
-                @Sneak.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSneak;
-                @Sneak.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSneak;
-                @Sneak.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSneak;
+                @Crouch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
+                @Crouch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
+                @Crouch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
                 @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
@@ -343,9 +343,9 @@ public class @CharacterInput : IInputActionCollection, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
-                @Sneak.started += instance.OnSneak;
-                @Sneak.performed += instance.OnSneak;
-                @Sneak.canceled += instance.OnSneak;
+                @Crouch.started += instance.OnCrouch;
+                @Crouch.performed += instance.OnCrouch;
+                @Crouch.canceled += instance.OnCrouch;
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
@@ -367,7 +367,7 @@ public class @CharacterInput : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
-        void OnSneak(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
     }
 }

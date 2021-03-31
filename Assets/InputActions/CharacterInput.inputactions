@@ -30,7 +30,7 @@
                     "interactions": "Press(behavior=2)"
                 },
                 {
-                    "name": "Sneak",
+                    "name": "Crouch",
                     "type": "Button",
                     "id": "0f4af0ba-264d-4464-ae50-1b66b10ef0c5",
                     "expectedControlType": "Button",
@@ -186,7 +186,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sneak",
+                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
