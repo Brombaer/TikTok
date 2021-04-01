@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterInventory : MonoBehaviour
 {
+    public MouseItem MouseItem = new MouseItem();
+
     public InventoryObject Inventory;
 
     private CharacterInput _characterInput;
@@ -55,6 +57,5 @@ public class CharacterInventory : MonoBehaviour
     private void OnApplicationQuit()
     {
         Inventory.Container.Items = new InventorySlot[15];
-
     }
 }
