@@ -54,6 +54,7 @@ public class CharacterInventory : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        Inventory.Container.Items.Clear();
+        Inventory.Container.Items = new InventorySlot[15];
+
     }
 }
