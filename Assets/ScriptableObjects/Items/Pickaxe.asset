@@ -19,4 +19,12 @@ MonoBehaviour:
   Data:
     Name: 
     Id: 2
-    Buffs: []
+    Buffs:
+    - Attribute: 0
+      Value: 0
+      Min: 10
+      Max: 20
+    - Attribute: 1
+      Value: 0
+      Min: 10
+      Max: 20

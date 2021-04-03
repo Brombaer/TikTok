@@ -2045,6 +2045,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Inventory: {fileID: 11400000, guid: 924496f06791f49b3a751ac6452e358e, type: 2}
   Equipment: {fileID: 11400000, guid: bcf7f87da17554a37b8d2c1002f5796c, type: 2}
+  Attributes:
+  - Type: 0
+    Value:
+      _baseValue: 0
+      _modifiedValue: 0
+  - Type: 1
+    Value:
+      _baseValue: 0
+      _modifiedValue: 0
+  - Type: 2
+    Value:
+      _baseValue: 0
+      _modifiedValue: 0
 --- !u!1 &1896644597
 GameObject:
   m_ObjectHideFlags: 0

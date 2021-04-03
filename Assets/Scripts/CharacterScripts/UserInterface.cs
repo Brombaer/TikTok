@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using System;
 
 public abstract class UserInterface : MonoBehaviour
 {
@@ -15,9 +16,10 @@ public abstract class UserInterface : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < Inventory.Container.Items.Length; i++)
+        for (int i = 0; i < Inventory.GetSlots.Length; i++)
         {
-            Inventory.Container.Items[i].Parent = this;
+            Inventory.GetSlots[i].Parent = this;
+            Inventory.GetSlots[i].OnAfterUpdate += OnSlotUpdate;
         }
 
         CreateSlots();
@@ -26,10 +28,26 @@ public abstract class UserInterface : MonoBehaviour
         AddEvent(gameObject, EventTriggerType.PointerExit, delegate { OnExitInterface(gameObject); });
     }
 
-    private void Update()
+    private void OnSlotUpdate(InventorySlot slot)
     {
-        SlotsOnInterface.UpdateSlotDisplay();
+        if (slot.Item.Id >= 0)
+        {
+            slot.SlotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = slot.ItemObject.UiDisplay;
+            slot.SlotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+            slot.SlotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = slot.Amount == 1 ? "" : slot.Amount.ToString("n0");
+        }
+        else
+        {
+            slot.SlotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+            slot.SlotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+            slot.SlotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        }
     }
+
+    //private void Update()
+    //{
+    //    SlotsOnInterface.UpdateSlotDisplay();
+    //}
 
     public abstract void CreateSlots();
 

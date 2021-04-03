@@ -18,7 +18,7 @@ public class DynamicInterface : UserInterface
     {
         SlotsOnInterface = new Dictionary<GameObject, InventorySlot>();
 
-        for (int i = 0; i < Inventory.Container.Items.Length; i++)
+        for (int i = 0; i < Inventory.GetSlots.Length; i++)
         {
             var obj = Instantiate(InventoryPrefab, Vector3.zero, Quaternion.identity, transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
@@ -29,7 +29,9 @@ public class DynamicInterface : UserInterface
             AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
             AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
 
-            SlotsOnInterface.Add(obj, Inventory.Container.Items[i]);
+            Inventory.GetSlots[i].SlotDisplay = obj;
+
+            SlotsOnInterface.Add(obj, Inventory.GetSlots[i]);
         }
     }
 

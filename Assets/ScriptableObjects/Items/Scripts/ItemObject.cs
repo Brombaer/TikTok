@@ -67,7 +67,7 @@ public class Item
 }
 
 [System.Serializable]
-public class ItemBuff
+public class ItemBuff : IModifiers
 {
     public Attributes Attribute;
     public int Value;
@@ -80,6 +80,11 @@ public class ItemBuff
         Max = max;
 
         GenerateValue();
+    }
+
+    public void AddValue(ref int baseValue)
+    {
+        baseValue += Value;
     }
 
     public void GenerateValue()
