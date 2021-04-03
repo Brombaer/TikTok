@@ -22,13 +22,12 @@ public enum Attributes
 
 public abstract class ItemObject : ScriptableObject
 {
-    public int Id;
     public Sprite UiDisplay;
+    public bool Stackable;
     public ItemType Type;
     [TextArea(15,20)]
     public string Description;
-
-    public ItemBuff[] Buffs;
+    public Item Data = new Item();
 
     public Item CreateItem()
     {
@@ -41,7 +40,7 @@ public abstract class ItemObject : ScriptableObject
 public class Item
 {
     public string Name;
-    public int Id;
+    public int Id = -1;
     public ItemBuff[] Buffs;
 
     public Item()
@@ -53,15 +52,15 @@ public class Item
     public Item(ItemObject item)
     {
         Name = item.name;
-        Id = item.Id;
+        Id = item.Data.Id;
 
-        Buffs = new ItemBuff[item.Buffs.Length];
+        Buffs = new ItemBuff[item.Data.Buffs.Length];
 
         for (int i = 0; i < Buffs.Length; i++)
         {
-            Buffs[i] = new ItemBuff(item.Buffs[i].Min, item.Buffs[i].Max)
+            Buffs[i] = new ItemBuff(item.Data.Buffs[i].Min, item.Data.Buffs[i].Max)
             {
-                Attribute = item.Buffs[i].Attribute
+                Attribute = item.Data.Buffs[i].Attribute
             };
         }
     }

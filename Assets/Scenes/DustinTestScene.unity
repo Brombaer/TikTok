@@ -1036,7 +1036,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e53822a6d4f5b47f89f8afe43068171c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1886369175}
   Inventory: {fileID: 11400000, guid: 924496f06791f49b3a751ac6452e358e, type: 2}
   InventoryPrefab: {fileID: 7656903293575840198, guid: 461070bb539ba4f43a946f5cf49a3d35, type: 3}
   XStart: -175
@@ -1390,7 +1389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0358298f0f4b240beb4613acd6a59c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1886369175}
   Inventory: {fileID: 11400000, guid: bcf7f87da17554a37b8d2c1002f5796c, type: 2}
   Slots:
   - {fileID: 486517744}
@@ -2046,6 +2044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Inventory: {fileID: 11400000, guid: 924496f06791f49b3a751ac6452e358e, type: 2}
+  Equipment: {fileID: 11400000, guid: bcf7f87da17554a37b8d2c1002f5796c, type: 2}
 --- !u!1 &1896644597
 GameObject:
   m_ObjectHideFlags: 0

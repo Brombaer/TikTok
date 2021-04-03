@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CharacterInventory : MonoBehaviour
 {
-    public MouseItem MouseItem = new MouseItem();
+    //public MouseItem MouseItem = new MouseItem();
 
     public InventoryObject Inventory;
+    public InventoryObject Equipment;
 
     private CharacterInput _characterInput;
 
@@ -21,8 +22,12 @@ public class CharacterInventory : MonoBehaviour
 
         if (item)
         {
-            Inventory.AddItem(new Item(item.Item), 1);
-            Destroy(other.gameObject);
+            Item _item = new Item(item.Item);
+
+            if (Inventory.AddItem(_item, 1))
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 
@@ -37,11 +42,13 @@ public class CharacterInventory : MonoBehaviour
     private void SaveInventory()
     {
         Inventory.Save();
+        Equipment.Save();
     }
 
     private void LoadInventory()
     {
         Inventory.Load();
+        Equipment.Load();
     }
 
     private void OnEnable()
@@ -56,6 +63,7 @@ public class CharacterInventory : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        Inventory.Container.Items = new InventorySlot[15];
+        Inventory.Container.Clear();
+        Equipment.Container.Clear();
     }
 }
