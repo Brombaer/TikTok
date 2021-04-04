@@ -23,6 +23,7 @@ public enum Attributes
 public abstract class ItemObject : ScriptableObject
 {
     public Sprite UiDisplay;
+    public GameObject CharacterDisplay;
     public bool Stackable;
     public ItemType Type;
     [TextArea(15,20)]

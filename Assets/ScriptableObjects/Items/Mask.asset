@@ -10,26 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 770dc73fe5d714d779dfe2f72b9ca3d0, type: 3}
-  m_Name: Weapon
+  m_Name: Mask
   m_EditorClassIdentifier: 
-  UiDisplay: {fileID: 21300000, guid: 6b6aaa992c777934cbb1a35de694371e, type: 3}
-  CharacterDisplay: {fileID: 1145237178023060, guid: d855c6cd18605f34dbfdca25cb40d71c, type: 3}
+  UiDisplay: {fileID: 21300000, guid: 1b108697285d3bb46b44b7b15d53efbc, type: 3}
+  CharacterDisplay: {fileID: 1651151863704352, guid: 34eb936eadc4b1f478dcd77331fa2129, type: 3}
   Stackable: 0
-  Type: 4
-  Description: A weapon for slashing and stabbing
+  Type: 1
+  Description: 
   Data:
     Name: 
-    Id: 9
+    Id: 7
     Buffs:
     - Attribute: 0
       Value: 0
-      Min: 15
-      Max: 50
-    - Attribute: 1
-      Value: 0
-      Min: 5
-      Max: 10
-    - Attribute: 2
-      Value: 0
-      Min: 5
-      Max: 25
+      Min: 10
+      Max: 15

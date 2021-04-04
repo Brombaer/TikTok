@@ -9,6 +9,19 @@ public class CharacterInventory : MonoBehaviour
 
     public Attribute[] Attributes;
 
+    private Transform _head;
+    private Transform _shoulder;
+    private Transform _back;
+    private Transform _weapon;
+    private Transform _tool;
+
+    public Transform WeaponHandTransform;
+    public Transform WeaponHandToolTransform;
+    public Transform ToolHandTransform;
+    public Transform ToolHandWeaponTransform;
+
+    private BoneCombiner _boneCombiner;
+
     private CharacterInput _characterInput;
 
     private void Awake()
@@ -18,6 +31,8 @@ public class CharacterInventory : MonoBehaviour
 
     private void Start()
     {
+        _boneCombiner = new BoneCombiner(gameObject);
+
         for (int i = 0; i < Attributes.Length; i++)
         {
             Attributes[i].SetParent(this);
@@ -25,8 +40,8 @@ public class CharacterInventory : MonoBehaviour
 
         for (int i = 0; i < Equipment.GetSlots.Length; i++)
         {
-            Equipment.GetSlots[i].OnBeforeUpdate += OnBeforeSlotUpdate;
-            Equipment.GetSlots[i].OnAfterUpdate += OnAfterSlotUpdate;
+            Equipment.GetSlots[i].OnBeforeUpdate += OnRemoveItem;
+            Equipment.GetSlots[i].OnAfterUpdate += OnAddItem;
         }
     }
 
@@ -53,7 +68,7 @@ public class CharacterInventory : MonoBehaviour
         _characterInput.Player.Load.performed += context => LoadInventory();
     }
 
-    public void OnBeforeSlotUpdate(InventorySlot slot)
+    public void OnRemoveItem(InventorySlot slot)
     {
         if (slot.ItemObject == null)
         {
@@ -78,13 +93,32 @@ public class CharacterInventory : MonoBehaviour
                     }
                 }
 
-                break;
-            default:
+                if (slot.ItemObject.CharacterDisplay != null)
+                {
+                    switch (slot.AllowedItems[0])
+                    {
+                        case ItemType.Head:
+                            Destroy(_head.gameObject);
+                            break;
+                        case ItemType.Shoulder:
+                            Destroy(_shoulder.gameObject);
+                            break;
+                        case ItemType.Back:
+                            Destroy(_back.gameObject);
+                            break;
+                        case ItemType.Weapon:
+                            Destroy(_weapon.gameObject);
+                            break;
+                        case ItemType.Tool:
+                            Destroy(_tool.gameObject);
+                            break;
+                    }
+                }
                 break;
         }
     }
 
-    public void OnAfterSlotUpdate(InventorySlot slot)
+    public void OnAddItem(InventorySlot slot)
     {
         if (slot.ItemObject == null)
         {
@@ -109,8 +143,43 @@ public class CharacterInventory : MonoBehaviour
                     }
                 }
 
-                break;
-            default:
+                if (slot.ItemObject.CharacterDisplay != null)
+                {
+                    switch (slot.AllowedItems[0])
+                    {
+                        case ItemType.Head:
+                            _head = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
+                            break;
+                        case ItemType.Shoulder:
+                            _shoulder = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
+                            break;
+                        case ItemType.Back:
+                            _back = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
+                            break;
+                        case ItemType.Weapon:
+                            switch (slot.ItemObject.Type)
+                            {
+                                case ItemType.Weapon:
+                                    _weapon = Instantiate(slot.ItemObject.CharacterDisplay, WeaponHandTransform).transform;
+                                    break;
+                                case ItemType.Tool:
+                                    _weapon = Instantiate(slot.ItemObject.CharacterDisplay, WeaponHandToolTransform).transform;
+                                    break;
+                            }
+                            break;
+                        case ItemType.Tool:
+                            switch (slot.ItemObject.Type)
+                            {
+                                case ItemType.Tool:
+                                    _tool = Instantiate(slot.ItemObject.CharacterDisplay, ToolHandTransform).transform;
+                                    break;
+                                case ItemType.Weapon:
+                                    _tool = Instantiate(slot.ItemObject.CharacterDisplay, ToolHandWeaponTransform).transform;
+                                    break;
+                            }
+                            break;
+                    }
+                } 
                 break;
         }
     }
