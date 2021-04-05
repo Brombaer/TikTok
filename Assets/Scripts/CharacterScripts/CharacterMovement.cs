@@ -22,7 +22,7 @@ public class CharacterMovement : MonoBehaviour
 
     [SerializeField] private float _movementSpeed = 8;
     [SerializeField] private float _jumpHeight = 2;
-    private float _sprintModifier = 2;
+    private float _movementModifier = 2;
     private bool _isMoving = false;
     private bool _isJumping = false;
     private bool _isSprinting = false;
@@ -32,7 +32,7 @@ public class CharacterMovement : MonoBehaviour
     private void Awake()
     {
         _characterCamera.gameObject.SetActive(true);
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
         _characterController = gameObject.GetComponent<CharacterController>();
 
         InitializeInput();
@@ -58,22 +58,22 @@ public class CharacterMovement : MonoBehaviour
 
             if (_isSprinting)
             {
-                _characterController.Move(move * _movementSpeed * _sprintModifier * Time.deltaTime);
+                _characterController.Move(move * _movementSpeed * _movementModifier * Time.deltaTime);
 
                 if (!_isJumping)
                 {
-                    _animator.SetFloat("horizontal", x * _sprintModifier);
-                    _animator.SetFloat("vertical", z * _sprintModifier);
+                    _animator.SetFloat("horizontal", x * _movementModifier);
+                    _animator.SetFloat("vertical", z * _movementModifier);
                 }
             }
             else if (_isCrouching)
             {
-                _characterController.Move(move * _movementSpeed / _sprintModifier * Time.deltaTime);
+                _characterController.Move(move * _movementSpeed / _movementModifier * Time.deltaTime);
 
                 if (!_isJumping)
                 {
-                    _animator.SetFloat("horizontal", x / _sprintModifier);
-                    _animator.SetFloat("vertical", z / _sprintModifier);
+                    _animator.SetFloat("horizontal", x / _movementModifier);
+                    _animator.SetFloat("vertical", z / _movementModifier);
                 }
             }
             else

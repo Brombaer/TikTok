@@ -1,9 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class CharacterInventory : MonoBehaviour
+public class CharacterInteractController : MonoBehaviour
 {
+    [SerializeField]
+    private Camera _camera;
+    [SerializeField]
+    private LayerMask _layerMask;
+    [SerializeField]
+    private TextMeshProUGUI _itemNameText;
+    [SerializeField] private float _maxInteractionDistance = 3;
+    private GroundItem _itemBeingPickedUp;
+
     public InventoryObject Inventory;
     public InventoryObject Equipment;
 
@@ -45,25 +55,89 @@ public class CharacterInventory : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        var item = other.GetComponent<GroundItem>();
+        Raycast();
 
-        if (item)
+        if (HasItemTargetted())
         {
-            Item _item = new Item(item.Item);
+            _itemNameText.gameObject.SetActive(true);
+        }
+        else
+        {
+            _itemNameText.gameObject.SetActive(false);
+        }
+    }
 
-            if (Inventory.AddItem(_item, 1))
+    private bool HasItemTargetted()
+    {
+        return _itemBeingPickedUp != null;
+    }
+
+    private void Raycast()
+    {
+        Ray ray = new Ray(_camera.transform.position, _camera.transform.forward * _maxInteractionDistance);
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(ray, out hitInfo, _maxInteractionDistance, _layerMask))
+        {
+            var hitItem = hitInfo.collider.GetComponent<GroundItem>();
+
+            if (hitInfo.distance <= _maxInteractionDistance)
             {
-                Destroy(other.gameObject);
+                if (hitItem == null)
+                {
+                    _itemBeingPickedUp = null;
+                }
+                else if (hitItem != null && hitItem != _itemBeingPickedUp)
+                {
+                    _itemBeingPickedUp = hitItem;
+                    _itemNameText.text = "Pickup " + _itemBeingPickedUp.gameObject.name;
+                }
+            }
+        }
+        else
+        {
+            _itemBeingPickedUp = null;
+        }
+    }
+
+    private void PickupItem()
+    {
+        if (_itemBeingPickedUp != null)
+        {
+            if (_itemBeingPickedUp.GetComponent<GroundItem>() != null)
+            {
+                Item item = new Item(_itemBeingPickedUp.Item);
+
+                if (Inventory.AddItem(item, 1))
+                {
+                    Destroy(_itemBeingPickedUp.gameObject);
+                }
             }
         }
     }
+
+    //public void OnTriggerEnter(Collider other)
+    //{
+    //    var item = other.GetComponent<GroundItem>();
+    //
+    //    if (item)
+    //    {
+    //        Item _item = new Item(item.Item);
+    //
+    //        if (Inventory.AddItem(_item, 1))
+    //        {
+    //            Destroy(other.gameObject);
+    //        }
+    //    }
+    //}
 
     private void InitializeInput()
     {
         _characterInput = new CharacterInput();
 
+        _characterInput.Player.Interact.performed += context => PickupItem();
         _characterInput.Player.Save.performed += context => SaveInventory();
         _characterInput.Player.Load.performed += context => LoadInventory();
     }
@@ -222,11 +296,11 @@ public class CharacterInventory : MonoBehaviour
 public class Attribute
 {
     [System.NonSerialized]
-    public CharacterInventory Parent;
+    public CharacterInteractController Parent;
     public Attributes Type;
     public ModifiableInt Value;
 
-    public void SetParent(CharacterInventory parent)
+    public void SetParent(CharacterInteractController parent)
     {
         Parent = parent;
         Value = new ModifiableInt(AttributeModified);

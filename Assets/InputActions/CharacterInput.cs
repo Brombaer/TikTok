@@ -73,6 +73,14 @@ public class @CharacterInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c49fb74-c09b-4011-96e9-4eaebc5d37be"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -295,6 +303,17 @@ public class @CharacterInput : IInputActionCollection, IDisposable
                     ""action"": ""Load"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3103c422-0b56-4bd3-85c0-d3a93197495a"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -327,6 +346,7 @@ public class @CharacterInput : IInputActionCollection, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Save = m_Player.FindAction("Save", throwIfNotFound: true);
         m_Player_Load = m_Player.FindAction("Load", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -383,6 +403,7 @@ public class @CharacterInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Save;
     private readonly InputAction m_Player_Load;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @CharacterInput m_Wrapper;
@@ -394,6 +415,7 @@ public class @CharacterInput : IInputActionCollection, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Save => m_Wrapper.m_Player_Save;
         public InputAction @Load => m_Wrapper.m_Player_Load;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -424,6 +446,9 @@ public class @CharacterInput : IInputActionCollection, IDisposable
                 @Load.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLoad;
                 @Load.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLoad;
                 @Load.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLoad;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -449,6 +474,9 @@ public class @CharacterInput : IInputActionCollection, IDisposable
                 @Load.started += instance.OnLoad;
                 @Load.performed += instance.OnLoad;
                 @Load.canceled += instance.OnLoad;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -471,5 +499,6 @@ public class @CharacterInput : IInputActionCollection, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnSave(InputAction.CallbackContext context);
         void OnLoad(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
