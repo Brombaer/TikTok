@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2229ef31b5d0b498d95745768439dac2, type: 3}
+  m_Name: Fish
+  m_EditorClassIdentifier: 
+  UiDisplay: {fileID: 21300000, guid: 80f1d54105ce47d488b86f9adb165e70, type: 3}
+  Stackable: 1
+  Type: 0
+  Description: Can be fished in the ocean or found in a fridge
+  Data:
+    Name: 
+    Id: 1
+    Buffs: []
