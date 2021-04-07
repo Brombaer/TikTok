@@ -29,6 +29,8 @@ public class CharacterInteractController : MonoBehaviour
     public Transform WeaponHandToolTransform;
     public Transform ToolHandTransform;
     public Transform ToolHandWeaponTransform;
+    public Transform BackpackTransform;
+    public Transform HeadTransform;
 
     private BoneCombiner _boneCombiner;
 
@@ -222,13 +224,17 @@ public class CharacterInteractController : MonoBehaviour
                     switch (slot.AllowedItems[0])
                     {
                         case ItemType.Head:
-                            _head = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
+                            _head = Instantiate(slot.ItemObject.CharacterDisplay, HeadTransform).transform;
+
+                            //_head = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
                             break;
                         case ItemType.Shoulder:
                             _shoulder = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
                             break;
                         case ItemType.Back:
-                            _back = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
+                            _back = Instantiate(slot.ItemObject.CharacterDisplay, BackpackTransform).transform;
+
+                            //_back = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
                             break;
                         case ItemType.Weapon:
                             switch (slot.ItemObject.Type)
