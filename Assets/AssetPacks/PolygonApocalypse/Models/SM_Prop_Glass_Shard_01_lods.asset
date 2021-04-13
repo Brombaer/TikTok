@@ -11,14 +11,14 @@ Mesh:
   m_SubMeshes:
   - serializedVersion: 2
     firstByte: 0
-    indexCount: 0
+    indexCount: 18
     topology: 0
     baseVertex: 0
     firstVertex: 0
-    vertexCount: 0
+    vertexCount: 5
     localAABB:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Center: {x: 0.07980065, y: 0, z: 0}
+      m_Extent: {x: 0.47198915, y: 0, z: 0.5049106}
   m_Shapes:
     vertices: []
     shapes: []
@@ -35,15 +35,31 @@ Mesh:
   m_KeepVertices: 0
   m_KeepIndices: 0
   m_IndexFormat: 1
-  m_IndexBuffer: 
+  m_IndexBuffer: 010000000000000003000000040000000300000000000000020000000100000003000000010000000300000000000000040000000000000003000000020000000300000001000000
   m_VertexData:
     serializedVersion: 3
-    m_VertexCount: 0
+    m_VertexCount: 5
     m_Channels:
     - stream: 0
       offset: 0
       format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 0
+      format: 0
       dimension: 0
+    - stream: 0
+      offset: 40
+      format: 0
+      dimension: 2
     - stream: 0
       offset: 0
       format: 0
@@ -80,24 +96,8 @@ Mesh:
       offset: 0
       format: 0
       dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 0
-    _typelessdata: 
+    m_DataSize: 240
+    _typelessdata: cac2b2be0000000068d1eb3e43c90cbfe5054bbf321e863e000080bf00000000000000003ce8783a1010613ec4c22a3eefccc8be000000003409343e363477bf41773ebededa393e0000803f0000000000000000c39e50bf5cbb613e67b52e3e854fab3d00000000d24101bf7f59ce3e00000000c8496abf0000803f0000000000000000000080bf02795a3e6828383e19420d3f000000006e935ebe5cac7f3f000000005de04e3d0000803f0000000000000000000080bf0154533e732a343e7d5f733e00000000d241013f3e74583f0000000027b0083f0000803f0000000000000000000080bf401f583e78232a3e
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -151,8 +151,8 @@ Mesh:
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.49567693, y: 0.032987468, z: 0.5049106}
+    m_Center: {x: 0.07980065, y: 0, z: 0}
+    m_Extent: {x: 0.47198915, y: 0, z: 0.5049106}
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
@@ -206,14 +206,14 @@ Mesh:
   m_SubMeshes:
   - serializedVersion: 2
     firstByte: 0
-    indexCount: 0
+    indexCount: 42
     topology: 0
     baseVertex: 0
     firstVertex: 0
-    vertexCount: 0
+    vertexCount: 13
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.49567693, y: 0.032987468, z: 0.5049106}
   m_Shapes:
     vertices: []
     shapes: []
@@ -230,15 +230,31 @@ Mesh:
   m_KeepVertices: 0
   m_KeepIndices: 0
   m_IndexFormat: 1
-  m_IndexBuffer: 
+  m_IndexBuffer: 0400000000000000050000000500000000000000010000000c00000001000000000000000700000005000000010000000600000005000000070000000400000005000000020000000500000003000000020000000c00000002000000030000000700000003000000050000000600000007000000050000000200000000000000040000000700000008000000090000000c00000000000000020000000a0000000b0000000c000000
   m_VertexData:
     serializedVersion: 3
-    m_VertexCount: 0
+    m_VertexCount: 13
     m_Channels:
     - stream: 0
       offset: 0
       format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 0
+      format: 0
       dimension: 0
+    - stream: 0
+      offset: 40
+      format: 0
+      dimension: 2
     - stream: 0
       offset: 0
       format: 0
@@ -275,24 +291,8 @@ Mesh:
       offset: 0
       format: 0
       dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 0
-    _typelessdata: 
+    m_DataSize: 624
+    _typelessdata: bb96b0bede1d073d1e3bea3e000000000000803f00000000000080bf0000000000000000000080bf4e03613e08cc2a3e5ec9fd3ede1d073d5d4dc53d000000000000803f00000000000080bf0000000000000000000080bf3c2f543e8ccf2f3e0472b3bede1d07bdedd3ed3e00000000000080bf00000000000080bf00000000000000000000803f1a19613e10b32a3e5ec9fd3ede1d07bd5d4dc53d00000000000080bf00000000000080bf00000000000000000000803f3c2f543e8ccf2f3e5ec9fdbe000000006b4c2c3ef11e67bf000000008c2cdc3e0000803f0000000000000000000080bf6450633ef0cf2e3ed7d8e5bd00000000f75985bd221805bf00000000a6ae5abf0000803f0000000000000000000080bf48765d3e580d323e854fab3d00000000d24101bf7f59ce3e00000000c8496abf0000803f0000000000000000000080bf02795a3e6828383efc09f73e00000000a495a8be9ae07f3f00000000518bfdbc0000803f0000000000000000000080bfba62543e2cb8353e5ec9fd3ede1d073d5d4dc53d9ae07f3f00000000518bfdbc0000803f0000000000000000000080bf3c2f543e8ccf2f3e5ec9fd3ede1d07bd5d4dc53d9ae07f3f00000000518bfdbc0000803f0000000000000000000080bf3c2f543e8ccf2f3e5ec9fd3ede1d07bd5d4dc53d3e74583f0000000027b0083f0000803f0000000000000000000080bf3c2f543e8ccf2f3e5ec9fd3ede1d073d5d4dc53d3e74583f0000000027b0083f0000803f0000000000000000000080bf3c2f543e8ccf2f3e7d5f733e00000000d241013f3e74583f0000000027b0083f0000803f0000000000000000000080bf401f583e78232a3e
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
