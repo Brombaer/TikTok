@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -6,7 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using System;
 
 public abstract class UserInterface : MonoBehaviour
 {
@@ -43,11 +41,6 @@ public abstract class UserInterface : MonoBehaviour
             slot.SlotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
     }
-
-    //private void Update()
-    //{
-    //    SlotsOnInterface.UpdateSlotDisplay();
-    //}
 
     public abstract void CreateSlots();
 

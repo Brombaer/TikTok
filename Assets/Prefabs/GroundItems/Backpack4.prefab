@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4595216402330445469}
   - component: {fileID: 4595216402330445471}
   - component: {fileID: 3647875209371913856}
+  - component: {fileID: 554554522}
   m_Layer: 6
   m_Name: Backpack4
-  m_TagString: Untagged
+  m_TagString: InteractableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,6 +60,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5655297, y: 0.85381746, z: 0.31651592}
   m_Center: {x: -0.00029343367, y: -0.07309127, z: -0.22597742}
+--- !u!114 &554554522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4595216402330445470}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &4595216402461998655
 PrefabInstance:
   m_ObjectHideFlags: 0

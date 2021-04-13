@@ -1,18 +1,20 @@
-using System.Collections.Generic;
-using System.Linq;
+using Cinemachine;
 using TMPro;
 using UnityEngine;
 
 public class CharacterInteractController : MonoBehaviour
 {
-    [SerializeField]
-    private Camera _camera;
-    [SerializeField]
-    private LayerMask _layerMask;
-    [SerializeField]
-    private TextMeshProUGUI _itemNameText;
+    [SerializeField] private Camera _camera;
+    [SerializeField] private Transform _target;
+    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private TextMeshProUGUI _itemNameText;
+    [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private float _maxInteractionDistance = 3;
+
     private GroundItem _itemBeingPickedUp;
+    private Outline _prevOutlineObj;
+    private Outline _currentOutlineObj;
+    private RaycastHit hitInfo;
 
     public InventoryObject Inventory;
     public InventoryObject Equipment;
@@ -25,20 +27,16 @@ public class CharacterInteractController : MonoBehaviour
     private Transform _weapon;
     private Transform _tool;
 
-    public Transform WeaponHandTransform;
-    public Transform WeaponHandToolTransform;
-    public Transform ToolHandTransform;
-    public Transform ToolHandWeaponTransform;
-    public Transform BackpackTransform;
-    public Transform HeadTransform;
+    [SerializeField] private Transform _weaponHandTransform;
+    [SerializeField] private Transform _weaponHandToolTransform;
+    [SerializeField] private Transform _toolHandTransform;
+    [SerializeField] private Transform _toolHandWeaponTransform;
+    [SerializeField] private Transform _backpackTransform;
+    [SerializeField] private Transform _headTransform;
 
     private BoneCombiner _boneCombiner;
 
     private CharacterInput _characterInput;
-
-    private Outline _prevOutlineObj;
-    private Outline _currentOutlineObj;
-    RaycastHit hitInfo;
 
     private void Awake()
     {
@@ -47,6 +45,9 @@ public class CharacterInteractController : MonoBehaviour
 
     private void Start()
     {
+        _inventoryUI.SetActive(false);
+        _itemNameText.gameObject.SetActive(false);
+
         _boneCombiner = new BoneCombiner(gameObject);
 
         for (int i = 0; i < Attributes.Length; i++)
@@ -63,16 +64,19 @@ public class CharacterInteractController : MonoBehaviour
 
     private void Update()
     {
-        Raycast();
-        OutlineGroundItem();
+        if (CharacterMovement.IsEnabled)
+        {
+            Raycast();
+            OutlineGroundItem();
 
-        if (HasItemTargetted())
-        {
-            _itemNameText.gameObject.SetActive(true);
-        }
-        else
-        {
-            _itemNameText.gameObject.SetActive(false);
+            if (HasItemTargetted())
+            {
+                _itemNameText.gameObject.SetActive(true);
+            }
+            else
+            {
+                _itemNameText.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -88,31 +92,22 @@ public class CharacterInteractController : MonoBehaviour
         if (Physics.Raycast(ray, out hitInfo, _maxInteractionDistance, _layerMask))
         {
             var hitItem = hitInfo.collider.GetComponent<GroundItem>();
-            //var outlineItem = hitItem.GetComponent<Outline>();
 
             if (hitInfo.distance <= _maxInteractionDistance)
             {
                 if (hitItem == null)
                 {
-                    //outlineItem.OutlineWidth = 0;
                     _itemBeingPickedUp = null;
                 }
                 else if (hitItem != null && hitItem != _itemBeingPickedUp)
                 {
-                    //outlineItem.OutlineWidth = 5;
-                    
                     _itemBeingPickedUp = hitItem;
                     _itemNameText.text = "Pickup " + _itemBeingPickedUp.gameObject.name;
                 }
             }
-            else
-            {
-                //outlineItem.OutlineWidth = 0;
-            }
         }
         else
         {
-            //_prevOutlineObj.enabled = false;
             _itemBeingPickedUp = null;
         }
     }
@@ -137,21 +132,20 @@ public class CharacterInteractController : MonoBehaviour
         }
     }
 
-    private void RemoveOutline()
-    {
-        if (_prevOutlineObj != null)
-        {
-            //_prevOutlineObj.GetComponent<Outline>();
-            _prevOutlineObj.enabled = false;
-            _prevOutlineObj = null;
-        }
-    }
-
     private void ShowOutline()
     {
         if (_currentOutlineObj != null)
         {
             _currentOutlineObj.enabled = true;
+        }
+    }
+
+    private void RemoveOutline()
+    {
+        if (_prevOutlineObj != null)
+        {
+            _prevOutlineObj.enabled = false;
+            _prevOutlineObj = null;
         }
     }
 
@@ -186,11 +180,46 @@ public class CharacterInteractController : MonoBehaviour
     //    }
     //}
 
+    private void ToggleInventory()
+    {
+        if (_inventoryUI.active)
+        {
+            GetComponent<CharacterController>().enabled = true;
+            _inventoryUI.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            CharacterMovement.IsEnabled = true;
+
+            _camera.GetComponent<CinemachineBrain>().enabled = true;
+        }
+        else if (_inventoryUI.active == false)
+        {
+            GetComponent<CharacterController>().enabled = false;
+            _inventoryUI.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            CharacterMovement.IsEnabled = false;
+
+            _camera.GetComponent<CinemachineBrain>().enabled = false;
+        }
+    }
+
+    //private void ToggleCharacterInput()
+    //{
+    //    if (GetComponent<CharacterController>().enabled)
+    //    {
+    //        GetComponent<CharacterController>().enabled = false;
+    //    }
+    //    else
+    //    {
+    //        GetComponent<CharacterController>().enabled = true;
+    //    }
+    //}
+
     private void InitializeInput()
     {
         _characterInput = new CharacterInput();
 
         _characterInput.Player.Interact.performed += context => PickupItem();
+        _characterInput.Player.Inventory.performed += context => ToggleInventory();
         _characterInput.Player.Save.performed += context => SaveInventory();
         _characterInput.Player.Load.performed += context => LoadInventory();
     }
@@ -275,7 +304,7 @@ public class CharacterInteractController : MonoBehaviour
                     switch (slot.AllowedItems[0])
                     {
                         case ItemType.Head:
-                            _head = Instantiate(slot.ItemObject.CharacterDisplay, HeadTransform).transform;
+                            _head = Instantiate(slot.ItemObject.CharacterDisplay, _headTransform).transform;
 
                             //_head = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
                             break;
@@ -283,7 +312,7 @@ public class CharacterInteractController : MonoBehaviour
                             _shoulder = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
                             break;
                         case ItemType.Back:
-                            _back = Instantiate(slot.ItemObject.CharacterDisplay, BackpackTransform).transform;
+                            _back = Instantiate(slot.ItemObject.CharacterDisplay, _backpackTransform).transform;
 
                             //_back = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
                             break;
@@ -291,10 +320,10 @@ public class CharacterInteractController : MonoBehaviour
                             switch (slot.ItemObject.Type)
                             {
                                 case ItemType.Weapon:
-                                    _weapon = Instantiate(slot.ItemObject.CharacterDisplay, WeaponHandTransform).transform;
+                                    _weapon = Instantiate(slot.ItemObject.CharacterDisplay, _weaponHandTransform).transform;
                                     break;
                                 case ItemType.Tool:
-                                    _weapon = Instantiate(slot.ItemObject.CharacterDisplay, WeaponHandToolTransform).transform;
+                                    _weapon = Instantiate(slot.ItemObject.CharacterDisplay, _weaponHandToolTransform).transform;
                                     break;
                             }
                             break;
@@ -302,10 +331,10 @@ public class CharacterInteractController : MonoBehaviour
                             switch (slot.ItemObject.Type)
                             {
                                 case ItemType.Tool:
-                                    _tool = Instantiate(slot.ItemObject.CharacterDisplay, ToolHandTransform).transform;
+                                    _tool = Instantiate(slot.ItemObject.CharacterDisplay, _toolHandTransform).transform;
                                     break;
                                 case ItemType.Weapon:
-                                    _tool = Instantiate(slot.ItemObject.CharacterDisplay, ToolHandWeaponTransform).transform;
+                                    _tool = Instantiate(slot.ItemObject.CharacterDisplay, _toolHandWeaponTransform).transform;
                                     break;
                             }
                             break;
@@ -337,7 +366,7 @@ public class CharacterInteractController : MonoBehaviour
         _characterInput.Disable();
     }
 
-    public  void AttributeModified(Attribute attribute)
+    public void AttributeModified(Attribute attribute)
     {
         Debug.Log(string.Concat(attribute.Type, " was updated! Value is now ", attribute.Value.ModifiedValue));
     }
@@ -352,8 +381,7 @@ public class CharacterInteractController : MonoBehaviour
 [System.Serializable]
 public class Attribute
 {
-    [System.NonSerialized]
-    public CharacterInteractController Parent;
+    [System.NonSerialized] public CharacterInteractController Parent;
     public Attributes Type;
     public ModifiableInt Value;
 

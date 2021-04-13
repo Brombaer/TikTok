@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
@@ -12,6 +10,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 _velocity;
 
     private CharacterInput _characterInput;
+    public static bool IsEnabled = true;
 
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private LayerMask _groundMask;
@@ -22,7 +21,8 @@ public class CharacterMovement : MonoBehaviour
 
     [SerializeField] private float _movementSpeed = 8;
     [SerializeField] private float _jumpHeight = 2;
-    private float _movementModifier = 2;
+    [SerializeField] private float _movementModifier = 2;
+
     private bool _isMoving = false;
     private bool _isJumping = false;
     private bool _isSprinting = false;
@@ -32,7 +32,7 @@ public class CharacterMovement : MonoBehaviour
     private void Awake()
     {
         _characterCamera.gameObject.SetActive(true);
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
         _characterController = gameObject.GetComponent<CharacterController>();
 
         InitializeInput();
@@ -40,60 +40,63 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
-        GroundCheck();
-
-        if (_isMoving)
+        if (IsEnabled)
         {
-            float x = _characterInput.Player.Movement.ReadValue<Vector2>().x;
-            float z = _characterInput.Player.Movement.ReadValue<Vector2>().y;
+            GroundCheck();
 
-            float cam = _cameraTransform.rotation.eulerAngles.x;
-            transform.rotation = Quaternion.Euler(0, _cameraTransform.rotation.eulerAngles.y, 0);
-            _cameraTransform.localEulerAngles = new Vector3(cam, 0, 0);
-
-            Vector3 moveX = new Vector3(_cameraTransform.right.x, 0, _cameraTransform.right.z) * x;
-            Vector3 moveZ = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z) * z;
-
-            Vector3 move = moveX + moveZ;
-
-            if (_isSprinting)
+            if (_isMoving)
             {
-                _characterController.Move(move * _movementSpeed * _movementModifier * Time.deltaTime);
+                float x = _characterInput.Player.Movement.ReadValue<Vector2>().x;
+                float z = _characterInput.Player.Movement.ReadValue<Vector2>().y;
 
-                if (!_isJumping)
+                float cam = _cameraTransform.rotation.eulerAngles.x;
+                transform.rotation = Quaternion.Euler(0, _cameraTransform.rotation.eulerAngles.y, 0);
+                _cameraTransform.localEulerAngles = new Vector3(cam, 0, 0);
+
+                Vector3 moveX = new Vector3(_cameraTransform.right.x, 0, _cameraTransform.right.z) * x;
+                Vector3 moveZ = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z) * z;
+
+                Vector3 move = moveX + moveZ;
+
+                if (_isSprinting)
                 {
-                    _animator.SetFloat("horizontal", x * _movementModifier);
-                    _animator.SetFloat("vertical", z * _movementModifier);
+                    _characterController.Move(move * _movementSpeed * _movementModifier * Time.deltaTime);
+
+                    if (!_isJumping)
+                    {
+                        _animator.SetFloat("horizontal", x * _movementModifier);
+                        _animator.SetFloat("vertical", z * _movementModifier);
+                    }
                 }
-            }
-            else if (_isCrouching)
-            {
-                _characterController.Move(move * _movementSpeed / _movementModifier * Time.deltaTime);
-
-                if (!_isJumping)
+                else if (_isCrouching)
                 {
-                    _animator.SetFloat("horizontal", x / _movementModifier);
-                    _animator.SetFloat("vertical", z / _movementModifier);
+                    _characterController.Move(move * _movementSpeed / _movementModifier * Time.deltaTime);
+
+                    if (!_isJumping)
+                    {
+                        _animator.SetFloat("horizontal", x / _movementModifier);
+                        _animator.SetFloat("vertical", z / _movementModifier);
+                    }
+                }
+                else
+                {
+                    _characterController.Move(move * _movementSpeed * Time.deltaTime);
+
+                    if (!_isJumping)
+                    {
+                        _animator.SetFloat("horizontal", x);
+                        _animator.SetFloat("vertical", z);
+                    }
                 }
             }
             else
             {
-                _characterController.Move(move * _movementSpeed * Time.deltaTime);
-
-                if (!_isJumping)
-                {
-                    _animator.SetFloat("horizontal", x);
-                    _animator.SetFloat("vertical", z);
-                }
+                _animator.SetFloat("horizontal", 0);
+                _animator.SetFloat("vertical", 0);
             }
-        }
-        else
-        {
-            _animator.SetFloat("horizontal", 0);
-            _animator.SetFloat("vertical", 0);
-        }
 
-        ApplyGravity();
+            ApplyGravity();
+        }
     }
 
     private void InitializeInput()

@@ -14,7 +14,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Outline : MonoBehaviour
 {
-    private static HashSet<Mesh> registeredMeshes = new HashSet<Mesh>();
+    private static HashSet<Mesh> _registeredMeshes = new HashSet<Mesh>();
 
     public enum Mode
     {
@@ -24,6 +24,31 @@ public class Outline : MonoBehaviour
         OutlineAndSilhouette,
         SilhouetteOnly
     }
+
+    [Serializable] private class ListVector3
+    {
+        public List<Vector3> data;
+    }
+
+    [SerializeField] private Mode outlineMode;
+    [SerializeField] private Color outlineColor = Color.white;
+
+    [SerializeField, Range(0,10)] private float outlineWidth = 2f;
+
+    [Header("Optional")]
+
+    [SerializeField, Tooltip("Precompute enabled: Per-vertex calculations are performed in the editor and serialized with the object. "
+    + "Precompute disabled: Per-vertex calculations are performed at runtime in Awake(). This may cause a pause for large meshes.")]
+    private bool precomputeOutline;
+
+    [SerializeField, HideInInspector] private List<Mesh> bakeKeys = new List<Mesh>();
+    [SerializeField, HideInInspector] private List<ListVector3> bakeValues = new List<ListVector3>();
+
+    private Renderer[] renderers;
+    private Material outlineMaskMaterial;
+    private Material outlineFillMaterial;
+
+    private bool needsUpdate;
 
     public Mode OutlineMode
     {
@@ -63,39 +88,6 @@ public class Outline : MonoBehaviour
             needsUpdate = true;
         }
     }
-
-    [Serializable]
-    private class ListVector3
-    {
-        public List<Vector3> data;
-    }
-
-    [SerializeField]
-    private Mode outlineMode;
-
-    [SerializeField]
-    private Color outlineColor = Color.white;
-
-    [SerializeField, Range(0f, 10f)]
-    private float outlineWidth = 2f;
-
-    [Header("Optional")]
-
-    [SerializeField, Tooltip("Precompute enabled: Per-vertex calculations are performed in the editor and serialized with the object. "
-    + "Precompute disabled: Per-vertex calculations are performed at runtime in Awake(). This may cause a pause for large meshes.")]
-    private bool precomputeOutline;
-
-    [SerializeField, HideInInspector]
-    private List<Mesh> bakeKeys = new List<Mesh>();
-
-    [SerializeField, HideInInspector]
-    private List<ListVector3> bakeValues = new List<ListVector3>();
-
-    private Renderer[] renderers;
-    private Material outlineMaskMaterial;
-    private Material outlineFillMaterial;
-
-    private bool needsUpdate;
 
     private void Awake()
     {
@@ -208,7 +200,7 @@ public class Outline : MonoBehaviour
         {
 
             // Skip if smooth normals have already been adopted
-            if (!registeredMeshes.Add(meshFilter.sharedMesh))
+            if (!_registeredMeshes.Add(meshFilter.sharedMesh))
             {
                 continue;
             }
@@ -224,7 +216,7 @@ public class Outline : MonoBehaviour
         // Clear UV3 on skinned mesh renderers
         foreach (var skinnedMeshRenderer in GetComponentsInChildren<SkinnedMeshRenderer>())
         {
-            if (registeredMeshes.Add(skinnedMeshRenderer.sharedMesh))
+            if (_registeredMeshes.Add(skinnedMeshRenderer.sharedMesh))
             {
                 skinnedMeshRenderer.sharedMesh.uv4 = new Vector2[skinnedMeshRenderer.sharedMesh.vertexCount];
             }

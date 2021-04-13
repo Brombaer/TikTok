@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,12 +6,12 @@ public class DynamicInterface : UserInterface
 {
     public GameObject InventoryPrefab;
 
-    public int XStart;
-    public int YStart;
+    private int XStart = -175;
+    private int YStart = 350;
 
-    public int XSpaceBetweenItems;
-    public int YSpaceBetweenItems;
-    public int NumberOfColumn;
+    private int XSpaceBetweenItems = 175;
+    private int YSpaceBetweenItems = 175;
+    private int NumberOfColumn = 3;
 
     public override void CreateSlots()
     {
