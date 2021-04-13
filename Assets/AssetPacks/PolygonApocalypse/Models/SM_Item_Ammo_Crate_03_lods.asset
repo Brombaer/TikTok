@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-9075869943384553439
+--- !u!43 &-8326421324751871240
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Item_Ammo_Crate_Lid_03 LOD2
+  m_Name: SM_Item_Ammo_Crate_03 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -151,8 +151,8 @@ Mesh:
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
-    m_Center: {x: 0.0000003054738, y: 0.066063315, z: -0.07417929}
-    m_Extent: {x: 0.10446553, y: 0.08446242, z: 0.07417926}
+    m_Center: {x: 0.0000003054738, y: 0.046325285, z: 0.0063903406}
+    m_Extent: {x: 0.12163055, y: 0.046325285, z: 0.098404616}
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
@@ -164,13 +164,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &-4937481594649487618
+--- !u!43 &-1580909329432929766
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Item_Ammo_Crate_03 LOD1
+  m_Name: SM_Item_Ammo_Crate_03 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -362,13 +362,13 @@ MonoBehaviour:
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &2590083662537845109
+--- !u!43 &7984197018655436198
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Item_Ammo_Crate_03 LOD2
+  m_Name: SM_Item_Ammo_Crate_Lid_03 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -513,8 +513,8 @@ Mesh:
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
-    m_Center: {x: 0.0000003054738, y: 0.046325285, z: 0.0063903406}
-    m_Extent: {x: 0.12163055, y: 0.046325285, z: 0.098404616}
+    m_Center: {x: 0.0000003054738, y: 0.066063315, z: -0.07417929}
+    m_Extent: {x: 0.10446553, y: 0.08446242, z: 0.07417926}
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
@@ -526,7 +526,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &3302405406786142673
+--- !u!43 &8966130175091499778
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

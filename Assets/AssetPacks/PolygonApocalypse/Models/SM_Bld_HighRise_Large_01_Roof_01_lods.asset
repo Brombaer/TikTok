@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-7063458884394607123
+--- !u!43 &-7570251876991253496
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_HighRise_Large_01_Roof_Overgrowth_01 LOD1
+  m_Name: SM_Bld_HighRise_Large_01_Roof_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -151,8 +151,8 @@ Mesh:
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
-    m_Center: {x: -2.0152297, y: 7.526422, z: 1.568994}
-    m_Extent: {x: 11.67186, y: 4.1381993, z: 6.0755663}
+    m_Center: {x: 0.0000166893, y: 10.308991, z: 1.6587793}
+    m_Extent: {x: 13.139782, y: 0.53127956, z: 5.417119}
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
@@ -164,7 +164,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &-5346007569563736177
+--- !u!43 &-5569133225486850722
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -328,13 +328,47 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &-2366390370296052139
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e927627221206e04dba83232f13d1949, type: 3}
+  m_Name: SM_Bld_HighRise_Large_01_Roof_01_lods
+  m_EditorClassIdentifier: 
+  overrideDefaults: 0
+  importSettings:
+    generateOnImport: 1
+    meshSimplifier: Unity.AutoLOD.QuadricMeshSimplifier, Unity.AutoLOD.Editor, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    batcher: 
+    maxLODGenerated: 2
+    initialLODMaxPolyCount: 500000
+  lod0:
+  - {fileID: 2300000, guid: 2f8c60fbe513a8d459df7fcbf08206c9, type: 3}
+  - {fileID: 6737394982213057048, guid: 2f8c60fbe513a8d459df7fcbf08206c9, type: 3}
+  lod1:
+  - {fileID: -7315644706786338170, guid: 2f8c60fbe513a8d459df7fcbf08206c9, type: 3}
+  - {fileID: 3085909232498120932, guid: 2f8c60fbe513a8d459df7fcbf08206c9, type: 3}
+  lod2:
+  - {fileID: 544275188828088360, guid: 2f8c60fbe513a8d459df7fcbf08206c9, type: 3}
+  - {fileID: 3857937117904500258, guid: 2f8c60fbe513a8d459df7fcbf08206c9, type: 3}
+  lod3: []
+  lod4: []
+  lod5: []
+  lod6: []
+  lod7: []
+--- !u!43 &1000055487199664846
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_HighRise_Large_01_Roof_Overgrowth_01 LOD2
+  m_Name: SM_Bld_HighRise_Large_01_Roof_Overgrowth_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -492,47 +526,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e927627221206e04dba83232f13d1949, type: 3}
-  m_Name: SM_Bld_HighRise_Large_01_Roof_01_lods
-  m_EditorClassIdentifier: 
-  overrideDefaults: 0
-  importSettings:
-    generateOnImport: 1
-    meshSimplifier: Unity.AutoLOD.QuadricMeshSimplifier, Unity.AutoLOD.Editor, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    batcher: 
-    maxLODGenerated: 2
-    initialLODMaxPolyCount: 500000
-  lod0:
-  - {fileID: 2300000, guid: 2f8c60fbe513a8d459df7fcbf08206c9, type: 3}
-  - {fileID: 6737394982213057048, guid: 2f8c60fbe513a8d459df7fcbf08206c9, type: 3}
-  lod1:
-  - {fileID: -7315644706786338170, guid: 2f8c60fbe513a8d459df7fcbf08206c9, type: 3}
-  - {fileID: 3085909232498120932, guid: 2f8c60fbe513a8d459df7fcbf08206c9, type: 3}
-  lod2:
-  - {fileID: 544275188828088360, guid: 2f8c60fbe513a8d459df7fcbf08206c9, type: 3}
-  - {fileID: 3857937117904500258, guid: 2f8c60fbe513a8d459df7fcbf08206c9, type: 3}
-  lod3: []
-  lod4: []
-  lod5: []
-  lod6: []
-  lod7: []
---- !u!43 &8018748109803851586
+--- !u!43 &8759245127417903930
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_HighRise_Large_01_Roof_01 LOD2
+  m_Name: SM_Bld_HighRise_Large_01_Roof_Overgrowth_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -677,8 +677,8 @@ Mesh:
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
-    m_Center: {x: 0.0000166893, y: 10.308991, z: 1.6587793}
-    m_Extent: {x: 13.139782, y: 0.53127956, z: 5.417119}
+    m_Center: {x: -2.0152297, y: 7.526422, z: 1.568994}
+    m_Extent: {x: 11.67186, y: 4.1381993, z: 6.0755663}
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 

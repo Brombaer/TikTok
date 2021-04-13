@@ -1,40 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e927627221206e04dba83232f13d1949, type: 3}
-  m_Name: SM_Wep_Mod_Attach_Trigger_02_lods
-  m_EditorClassIdentifier: 
-  overrideDefaults: 0
-  importSettings:
-    generateOnImport: 1
-    meshSimplifier: Unity.AutoLOD.QuadricMeshSimplifier, Unity.AutoLOD.Editor, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    batcher: 
-    maxLODGenerated: 2
-    initialLODMaxPolyCount: 500000
-  lod0:
-  - {fileID: 2300000, guid: 2c2d5dccf304fe04a87e196c2a7ed69c, type: 3}
-  - {fileID: -385391883821101682, guid: 2c2d5dccf304fe04a87e196c2a7ed69c, type: 3}
-  lod1:
-  - {fileID: -343715130553669981, guid: 2c2d5dccf304fe04a87e196c2a7ed69c, type: 3}
-  - {fileID: -2807161370632675778, guid: 2c2d5dccf304fe04a87e196c2a7ed69c, type: 3}
-  lod2:
-  - {fileID: -2361997737275894928, guid: 2c2d5dccf304fe04a87e196c2a7ed69c, type: 3}
-  - {fileID: 6636207733325680475, guid: 2c2d5dccf304fe04a87e196c2a7ed69c, type: 3}
-  lod3: []
-  lod4: []
-  lod5: []
-  lod6: []
-  lod7: []
---- !u!43 &381170550317240729
+--- !u!43 &-3379410738598813218
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,7 +164,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &5526564154587310789
+--- !u!43 &-2987717894893098841
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -362,7 +328,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &6310994593661390995
+--- !u!43 &-2950216476376060272
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -526,7 +492,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &9083423468420263827
+--- !u!43 &-1003702619044779401
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -690,3 +656,37 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e927627221206e04dba83232f13d1949, type: 3}
+  m_Name: SM_Wep_Mod_Attach_Trigger_02_lods
+  m_EditorClassIdentifier: 
+  overrideDefaults: 0
+  importSettings:
+    generateOnImport: 1
+    meshSimplifier: Unity.AutoLOD.QuadricMeshSimplifier, Unity.AutoLOD.Editor, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    batcher: 
+    maxLODGenerated: 2
+    initialLODMaxPolyCount: 500000
+  lod0:
+  - {fileID: 2300000, guid: 2c2d5dccf304fe04a87e196c2a7ed69c, type: 3}
+  - {fileID: -385391883821101682, guid: 2c2d5dccf304fe04a87e196c2a7ed69c, type: 3}
+  lod1:
+  - {fileID: -343715130553669981, guid: 2c2d5dccf304fe04a87e196c2a7ed69c, type: 3}
+  - {fileID: -2807161370632675778, guid: 2c2d5dccf304fe04a87e196c2a7ed69c, type: 3}
+  lod2:
+  - {fileID: -2361997737275894928, guid: 2c2d5dccf304fe04a87e196c2a7ed69c, type: 3}
+  - {fileID: 6636207733325680475, guid: 2c2d5dccf304fe04a87e196c2a7ed69c, type: 3}
+  lod3: []
+  lod4: []
+  lod5: []
+  lod6: []
+  lod7: []

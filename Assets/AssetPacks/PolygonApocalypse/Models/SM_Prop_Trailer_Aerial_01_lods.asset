@@ -1,43 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e927627221206e04dba83232f13d1949, type: 3}
-  m_Name: SM_Prop_Trailer_Aerial_01_lods
-  m_EditorClassIdentifier: 
-  overrideDefaults: 0
-  importSettings:
-    generateOnImport: 1
-    meshSimplifier: Unity.AutoLOD.QuadricMeshSimplifier, Unity.AutoLOD.Editor, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    batcher: 
-    maxLODGenerated: 2
-    initialLODMaxPolyCount: 500000
-  lod0:
-  - {fileID: 2300000, guid: 4b61259f809dcaf4dbd3d64660dcfc1e, type: 3}
-  lod1:
-  - {fileID: 8461184219382396235, guid: 4b61259f809dcaf4dbd3d64660dcfc1e, type: 3}
-  lod2:
-  - {fileID: 28616539006348182, guid: 4b61259f809dcaf4dbd3d64660dcfc1e, type: 3}
-  lod3: []
-  lod4: []
-  lod5: []
-  lod6: []
-  lod7: []
---- !u!43 &2125359742243450253
+--- !u!43 &-3759422076881343996
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Trailer_Aerial_01 LOD2
+  m_Name: SM_Prop_Trailer_Aerial_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -195,13 +164,44 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &8452824326822393057
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e927627221206e04dba83232f13d1949, type: 3}
+  m_Name: SM_Prop_Trailer_Aerial_01_lods
+  m_EditorClassIdentifier: 
+  overrideDefaults: 0
+  importSettings:
+    generateOnImport: 1
+    meshSimplifier: Unity.AutoLOD.QuadricMeshSimplifier, Unity.AutoLOD.Editor, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    batcher: 
+    maxLODGenerated: 2
+    initialLODMaxPolyCount: 500000
+  lod0:
+  - {fileID: 2300000, guid: 4b61259f809dcaf4dbd3d64660dcfc1e, type: 3}
+  lod1:
+  - {fileID: 8461184219382396235, guid: 4b61259f809dcaf4dbd3d64660dcfc1e, type: 3}
+  lod2:
+  - {fileID: 28616539006348182, guid: 4b61259f809dcaf4dbd3d64660dcfc1e, type: 3}
+  lod3: []
+  lod4: []
+  lod5: []
+  lod6: []
+  lod7: []
+--- !u!43 &7935379523585723563
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Trailer_Aerial_01 LOD1
+  m_Name: SM_Prop_Trailer_Aerial_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

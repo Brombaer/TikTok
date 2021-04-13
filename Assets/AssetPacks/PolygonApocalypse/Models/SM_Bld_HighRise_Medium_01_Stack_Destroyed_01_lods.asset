@@ -1,12 +1,43 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-9090789741120929483
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e927627221206e04dba83232f13d1949, type: 3}
+  m_Name: SM_Bld_HighRise_Medium_01_Stack_Destroyed_01_lods
+  m_EditorClassIdentifier: 
+  overrideDefaults: 0
+  importSettings:
+    generateOnImport: 1
+    meshSimplifier: Unity.AutoLOD.QuadricMeshSimplifier, Unity.AutoLOD.Editor, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    batcher: 
+    maxLODGenerated: 2
+    initialLODMaxPolyCount: 500000
+  lod0:
+  - {fileID: 2300000, guid: 1b6924cf9ae346440bb816ed33f93c5a, type: 3}
+  lod1:
+  - {fileID: -4181612220933704387, guid: 1b6924cf9ae346440bb816ed33f93c5a, type: 3}
+  lod2:
+  - {fileID: 6394123532501741023, guid: 1b6924cf9ae346440bb816ed33f93c5a, type: 3}
+  lod3: []
+  lod4: []
+  lod5: []
+  lod6: []
+  lod7: []
+--- !u!43 &1095284146289256154
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_HighRise_Medium_01_Stack_Destroyed_01 LOD2
+  m_Name: SM_Bld_HighRise_Medium_01_Stack_Destroyed_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -164,44 +195,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e927627221206e04dba83232f13d1949, type: 3}
-  m_Name: SM_Bld_HighRise_Medium_01_Stack_Destroyed_01_lods
-  m_EditorClassIdentifier: 
-  overrideDefaults: 0
-  importSettings:
-    generateOnImport: 1
-    meshSimplifier: Unity.AutoLOD.QuadricMeshSimplifier, Unity.AutoLOD.Editor, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    batcher: 
-    maxLODGenerated: 2
-    initialLODMaxPolyCount: 500000
-  lod0:
-  - {fileID: 2300000, guid: 1b6924cf9ae346440bb816ed33f93c5a, type: 3}
-  lod1:
-  - {fileID: -4181612220933704387, guid: 1b6924cf9ae346440bb816ed33f93c5a, type: 3}
-  lod2:
-  - {fileID: 6394123532501741023, guid: 1b6924cf9ae346440bb816ed33f93c5a, type: 3}
-  lod3: []
-  lod4: []
-  lod5: []
-  lod6: []
-  lod7: []
---- !u!43 &3413636000230156670
+--- !u!43 &4207645573893043101
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_HighRise_Medium_01_Stack_Destroyed_01 LOD1
+  m_Name: SM_Bld_HighRise_Medium_01_Stack_Destroyed_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

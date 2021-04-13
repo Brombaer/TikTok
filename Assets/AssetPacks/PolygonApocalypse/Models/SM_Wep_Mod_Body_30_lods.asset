@@ -1,43 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e927627221206e04dba83232f13d1949, type: 3}
-  m_Name: SM_Wep_Mod_Body_30_lods
-  m_EditorClassIdentifier: 
-  overrideDefaults: 0
-  importSettings:
-    generateOnImport: 1
-    meshSimplifier: Unity.AutoLOD.QuadricMeshSimplifier, Unity.AutoLOD.Editor, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    batcher: 
-    maxLODGenerated: 2
-    initialLODMaxPolyCount: 500000
-  lod0:
-  - {fileID: 2300000, guid: 589f0ae6d4264fc459f41df5bd6b595c, type: 3}
-  lod1:
-  - {fileID: -6594904683664049260, guid: 589f0ae6d4264fc459f41df5bd6b595c, type: 3}
-  lod2:
-  - {fileID: -8360019573553419119, guid: 589f0ae6d4264fc459f41df5bd6b595c, type: 3}
-  lod3: []
-  lod4: []
-  lod5: []
-  lod6: []
-  lod7: []
---- !u!43 &5463490028805111769
+--- !u!43 &-5208031483142641239
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Wep_Mod_Body_30 LOD2
+  m_Name: SM_Wep_Mod_Body_30 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -195,13 +164,44 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &6774906763728939131
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e927627221206e04dba83232f13d1949, type: 3}
+  m_Name: SM_Wep_Mod_Body_30_lods
+  m_EditorClassIdentifier: 
+  overrideDefaults: 0
+  importSettings:
+    generateOnImport: 1
+    meshSimplifier: Unity.AutoLOD.QuadricMeshSimplifier, Unity.AutoLOD.Editor, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    batcher: 
+    maxLODGenerated: 2
+    initialLODMaxPolyCount: 500000
+  lod0:
+  - {fileID: 2300000, guid: 589f0ae6d4264fc459f41df5bd6b595c, type: 3}
+  lod1:
+  - {fileID: -6594904683664049260, guid: 589f0ae6d4264fc459f41df5bd6b595c, type: 3}
+  lod2:
+  - {fileID: -8360019573553419119, guid: 589f0ae6d4264fc459f41df5bd6b595c, type: 3}
+  lod3: []
+  lod4: []
+  lod5: []
+  lod6: []
+  lod7: []
+--- !u!43 &5350550346813655251
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Wep_Mod_Body_30 LOD1
+  m_Name: SM_Wep_Mod_Body_30 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

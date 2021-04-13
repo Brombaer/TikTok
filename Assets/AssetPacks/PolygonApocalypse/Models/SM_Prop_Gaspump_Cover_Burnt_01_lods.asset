@@ -1,40 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e927627221206e04dba83232f13d1949, type: 3}
-  m_Name: SM_Prop_Gaspump_Cover_Burnt_01_lods
-  m_EditorClassIdentifier: 
-  overrideDefaults: 0
-  importSettings:
-    generateOnImport: 1
-    meshSimplifier: Unity.AutoLOD.QuadricMeshSimplifier, Unity.AutoLOD.Editor, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    batcher: 
-    maxLODGenerated: 2
-    initialLODMaxPolyCount: 500000
-  lod0:
-  - {fileID: 2300000, guid: 5f870452b9c8bdd439dc9b6690f10e52, type: 3}
-  - {fileID: 5592612039060159366, guid: 5f870452b9c8bdd439dc9b6690f10e52, type: 3}
-  lod1:
-  - {fileID: -3034060257232866928, guid: 5f870452b9c8bdd439dc9b6690f10e52, type: 3}
-  - {fileID: -1890816995251793115, guid: 5f870452b9c8bdd439dc9b6690f10e52, type: 3}
-  lod2:
-  - {fileID: -3397197473883824804, guid: 5f870452b9c8bdd439dc9b6690f10e52, type: 3}
-  - {fileID: -694682913347523503, guid: 5f870452b9c8bdd439dc9b6690f10e52, type: 3}
-  lod3: []
-  lod4: []
-  lod5: []
-  lod6: []
-  lod7: []
---- !u!43 &449047889046161894
+--- !u!43 &-6469469938738377360
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,13 +164,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &1070464237521032250
+--- !u!43 &-2052075948495668822
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Gaspump_Cover_Burnt_01 LOD1
+  m_Name: SM_Prop_Gaspump_Cover_Burnt_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -362,7 +328,41 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &3061836467975377756
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e927627221206e04dba83232f13d1949, type: 3}
+  m_Name: SM_Prop_Gaspump_Cover_Burnt_01_lods
+  m_EditorClassIdentifier: 
+  overrideDefaults: 0
+  importSettings:
+    generateOnImport: 1
+    meshSimplifier: Unity.AutoLOD.QuadricMeshSimplifier, Unity.AutoLOD.Editor, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    batcher: 
+    maxLODGenerated: 2
+    initialLODMaxPolyCount: 500000
+  lod0:
+  - {fileID: 2300000, guid: 5f870452b9c8bdd439dc9b6690f10e52, type: 3}
+  - {fileID: 5592612039060159366, guid: 5f870452b9c8bdd439dc9b6690f10e52, type: 3}
+  lod1:
+  - {fileID: -3034060257232866928, guid: 5f870452b9c8bdd439dc9b6690f10e52, type: 3}
+  - {fileID: -1890816995251793115, guid: 5f870452b9c8bdd439dc9b6690f10e52, type: 3}
+  lod2:
+  - {fileID: -3397197473883824804, guid: 5f870452b9c8bdd439dc9b6690f10e52, type: 3}
+  - {fileID: -694682913347523503, guid: 5f870452b9c8bdd439dc9b6690f10e52, type: 3}
+  lod3: []
+  lod4: []
+  lod5: []
+  lod6: []
+  lod7: []
+--- !u!43 &550599576695160480
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -526,13 +526,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &8257259090459221210
+--- !u!43 &2866319441423626860
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Gaspump_Cover_Burnt_01 LOD2
+  m_Name: SM_Prop_Gaspump_Cover_Burnt_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
