@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -35,6 +36,10 @@ public class CharacterInteractController : MonoBehaviour
 
     private CharacterInput _characterInput;
 
+    private Outline _prevOutlineObj;
+    private Outline _currentOutlineObj;
+    RaycastHit hitInfo;
+
     private void Awake()
     {
         InitializeInput();
@@ -59,6 +64,7 @@ public class CharacterInteractController : MonoBehaviour
     private void Update()
     {
         Raycast();
+        OutlineGroundItem();
 
         if (HasItemTargetted())
         {
@@ -78,28 +84,74 @@ public class CharacterInteractController : MonoBehaviour
     private void Raycast()
     {
         Ray ray = new Ray(_camera.transform.position, _camera.transform.forward * _maxInteractionDistance);
-        RaycastHit hitInfo;
-
+    
         if (Physics.Raycast(ray, out hitInfo, _maxInteractionDistance, _layerMask))
         {
             var hitItem = hitInfo.collider.GetComponent<GroundItem>();
+            //var outlineItem = hitItem.GetComponent<Outline>();
 
             if (hitInfo.distance <= _maxInteractionDistance)
             {
                 if (hitItem == null)
                 {
+                    //outlineItem.OutlineWidth = 0;
                     _itemBeingPickedUp = null;
                 }
                 else if (hitItem != null && hitItem != _itemBeingPickedUp)
                 {
+                    //outlineItem.OutlineWidth = 5;
+                    
                     _itemBeingPickedUp = hitItem;
                     _itemNameText.text = "Pickup " + _itemBeingPickedUp.gameObject.name;
                 }
             }
+            else
+            {
+                //outlineItem.OutlineWidth = 0;
+            }
         }
         else
         {
+            //_prevOutlineObj.enabled = false;
             _itemBeingPickedUp = null;
+        }
+    }
+
+    private void OutlineGroundItem()
+    {
+        if (_itemBeingPickedUp != null)
+        {
+            _currentOutlineObj = hitInfo.collider.GetComponent<Outline>();
+
+            if (_prevOutlineObj != _currentOutlineObj)
+            {
+                RemoveOutline();
+                ShowOutline();
+
+                _prevOutlineObj = _currentOutlineObj;
+            }
+        }
+        else
+        {
+            RemoveOutline();
+        }
+    }
+
+    private void RemoveOutline()
+    {
+        if (_prevOutlineObj != null)
+        {
+            //_prevOutlineObj.GetComponent<Outline>();
+            _prevOutlineObj.enabled = false;
+            _prevOutlineObj = null;
+        }
+    }
+
+    private void ShowOutline()
+    {
+        if (_currentOutlineObj != null)
+        {
+            _currentOutlineObj.enabled = true;
         }
     }
 
