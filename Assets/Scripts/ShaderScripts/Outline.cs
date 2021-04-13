@@ -102,7 +102,7 @@ public class Outline : MonoBehaviour
         outlineFillMaterial.name = "OutlineFill (Instance)";
 
         // Retrieve or generate smooth normals
-        LoadSmoothNormals();
+        //LoadSmoothNormals();
 
         // Apply material properties immediately
         needsUpdate = true;
@@ -193,35 +193,35 @@ public class Outline : MonoBehaviour
         }
     }
 
-    private void LoadSmoothNormals()
-    {
-        // Retrieve or generate smooth normals
-        foreach (var meshFilter in GetComponentsInChildren<MeshFilter>())
-        {
-
-            // Skip if smooth normals have already been adopted
-            if (!_registeredMeshes.Add(meshFilter.sharedMesh))
-            {
-                continue;
-            }
-
-            // Retrieve or generate smooth normals
-            var index = bakeKeys.IndexOf(meshFilter.sharedMesh);
-            var smoothNormals = (index >= 0) ? bakeValues[index].data : SmoothNormals(meshFilter.sharedMesh);
-
-            // Store smooth normals in UV3
-            meshFilter.sharedMesh.SetUVs(3, smoothNormals);
-        }
-
-        // Clear UV3 on skinned mesh renderers
-        foreach (var skinnedMeshRenderer in GetComponentsInChildren<SkinnedMeshRenderer>())
-        {
-            if (_registeredMeshes.Add(skinnedMeshRenderer.sharedMesh))
-            {
-                skinnedMeshRenderer.sharedMesh.uv4 = new Vector2[skinnedMeshRenderer.sharedMesh.vertexCount];
-            }
-        }
-    }
+    //private void LoadSmoothNormals()
+    //{
+    //    // Retrieve or generate smooth normals
+    //    foreach (var meshFilter in GetComponentsInChildren<MeshFilter>())
+    //    {
+    //
+    //        // Skip if smooth normals have already been adopted
+    //        if (!_registeredMeshes.Add(meshFilter.sharedMesh))
+    //        {
+    //            continue;
+    //        }
+    //
+    //        // Retrieve or generate smooth normals
+    //        var index = bakeKeys.IndexOf(meshFilter.sharedMesh);
+    //        var smoothNormals = (index >= 0) ? bakeValues[index].data : SmoothNormals(meshFilter.sharedMesh);
+    //
+    //        // Store smooth normals in UV3
+    //        meshFilter.sharedMesh.SetUVs(3, smoothNormals);
+    //    }
+    //
+    //    // Clear UV3 on skinned mesh renderers
+    //    foreach (var skinnedMeshRenderer in GetComponentsInChildren<SkinnedMeshRenderer>())
+    //    {
+    //        if (_registeredMeshes.Add(skinnedMeshRenderer.sharedMesh))
+    //        {
+    //            skinnedMeshRenderer.sharedMesh.uv4 = new Vector2[skinnedMeshRenderer.sharedMesh.vertexCount];
+    //        }
+    //    }
+    //}
 
     private List<Vector3> SmoothNormals(Mesh mesh)
     {
