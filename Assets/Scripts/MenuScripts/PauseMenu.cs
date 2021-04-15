@@ -32,6 +32,38 @@ public class PauseMenu : MonoBehaviour
     //    }
     //}
 
+    //try 1
+    /*void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+
+            if (pauseMenuUI != null)
+            {
+                if (pauseMenuUI.activeSelf)
+                {
+                  
+                }
+                else
+                {
+                    TogglePauseMenu();
+                }
+            }
+
+        }
+    }*/
+
+    //try 2
+    void Update()
+    {
+        ScanForKeyStroke();
+    }
+
+    void ScanForKeyStroke()
+    {
+        if (Input.GetKeyDown("escape"));
+    }
+
     private void TogglePauseMenu()
     {
         if (GameIsPaused)
