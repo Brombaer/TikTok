@@ -32,6 +32,8 @@ public class PauseMenu : MonoBehaviour
     //    }
     //}
 
+
+
     private void TogglePauseMenu()
     {
         if (GameIsPaused)
@@ -65,6 +67,8 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
+
+    //important 
     private void OnEnable()
     {
         _characterInput.Enable();
