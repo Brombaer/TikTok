@@ -8,21 +8,10 @@ public class Restriction : MonoBehaviour
     //Variable
 
 
-    //Function
-    void Start()
+    //Function    
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        IKillable killable = collision.collider.GetComponent<IKillable>();
+        IKillable killable = other.GetComponent<IKillable>();
         if (killable != null)
         {
             KillZoneEnteredEffect effect = killable.Kill();
