@@ -10,6 +10,7 @@ public enum ItemType
     Shoulder,
     Weapon,
     Tool,
+    Crafting,
     Default
 }
 
@@ -17,7 +18,7 @@ public enum Attributes
 {
     Strength,
     Durability,
-    Agility
+    Agility,
 }
 
 public abstract class ItemObject : ScriptableObject

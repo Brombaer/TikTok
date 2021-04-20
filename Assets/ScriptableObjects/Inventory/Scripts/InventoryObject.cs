@@ -9,7 +9,8 @@ using System.Runtime.Serialization;
 public enum InterfaceType
 {
     Inventory,
-    Equipment
+    Equipment,
+    Crafting
 }
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]

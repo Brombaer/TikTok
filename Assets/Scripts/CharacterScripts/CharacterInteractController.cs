@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using TMPro;
 using UnityEngine;
@@ -14,10 +15,11 @@ public class CharacterInteractController : MonoBehaviour
     private GroundItem _itemBeingPickedUp;
     private Outline _prevOutlineObj;
     private Outline _currentOutlineObj;
-    private RaycastHit hitInfo;
+    private RaycastHit _hitInfo;
 
     public InventoryObject Inventory;
     public InventoryObject Equipment;
+    public InventoryObject Crafting;
 
     public Attribute[] Attributes;
 
@@ -60,6 +62,12 @@ public class CharacterInteractController : MonoBehaviour
             Equipment.GetSlots[i].OnBeforeUpdate += OnRemoveItem;
             Equipment.GetSlots[i].OnAfterUpdate += OnAddItem;
         }
+
+        for (int i = 0; i < Crafting.GetSlots.Length; i++)
+        {
+            Crafting.GetSlots[i].OnBeforeUpdate += OnRemoveItem;
+            Crafting.GetSlots[i].OnAfterUpdate += OnAddItem;
+        }
     }
 
     private void Update()
@@ -69,7 +77,7 @@ public class CharacterInteractController : MonoBehaviour
             Raycast();
             OutlineGroundItem();
 
-            if (HasItemTargetted())
+            if (HasItemTargeted())
             {
                 _itemNameText.gameObject.SetActive(true);
             }
@@ -80,7 +88,7 @@ public class CharacterInteractController : MonoBehaviour
         }
     }
 
-    private bool HasItemTargetted()
+    private bool HasItemTargeted()
     {
         return _itemBeingPickedUp != null;
     }
@@ -89,11 +97,11 @@ public class CharacterInteractController : MonoBehaviour
     {
         Ray ray = new Ray(_camera.transform.position, _camera.transform.forward * _maxInteractionDistance);
     
-        if (Physics.Raycast(ray, out hitInfo, _maxInteractionDistance, _layerMask))
+        if (Physics.Raycast(ray, out _hitInfo, _maxInteractionDistance, _layerMask))
         {
-            var hitItem = hitInfo.collider.GetComponent<GroundItem>();
+            var hitItem = _hitInfo.collider.GetComponent<GroundItem>();
 
-            if (hitInfo.distance <= _maxInteractionDistance)
+            if (_hitInfo.distance <= _maxInteractionDistance)
             {
                 if (hitItem == null)
                 {
@@ -116,7 +124,7 @@ public class CharacterInteractController : MonoBehaviour
     {
         if (_itemBeingPickedUp != null)
         {
-            _currentOutlineObj = hitInfo.collider.GetComponent<Outline>();
+            _currentOutlineObj = _hitInfo.collider.GetComponent<Outline>();
 
             if (_prevOutlineObj != _currentOutlineObj)
             {
@@ -182,23 +190,25 @@ public class CharacterInteractController : MonoBehaviour
 
     private void ToggleInventory()
     {
-        if (_inventoryUI.active)
+        if (_inventoryUI.activeSelf)
         {
-            GetComponent<CharacterController>().enabled = true;
             _inventoryUI.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
-            CharacterMovement.IsEnabled = true;
+            Time.timeScale = 1;
 
-            _camera.GetComponent<CinemachineBrain>().enabled = true;
+            //GetComponent<CharacterController>().enabled = true;
+            //CharacterMovement.IsEnabled = true;
+            //_camera.GetComponent<CinemachineBrain>().enabled = true;
         }
-        else if (_inventoryUI.active == false)
+        else if (_inventoryUI.activeSelf == false)
         {
-            GetComponent<CharacterController>().enabled = false;
             _inventoryUI.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
-            CharacterMovement.IsEnabled = false;
+            Time.timeScale = 0;
 
-            _camera.GetComponent<CinemachineBrain>().enabled = false;
+            //GetComponent<CharacterController>().enabled = false;
+            //CharacterMovement.IsEnabled = false;
+            //_camera.GetComponent<CinemachineBrain>().enabled = false;
         }
     }
 
@@ -224,7 +234,7 @@ public class CharacterInteractController : MonoBehaviour
         _characterInput.Player.Load.performed += context => LoadInventory();
     }
 
-    public void OnRemoveItem(InventorySlot slot)
+    private void OnRemoveItem(InventorySlot slot)
     {
         if (slot.ItemObject == null)
         {
@@ -268,13 +278,24 @@ public class CharacterInteractController : MonoBehaviour
                         case ItemType.Tool:
                             Destroy(_tool.gameObject);
                             break;
+                        case ItemType.Food:
+                            break;
+                        case ItemType.Default:
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
                     }
                 }
                 break;
+            case InterfaceType.Crafting:
+                print(string.Concat("Removed ", slot.ItemObject, " on ", slot.Parent.Inventory.Type, ", Allowed Items: ", string.Join(", ", slot.AllowedItems)));
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
-    public void OnAddItem(InventorySlot slot)
+    private void OnAddItem(InventorySlot slot)
     {
         if (slot.ItemObject == null)
         {
@@ -336,11 +357,24 @@ public class CharacterInteractController : MonoBehaviour
                                 case ItemType.Weapon:
                                     _tool = Instantiate(slot.ItemObject.CharacterDisplay, _toolHandWeaponTransform).transform;
                                     break;
+                                default:
+                                    throw new ArgumentOutOfRangeException();
                             }
                             break;
+                        case ItemType.Food:
+                            break;
+                        case ItemType.Default:
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
                     }
                 } 
                 break;
+            case InterfaceType.Crafting:
+                print(string.Concat("Placed ", slot.ItemObject, " on ", slot.Parent.Inventory.Type, ", Allowed Items: ", string.Join(", ", slot.AllowedItems)));
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
@@ -348,12 +382,14 @@ public class CharacterInteractController : MonoBehaviour
     {
         Inventory.Save();
         Equipment.Save();
+        Crafting.Save();
     }
 
     private void LoadInventory()
     {
         Inventory.Load();
         Equipment.Load();
+        Crafting.Load();
     }
 
     private void OnEnable()
@@ -375,6 +411,7 @@ public class CharacterInteractController : MonoBehaviour
     {
         Inventory.Clear();
         Equipment.Clear();
+        Crafting.Clear();
     }
 }
 
