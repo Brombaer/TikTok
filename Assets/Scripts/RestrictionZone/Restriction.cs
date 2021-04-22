@@ -29,5 +29,8 @@ public class Restriction : MonoBehaviour
 public enum KillZoneEnteredEffect
 {
     None,
-    Kill
+    Kill,
+    Warn,
+    Block,
+    Escape
 }
