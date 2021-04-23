@@ -11,7 +11,6 @@ public class CraftingInterface : UserInterface
     private void Start()
     {
         Button button = _button.GetComponent<Button>();
-        button.onClick.AddListener(CraftItem);
     }
     protected override void CreateSlots()
     {

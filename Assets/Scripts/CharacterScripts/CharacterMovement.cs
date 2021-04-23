@@ -26,6 +26,7 @@ public class CharacterMovement : MonoBehaviour
     private bool _isMoving = false;
     private bool _isJumping = false;
     private bool _isSprinting = false;
+    private bool _isWalking = false;
     private bool _isCrouching = false;
 
 
@@ -60,6 +61,7 @@ public class CharacterMovement : MonoBehaviour
 
                 if (_isSprinting)
                 {
+                    _isWalking = false;
                     _characterController.Move(move * (_movementSpeed * _movementModifier * Time.deltaTime));
 
                     if (!_isJumping)
@@ -70,6 +72,7 @@ public class CharacterMovement : MonoBehaviour
                 }
                 else if (_isCrouching)
                 {
+                    _isWalking = false;
                     _characterController.Move(move * _movementSpeed / _movementModifier * Time.deltaTime);
 
                     if (!_isJumping)
@@ -81,6 +84,7 @@ public class CharacterMovement : MonoBehaviour
                 else
                 {
                     _characterController.Move(move * (_movementSpeed * Time.deltaTime));
+                    _isWalking = true;
 
                     if (!_isJumping)
                     {
@@ -91,6 +95,8 @@ public class CharacterMovement : MonoBehaviour
             }
             else
             {
+                _isWalking = false;
+                
                 _animator.SetFloat("horizontal", 0);
                 _animator.SetFloat("vertical", 0);
             }
@@ -168,6 +174,27 @@ public class CharacterMovement : MonoBehaviour
         {
             _velocity.y = 0;
         }
+    }
+
+    public int GetPlayerStealthProfile()
+    {
+        if (_isMoving)
+        {
+            if (_isCrouching)
+            {
+                return 0;
+            }
+            if ( _isWalking)
+            {
+                return 1;
+            } 
+            if (_isSprinting)
+            {
+                return 2;
+            }
+        }
+        
+        return -1;
     }
 
     private void OnEnable()
