@@ -6,7 +6,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Transform _cameraTransform;
     private CharacterController _characterController;
 
-    private Vector3 _gravity = Physics.gravity;
+    private readonly Vector3 _gravity = Physics.gravity;
     private Vector3 _velocity;
 
     private CharacterInput _characterInput;
@@ -60,7 +60,7 @@ public class CharacterMovement : MonoBehaviour
 
                 if (_isSprinting)
                 {
-                    _characterController.Move(move * _movementSpeed * _movementModifier * Time.deltaTime);
+                    _characterController.Move(move * (_movementSpeed * _movementModifier * Time.deltaTime));
 
                     if (!_isJumping)
                     {
@@ -80,7 +80,7 @@ public class CharacterMovement : MonoBehaviour
                 }
                 else
                 {
-                    _characterController.Move(move * _movementSpeed * Time.deltaTime);
+                    _characterController.Move(move * (_movementSpeed * Time.deltaTime));
 
                     if (!_isJumping)
                     {

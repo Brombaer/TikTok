@@ -1,5 +1,4 @@
 using System;
-using Cinemachine;
 using TMPro;
 using UnityEngine;
 
@@ -110,7 +109,7 @@ public class CharacterInteractController : MonoBehaviour
                 else if (hitItem != null && hitItem != _itemBeingPickedUp)
                 {
                     _itemBeingPickedUp = hitItem;
-                    _itemNameText.text = "Pickup " + _itemBeingPickedUp.gameObject.name;
+                    _itemNameText.text = $"Pickup {_itemBeingPickedUp.gameObject.name}";
                 }
             }
         }
@@ -172,21 +171,6 @@ public class CharacterInteractController : MonoBehaviour
             }
         }
     }
-
-    //public void OnTriggerEnter(Collider other)
-    //{
-    //    var item = other.GetComponent<GroundItem>();
-    //
-    //    if (item)
-    //    {
-    //        Item _item = new Item(item.Item);
-    //
-    //        if (Inventory.AddItem(_item, 1))
-    //        {
-    //            Destroy(other.gameObject);
-    //        }
-    //    }
-    //}
 
     private void ToggleInventory()
     {
@@ -330,7 +314,7 @@ public class CharacterInteractController : MonoBehaviour
                             //_head = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
                             break;
                         case ItemType.Shoulder:
-                            _shoulder = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
+                            //_shoulder = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
                             break;
                         case ItemType.Back:
                             _back = Instantiate(slot.ItemObject.CharacterDisplay, _backpackTransform).transform;

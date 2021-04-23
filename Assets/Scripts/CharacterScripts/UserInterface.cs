@@ -42,7 +42,7 @@ public abstract class UserInterface : MonoBehaviour
         }
     }
 
-    public abstract void CreateSlots();
+    protected abstract void CreateSlots();
 
     protected void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action)
     {

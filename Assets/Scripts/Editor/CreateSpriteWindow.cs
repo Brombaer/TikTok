@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,7 +8,7 @@ public class CreateSpriteWindow : EditorWindow
 
     // Add menu named "My Window" to the Window menu
     [MenuItem("Window/My Window")]
-    static void Init()
+    private static void Init()
     {
         // Get existing open window or if none, make a new one:
         CreateSpriteWindow window = (CreateSpriteWindow)EditorWindow.GetWindow(typeof(CreateSpriteWindow));
@@ -21,7 +19,7 @@ public class CreateSpriteWindow : EditorWindow
     {
         if (GUILayout.Button("Save") && _camera != null)
         {
-            string path = EditorUtility.SaveFilePanel("temp", "", "temp", "png");
+            string path = EditorUtility.SaveFilePanel("default", "", "default", "png");
 
             if (!String.IsNullOrEmpty(path))
             {

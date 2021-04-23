@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-using UnityEditor;
 using System.Runtime.Serialization;
 
 public enum InterfaceType
@@ -20,7 +17,7 @@ public class InventoryObject : ScriptableObject
     public ItemDatabaseObject Database;
     public InterfaceType Type;
     public Inventory Container;
-    public InventorySlot[] GetSlots { get { return Container.Slots; } }
+    public InventorySlot[] GetSlots => Container.Slots;
 
     public bool AddItem(Item item, int amount)
     {
@@ -41,7 +38,7 @@ public class InventoryObject : ScriptableObject
         return true;
     }
 
-    public int EmptySlotCount
+    private int EmptySlotCount
     {
         get
         {
@@ -59,7 +56,7 @@ public class InventoryObject : ScriptableObject
         }
     }
 
-    public InventorySlot FindItemOnInventory(Item item)
+    private InventorySlot FindItemOnInventory(Item item)
     {
         for (int i = 0; i < GetSlots.Length; i++)
         {
@@ -72,7 +69,7 @@ public class InventoryObject : ScriptableObject
         return null;
     }
 
-    public InventorySlot SetFirstEmptySlot(Item item, int amount)
+    private InventorySlot SetFirstEmptySlot(Item item, int amount)
     {
         for (int i = 0; i < GetSlots.Length; i++)
         {
@@ -83,7 +80,7 @@ public class InventoryObject : ScriptableObject
             }
         }
 
-        // Set up funcionality for full inventory
+        // Set up functionality for full inventory
         return null;
     }
 
@@ -97,16 +94,16 @@ public class InventoryObject : ScriptableObject
         }
     }
 
-    public void RemoveItem(Item item)
-    {
-        for (int i = 0; i < GetSlots.Length; i++)
-        {
-            if (GetSlots[i].Item == item)
-            {
-                GetSlots[i].UpdateSlot(null, 0);
-            }
-        }
-    }
+    //public void RemoveItem(Item item)
+    //{
+    //    for (int i = 0; i < GetSlots.Length; i++)
+    //    {
+    //        if (GetSlots[i].Item == item)
+    //        {
+    //            GetSlots[i].UpdateSlot(null, 0);
+    //        }
+    //    }
+    //}
 
     [ContextMenu("Save")]
     public void Save()
@@ -174,15 +171,11 @@ public class InventorySlot
 {
     public ItemType[] AllowedItems = new ItemType[0];
 
-    [System.NonSerialized]
-    public UserInterface Parent;
-    [System.NonSerialized]
-    public GameObject SlotDisplay;
+    [System.NonSerialized] public UserInterface Parent;
+    [System.NonSerialized] public GameObject SlotDisplay;
 
-    [System.NonSerialized]
-    public SlotUpdated OnBeforeUpdate;
-    [System.NonSerialized]
-    public SlotUpdated OnAfterUpdate;
+    [System.NonSerialized] public SlotUpdated OnBeforeUpdate;
+    [System.NonSerialized] public SlotUpdated OnAfterUpdate;
 
     public Item Item;
     public int Amount;
