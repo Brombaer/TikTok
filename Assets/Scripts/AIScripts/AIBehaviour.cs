@@ -16,6 +16,10 @@ public class AIBehaviour : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private float _fieldOfView = 120;
     [SerializeField] private float _viewDistance = 15;
+    
+    [SerializeField] private float _walkSpeed = 1;
+    [SerializeField] private float _chaseSpeed = 2;
+    
     [SerializeField] private bool _isAware = false;
     [SerializeField] private float _moveRadius = 3;
     [SerializeField] private MovementType _movementType = MovementType.Random;
@@ -23,6 +27,7 @@ public class AIBehaviour : MonoBehaviour
     [SerializeField] private Transform[] _waypoints;
     [SerializeField] private Transform _head;
 
+    private Animator _animator;
     private int _currentWaypointIndex = 0;
     private Vector3 _movePosition;
     private NavMeshAgent _agent;
@@ -30,6 +35,7 @@ public class AIBehaviour : MonoBehaviour
     public void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _animator = GetComponent<Animator>();
         _movePosition = RandomMovePosition();
     }
 
@@ -38,11 +44,15 @@ public class AIBehaviour : MonoBehaviour
         if (_isAware)
         {
             _agent.SetDestination(_player.transform.position);
+            _animator.SetBool("IsAware", true);
+            _agent.speed = _chaseSpeed;
         }
         else
         {
             SearchForPlayer();
             Move();
+            _animator.SetBool("isAware", false);
+            _agent.speed = _walkSpeed;
         }
     }
 
