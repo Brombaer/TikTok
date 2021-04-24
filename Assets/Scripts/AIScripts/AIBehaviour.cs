@@ -8,8 +8,10 @@ public class AIBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     [SerializeField] private float _fieldOfView = 120;
-    [SerializeField] private float _viewDistance = 10;
+    [SerializeField] private float _viewDistance = 15;
     [SerializeField] private bool _isAware = false;
+
+    [SerializeField] private Transform _head;
 
     private NavMeshAgent _agent;
 
@@ -36,7 +38,17 @@ public class AIBehaviour : MonoBehaviour
         {
             if (Vector3.Distance(_player.transform.position, transform.position) < _viewDistance)
             {
-                OnAware();
+                RaycastHit hit;
+                
+                if (Physics.Linecast(_head.position, _player.transform.position, out hit, -1))
+                {
+                    Debug.DrawLine(_head.position, _player.transform.position, Color.red);
+                    
+                    if (hit.transform.CompareTag("Player"))
+                    {
+                        OnAware();
+                    }
+                }
             }
         }
     }
