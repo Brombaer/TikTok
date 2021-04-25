@@ -16,6 +16,7 @@ public class AIBehaviour : MonoBehaviour
     [SerializeField] private GameObject _playerHead;
     [SerializeField] private float _fieldOfView = 120;
     [SerializeField] private float _viewDistance = 15;
+    [SerializeField] private int _health = 100;
     
     [SerializeField] private float _walkSpeed = 1;
     [SerializeField] private float _chaseSpeed = 2;
@@ -45,6 +46,13 @@ public class AIBehaviour : MonoBehaviour
 
     public void Update()
     {
+        if (_health <= 0)
+        {
+            _agent.speed = 0;
+            _animator.enabled = false;
+            return;
+        }
+        
         SearchForPlayer();
         
         if (_isAware)
@@ -147,6 +155,11 @@ public class AIBehaviour : MonoBehaviour
                 Debug.LogWarning("Use at least 2 waypoints for the AI's movement" + gameObject.name);
             }
         }
+    }
+
+    public void OnHit(int damage)
+    {
+        _health -= damage;
     }
 
     private Vector3 RandomMovePosition()

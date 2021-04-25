@@ -29,6 +29,9 @@ public class CharacterMovement : MonoBehaviour
     private bool _isWalking = false;
     private bool _isCrouching = false;
 
+    private bool _isHoldingWeapon = false;
+    private CharacterInteractController _characterInteractController;
+
 
     private void Awake()
     {
@@ -44,6 +47,7 @@ public class CharacterMovement : MonoBehaviour
         if (IsEnabled)
         {
             GroundCheck();
+            CheckIfWeaponIsEquipped();
 
             if (_isMoving)
             {
@@ -79,6 +83,17 @@ public class CharacterMovement : MonoBehaviour
                     {
                         _animator.SetFloat("horizontal", x / _movementModifier);
                         _animator.SetFloat("vertical", z / _movementModifier);
+                    }
+                }
+                else if (_isHoldingWeapon)
+                {
+                    _isWalking = true;
+                    _characterController.Move(move * (_movementSpeed * Time.deltaTime));
+                    
+                    if (!_isJumping)
+                    {
+                        _animator.SetFloat("horizontal", x);
+                        _animator.SetFloat("vertical", z);
                     }
                 }
                 else
@@ -144,7 +159,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void Sprint()
     {
-        if (!_isCrouching)
+        if (!_isCrouching && !_isHoldingWeapon)
         {
             _isSprinting = !_isSprinting;
         }
@@ -162,6 +177,18 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             _animator.SetBool("isCrouching", true);
+        }
+    }
+
+    private void CheckIfWeaponIsEquipped()
+    {
+        if (_animator.GetBool("isHoldingWeapon"))
+        {
+            _isHoldingWeapon = true;
+        }
+        else
+        {
+            _isHoldingWeapon = false;
         }
     }
 

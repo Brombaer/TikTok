@@ -38,6 +38,7 @@ public class CharacterInteractController : MonoBehaviour
     private BoneCombiner _boneCombiner;
 
     private CharacterInput _characterInput;
+    [SerializeField] private Animator _animator;
 
     private void Awake()
     {
@@ -258,6 +259,7 @@ public class CharacterInteractController : MonoBehaviour
                             break;
                         case ItemType.Weapon:
                             Destroy(_weapon.gameObject);
+                            _animator.SetBool("isHoldingWeapon", false);
                             break;
                         case ItemType.Tool:
                             Destroy(_tool.gameObject);
@@ -326,6 +328,7 @@ public class CharacterInteractController : MonoBehaviour
                             {
                                 case ItemType.Weapon:
                                     _weapon = Instantiate(slot.ItemObject.CharacterDisplay, _weaponHandTransform).transform;
+                                    _animator.SetBool("isHoldingWeapon", true);
                                     break;
                                 case ItemType.Tool:
                                     _weapon = Instantiate(slot.ItemObject.CharacterDisplay, _weaponHandToolTransform).transform;
