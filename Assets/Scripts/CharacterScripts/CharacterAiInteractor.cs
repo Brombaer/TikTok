@@ -16,6 +16,7 @@ public class CharacterAiInteractor : MonoBehaviour
     [SerializeField] private AudioClip AttackSound;
     [SerializeField] private float _soundIntensity = 5;
     [SerializeField] private LayerMask _aiLayer;
+    [SerializeField] private GameObject _bloodEffect;
 
     private CharacterMovement _playerMovement;
     private CharacterInteractController _characterInteractController;
@@ -68,15 +69,15 @@ public class CharacterAiInteractor : MonoBehaviour
     {
         _characterInput = new CharacterInput();
 
-        _characterInput.Player.Attack.performed += context => Attack();
+        _characterInput.Player.Attack.performed += context => _animator.SetTrigger("attack");
     }
 
-    private void Attack()
+    public void Attack()
     {
         if (_animator.GetBool("isHoldingWeapon"))
         {
             //_audioSource.PlayOneShot(AttackSound);
-            _animator.SetTrigger("attack");
+            //_animator.SetTrigger("attack");
             Collider[] zombies = Physics.OverlapSphere(transform.position, _soundIntensity, _aiLayer);
 
             for (int i = 0; i < zombies.Length; i++)
@@ -90,6 +91,7 @@ public class CharacterAiInteractor : MonoBehaviour
                 int damage = _characterInteractController.Attributes[0].Value.ModifiedValue;
 
                 hit.transform.GetComponent<AIBehaviour>().OnHit(damage);
+                Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
             }
         }
     }
