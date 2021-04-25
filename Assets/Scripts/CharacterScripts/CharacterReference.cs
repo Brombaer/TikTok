@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class CharacterReference : MonoBehaviour
 {
     private CharacterInput _characterInput;
-    [SerializeField] private AudioSource _audioSource;
+    //[SerializeField] private AudioSource _audioSource;
 
     [SerializeField] private float _crouchZombiePerceptionRadius = 0.5f;
     [SerializeField] private float _walkZombiePerceptionRadius = 1;
@@ -28,7 +28,7 @@ public class CharacterReference : MonoBehaviour
 
     private void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
+        //_audioSource = GetComponent<AudioSource>();
         _playerMovement = GetComponent<CharacterMovement>();
         _sphereCollider = GetComponent<SphereCollider>();
     }

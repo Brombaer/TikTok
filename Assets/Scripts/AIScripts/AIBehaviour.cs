@@ -13,20 +13,24 @@ public class AIBehaviour : MonoBehaviour
         Waypoint
     };
     
-    [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject _playerHead;
     [SerializeField] private float _fieldOfView = 120;
     [SerializeField] private float _viewDistance = 15;
     
     [SerializeField] private float _walkSpeed = 1;
     [SerializeField] private float _chaseSpeed = 2;
-    
-    [SerializeField] private bool _isAware = false;
+
+    [SerializeField] private float _looseThreshold = 10;
     [SerializeField] private float _moveRadius = 3;
     [SerializeField] private MovementType _movementType = MovementType.Random;
 
     [SerializeField] private Transform[] _waypoints;
     [SerializeField] private Transform _head;
 
+    private bool _isAware = false;
+    private bool _isDetecting = false;
+    private float _looseTimer = 0;
+    
     private Animator _animator;
     private int _currentWaypointIndex = 0;
     private Vector3 _movePosition;
@@ -41,15 +45,27 @@ public class AIBehaviour : MonoBehaviour
 
     public void Update()
     {
+        SearchForPlayer();
+        
         if (_isAware)
         {
-            _agent.SetDestination(_player.transform.position);
-            _animator.SetBool("IsAware", true);
+            _agent.SetDestination(_playerHead.transform.position);
+            _animator.SetBool("isAware", true);
             _agent.speed = _chaseSpeed;
+            
+            if (_isDetecting == false)
+            {
+                _looseTimer += Time.deltaTime;
+
+                if (_looseTimer >= _looseThreshold)
+                {
+                    _isAware = false;
+                    _looseTimer = 0;
+                }
+            }
         }
         else
         {
-            SearchForPlayer();
             Move();
             _animator.SetBool("isAware", false);
             _agent.speed = _walkSpeed;
@@ -58,22 +74,38 @@ public class AIBehaviour : MonoBehaviour
 
     private void SearchForPlayer()
     {
-        if (Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(_player.transform.position)) < _fieldOfView / 2)
+        if (Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(_playerHead.transform.position)) < _fieldOfView / 2)
         {
-            if (Vector3.Distance(_player.transform.position, transform.position) < _viewDistance)
+            if (Vector3.Distance(_playerHead.transform.position, transform.position) < _viewDistance)
             {
                 RaycastHit hit;
                 
-                if (Physics.Linecast(_head.position, _player.transform.position, out hit, -1))
+                if (Physics.Linecast(_head.position, _playerHead.transform.position, out hit, -1))
                 {
-                    Debug.DrawLine(_head.position, _player.transform.position, Color.red);
+                    Debug.DrawLine(_head.position, _playerHead.transform.position, Color.magenta);
                     
                     if (hit.transform.CompareTag("Player"))
                     {
                         OnAware();
                     }
+                    else
+                    {
+                        _isDetecting = false;
+                    }
+                }
+                else
+                {
+                    _isDetecting = false;
                 }
             }
+            else
+            {
+                _isDetecting = false;
+            }
+        }
+        else
+        {
+            _isDetecting = false;
         }
     }
 
@@ -129,5 +161,7 @@ public class AIBehaviour : MonoBehaviour
     public  void OnAware()
     {
         _isAware = true;
+        _isDetecting = true;
+        _looseTimer = 0;
     }
 }
