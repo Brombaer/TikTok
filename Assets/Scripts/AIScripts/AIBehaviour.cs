@@ -36,20 +36,39 @@ public class AIBehaviour : MonoBehaviour
     private int _currentWaypointIndex = 0;
     private Vector3 _movePosition;
     private NavMeshAgent _agent;
+    
+    private Collider[] _ragdollColliders;
+    private Rigidbody[] _ragdollRigidbodies;
 
     public void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+        
         _movePosition = RandomMovePosition();
+
+        _ragdollColliders = GetComponents<Collider>();
+        _ragdollRigidbodies = GetComponents<Rigidbody>();
+
+        foreach (Collider collider in _ragdollColliders)
+        {
+            if (!collider.CompareTag("Zombie"))
+            {
+                collider.enabled = false;
+            }
+        }
+
+        foreach (Rigidbody rigidbody in _ragdollRigidbodies)
+        {
+            rigidbody.isKinematic = true;
+        }
     }
 
     public void Update()
     {
         if (_health <= 0)
         {
-            _agent.speed = 0;
-            _animator.enabled = false;
+            Die();
             return;
         }
         
@@ -160,6 +179,22 @@ public class AIBehaviour : MonoBehaviour
     public void OnHit(int damage)
     {
         _health -= damage;
+    }
+
+    public void Die()
+    {
+        _agent.speed = 0;
+        _animator.enabled = false;
+
+        foreach (Collider collider in _ragdollColliders)
+        {
+            collider.enabled = true;
+        }
+
+        foreach (Rigidbody rigidbody in _ragdollRigidbodies)
+        {
+            rigidbody.isKinematic = false;
+        }
     }
 
     private Vector3 RandomMovePosition()

@@ -10,7 +10,6 @@ public class CharacterAiInteractor : MonoBehaviour
     [SerializeField] private float _crouchZombiePerceptionRadius = 0.5f;
     [SerializeField] private float _walkZombiePerceptionRadius = 1;
     [SerializeField] private float _sprintZombiePerceptionRadius = 1.5f;
-    [SerializeField] private CharacterInteractController _characterInteractController;
     [SerializeField] private Transform _spherecastSpawn;
     
     [SerializeField] private AudioSource _audioSource;
@@ -19,6 +18,7 @@ public class CharacterAiInteractor : MonoBehaviour
     [SerializeField] private LayerMask _aiLayer;
 
     private CharacterMovement _playerMovement;
+    private CharacterInteractController _characterInteractController;
     private SphereCollider _sphereCollider;
 
     private Animator _animator;
@@ -85,7 +85,7 @@ public class CharacterAiInteractor : MonoBehaviour
             }
 
             RaycastHit hit;
-            if (Physics.SphereCast(_spherecastSpawn.position, 0.5f, _spherecastSpawn.TransformDirection(Vector3.forward), out hit, _aiLayer))
+            if (Physics.SphereCast(_spherecastSpawn.position, 0.5f, _spherecastSpawn.TransformDirection(Vector3.forward), out hit, 2, _aiLayer))
             {
                 int damage = _characterInteractController.Attributes[0].Value.ModifiedValue;
 
