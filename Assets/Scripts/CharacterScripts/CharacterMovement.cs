@@ -1,7 +1,15 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterMovement : MonoBehaviour
 {
+    public enum MoveState
+    {
+        Crouching = 0,
+        Walking = 1,
+        Sprinting = 2
+    }
+    
     [SerializeField] Camera _characterCamera;
     [SerializeField] private Transform _cameraTransform;
     private CharacterController _characterController;
@@ -25,14 +33,12 @@ public class CharacterMovement : MonoBehaviour
 
     private bool _isMoving = false;
     private bool _isJumping = false;
-    private bool _isSprinting = false;
-    private bool _isWalking = false;
-    private bool _isCrouching = false;
 
     private bool _isHoldingWeapon = false;
     private CharacterInteractController _characterInteractController;
 
-
+    private MoveState _moveState = MoveState.Walking;
+    
     private void Awake()
     {
         _characterCamera.gameObject.SetActive(true);
@@ -49,72 +55,38 @@ public class CharacterMovement : MonoBehaviour
             GroundCheck();
             CheckIfWeaponIsEquipped();
 
+            float modifier = 0;
+            
+            float x = _characterInput.Player.Movement.ReadValue<Vector2>().x;
+            float z = _characterInput.Player.Movement.ReadValue<Vector2>().y;
+            
             if (_isMoving)
             {
-                float x = _characterInput.Player.Movement.ReadValue<Vector2>().x;
-                float z = _characterInput.Player.Movement.ReadValue<Vector2>().y;
-
                 float cam = _cameraTransform.rotation.eulerAngles.x;
                 transform.rotation = Quaternion.Euler(0, _cameraTransform.rotation.eulerAngles.y, 0);
                 _cameraTransform.localEulerAngles = new Vector3(cam, 0, 0);
 
-                Vector3 moveX = new Vector3(_cameraTransform.right.x, 0, _cameraTransform.right.z) * x;
-                Vector3 moveZ = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z) * z;
+                Vector3 moveX = new Vector3(_cameraTransform.right.x, 0, _cameraTransform.right.z).normalized * x;
+                Vector3 moveZ = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z).normalized * z;
 
                 Vector3 move = moveX + moveZ;
 
-                if (_isSprinting)
-                {
-                    _isWalking = false;
-                    _characterController.Move(move * (_movementSpeed * _movementModifier * Time.deltaTime));
-
-                    if (!_isJumping)
-                    {
-                        _animator.SetFloat("horizontal", x * _movementModifier);
-                        _animator.SetFloat("vertical", z * _movementModifier);
-                    }
-                }
-                else if (_isCrouching)
-                {
-                    _isWalking = false;
-                    _characterController.Move(move * _movementSpeed / _movementModifier * Time.deltaTime);
-
-                    if (!_isJumping)
-                    {
-                        _animator.SetFloat("horizontal", x / _movementModifier);
-                        _animator.SetFloat("vertical", z / _movementModifier);
-                    }
-                }
-                else if (_isHoldingWeapon)
-                {
-                    _isWalking = true;
-                    _characterController.Move(move * (_movementSpeed * Time.deltaTime));
-                    
-                    if (!_isJumping)
-                    {
-                        _animator.SetFloat("horizontal", x);
-                        _animator.SetFloat("vertical", z);
-                    }
-                }
-                else
-                {
-                    _characterController.Move(move * (_movementSpeed * Time.deltaTime));
-                    _isWalking = true;
-
-                    if (!_isJumping)
-                    {
-                        _animator.SetFloat("horizontal", x);
-                        _animator.SetFloat("vertical", z);
-                    }
-                }
-            }
-            else
-            {
-                _isWalking = false;
+                modifier = 1;
                 
-                _animator.SetFloat("horizontal", 0);
-                _animator.SetFloat("vertical", 0);
+                if (_moveState == MoveState.Sprinting)
+                {
+                    modifier = _movementModifier;
+                }
+                else if (_moveState == MoveState.Crouching)
+                {
+                    modifier = 1 / _movementModifier;
+                }
+                
+                _characterController.Move(move * (_movementSpeed * modifier * Time.deltaTime));
             }
+            
+            _animator.SetFloat("horizontal", x * modifier);
+            _animator.SetFloat("vertical", z * modifier);
 
             ApplyGravity();
         }
@@ -124,11 +96,13 @@ public class CharacterMovement : MonoBehaviour
     {
         _characterInput = new CharacterInput();
 
-        _characterInput.Player.Movement.performed += context => Move();
+        _characterInput.Player.Movement.performed += Move;
         _characterInput.Player.Jump.performed += context => Jump();
-        _characterInput.Player.Sprint.performed += context => Sprint();
-        _characterInput.Player.Crouch.performed += context => Crouch();
+        _characterInput.Player.Sprint.performed += Sprint;
+        _characterInput.Player.Crouch.performed += Crouch;
     }
+    
+    
 
     private void GroundCheck()
     {
@@ -139,8 +113,8 @@ public class CharacterMovement : MonoBehaviour
             _isJumping = false;
         }
     }
-
-    private void Move()
+    
+    private void Move(InputAction.CallbackContext context)
     {
         _isMoving = !_isMoving;
     }
@@ -149,7 +123,7 @@ public class CharacterMovement : MonoBehaviour
     {
         GroundCheck();
 
-        if (_isGrounded && !_isCrouching)
+        if (_isGrounded && _moveState != MoveState.Crouching)
         {
             _velocity.y = Mathf.Sqrt(_jumpHeight * -2 * _gravity.y);
             _animator.SetTrigger("jump");
@@ -157,39 +131,39 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    private void Sprint()
+    private void Sprint(InputAction.CallbackContext context)
     {
-        if (!_isCrouching && !_isHoldingWeapon)
+        if (_moveState != MoveState.Crouching && !_isHoldingWeapon)
         {
-            _isSprinting = !_isSprinting;
-        }
+            if (_moveState != MoveState.Sprinting)
+            {
+                _moveState = MoveState.Sprinting;
 
+            }
+            else
+            {
+                _moveState = MoveState.Walking;
+            }
+        }
     }
 
-    private void Crouch()
+    private void Crouch(InputAction.CallbackContext context)
     {
-        _isCrouching = !_isCrouching;
-
-        if (!_isCrouching)
+        if (_moveState != MoveState.Crouching)
         {
-            _animator.SetBool("isCrouching", false);
+            _moveState = MoveState.Crouching;
+            _animator.SetBool("isCrouching", true);
         }
         else
         {
-            _animator.SetBool("isCrouching", true);
+            _moveState = MoveState.Walking;
+            _animator.SetBool("isCrouching", false);
         }
     }
 
     private void CheckIfWeaponIsEquipped()
     {
-        if (_animator.GetBool("isHoldingWeapon"))
-        {
-            _isHoldingWeapon = true;
-        }
-        else
-        {
-            _isHoldingWeapon = false;
-        }
+        _isHoldingWeapon = _animator.GetBool("isHoldingWeapon");
     }
 
     private void ApplyGravity()
@@ -207,18 +181,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (_isMoving)
         {
-            if (_isCrouching)
-            {
-                return 0;
-            }
-            if ( _isWalking)
-            {
-                return 1;
-            } 
-            if (_isSprinting)
-            {
-                return 2;
-            }
+            return (int)_moveState;
         }
         
         return -1;
