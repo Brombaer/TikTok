@@ -28,11 +28,11 @@ public abstract class UserInterface : MonoBehaviour
 
     private void OnSlotUpdate(InventorySlot slot)
     {
-        if (slot.Item.Id >= 0)
+        if (slot.IsNotEmpty())
         {
-            slot.SlotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = slot.ItemObject.UiDisplay;
+            slot.SlotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = slot.ItemInfo.UiDisplay;
             slot.SlotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-            slot.SlotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = slot.Amount == 1 ? "" : slot.Amount.ToString("n0");
+            slot.SlotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = slot.Content.Amount == 1 ? "" : slot.Content.Amount.ToString("n0");
         }
         else
         {
@@ -82,14 +82,14 @@ public abstract class UserInterface : MonoBehaviour
     {
         GameObject tempItem = null;
 
-        if (SlotsOnInterface[obj].Item.Id >= 0)
+        if (!SlotsOnInterface[obj].IsEmpty())
         {
             tempItem = new GameObject();
             var rt = tempItem.AddComponent<RectTransform>();
             rt.sizeDelta = new Vector2(150, 150);
             tempItem.transform.SetParent(transform.parent);
             var img = tempItem.AddComponent<Image>();
-            img.sprite = SlotsOnInterface[obj].ItemObject.UiDisplay;
+            img.sprite = SlotsOnInterface[obj].ItemInfo.UiDisplay;
             img.raycastTarget = false;
         }
 

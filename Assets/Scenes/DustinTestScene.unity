@@ -2604,6 +2604,18 @@ PrefabInstance:
       propertyPath: _spherecastSpawn
       value: 
       objectReference: {fileID: 1439074529}
+    - target: {fileID: 1408564113, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408564113, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542995839, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1542995840, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2706,6 +2718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 284854713655017640, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
+    - {fileID: 821098410, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
 --- !u!1001 &2571888034834138027
 PrefabInstance:

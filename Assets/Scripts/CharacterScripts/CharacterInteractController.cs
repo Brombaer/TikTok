@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterInteractController : MonoBehaviour
 {
@@ -77,14 +78,7 @@ public class CharacterInteractController : MonoBehaviour
             Raycast();
             OutlineGroundItem();
 
-            if (HasItemTargeted())
-            {
-                _itemNameText.gameObject.SetActive(true);
-            }
-            else
-            {
-                _itemNameText.gameObject.SetActive(false);
-            }
+            _itemNameText.gameObject.SetActive(HasItemTargeted());
         }
     }
 
@@ -107,7 +101,7 @@ public class CharacterInteractController : MonoBehaviour
                 {
                     _itemBeingPickedUp = null;
                 }
-                else if (hitItem != null && hitItem != _itemBeingPickedUp)
+                else if (hitItem != _itemBeingPickedUp)
                 {
                     _itemBeingPickedUp = hitItem;
                     _itemNameText.text = $"Pickup {_itemBeingPickedUp.gameObject.name}";
@@ -122,7 +116,7 @@ public class CharacterInteractController : MonoBehaviour
 
     private void OutlineGroundItem()
     {
-        if (_itemBeingPickedUp != null)
+        if (_itemBeingPickedUp)
         {
             _currentOutlineObj = _hitInfo.collider.GetComponent<Outline>();
 
@@ -142,7 +136,7 @@ public class CharacterInteractController : MonoBehaviour
 
     private void ShowOutline()
     {
-        if (_currentOutlineObj != null)
+        if (_currentOutlineObj)
         {
             _currentOutlineObj.enabled = true;
         }
@@ -150,30 +144,25 @@ public class CharacterInteractController : MonoBehaviour
 
     private void RemoveOutline()
     {
-        if (_prevOutlineObj != null)
+        if (_prevOutlineObj)
         {
             _prevOutlineObj.enabled = false;
             _prevOutlineObj = null;
         }
     }
 
-    private void PickupItem()
+    private void PickupItem(InputAction.CallbackContext context)
     {
-        if (_itemBeingPickedUp != null)
+        if (_itemBeingPickedUp)
         {
-            if (_itemBeingPickedUp.GetComponent<GroundItem>() != null)
+            if (Inventory.AddItem(_itemBeingPickedUp.itemInfo, 1))
             {
-                Item item = new Item(_itemBeingPickedUp.Item);
-
-                if (Inventory.AddItem(item, 1))
-                {
-                    Destroy(_itemBeingPickedUp.gameObject);
-                }
+                Destroy(_itemBeingPickedUp.gameObject);
             }
         }
     }
 
-    private void ToggleInventory()
+    private void ToggleInventory(InputAction.CallbackContext context)
     {
         if (_inventoryUI.activeSelf)
         {
@@ -213,15 +202,15 @@ public class CharacterInteractController : MonoBehaviour
     {
         _characterInput = new CharacterInput();
 
-        _characterInput.Player.Interact.performed += context => PickupItem();
-        _characterInput.Player.Inventory.performed += context => ToggleInventory();
-        _characterInput.Player.Save.performed += context => SaveInventory();
-        _characterInput.Player.Load.performed += context => LoadInventory();
+        _characterInput.Player.Interact.performed += PickupItem;
+        _characterInput.Player.Inventory.performed += ToggleInventory;
+        _characterInput.Player.Save.performed += SaveInventory;
+        _characterInput.Player.Load.performed += LoadInventory;
     }
 
     private void OnRemoveItem(InventorySlot slot)
     {
-        if (slot.ItemObject == null)
+        if (slot.ItemInfo == null)
         {
             return;
         }
@@ -231,28 +220,25 @@ public class CharacterInteractController : MonoBehaviour
             case InterfaceType.Inventory:
                 break;
             case InterfaceType.Equipment:
-                print(string.Concat("Removed ", slot.ItemObject, " on ", slot.Parent.Inventory.Type, ", Allowed Items: ", string.Join(", ", slot.AllowedItems)));
+                print(string.Concat("Removed ", slot.ItemInfo, " on ", slot.Parent.Inventory.Type, ", Allowed Items: ", string.Join(", ", slot.AllowedItems)));
 
-                for (int i = 0; i < slot.Item.Buffs.Length; i++)
+                for (int i = 0; i < slot.Content.Item.Buffs.Length; i++)
                 {
                     for (int j = 0; j < Attributes.Length; j++)
                     {
-                        if (Attributes[j].Type == slot.Item.Buffs[i].Attribute)
+                        if (Attributes[j].Type == slot.Content.Item.Buffs[i].Attribute)
                         {
-                            Attributes[j].Value.RemoveModifier(slot.Item.Buffs[i]);
+                            Attributes[j].Value.RemoveModifier(slot.Content.Item.Buffs[i]);
                         }
                     }
                 }
 
-                if (slot.ItemObject.CharacterDisplay != null)
+                if (slot.ItemInfo.CharacterDisplay != null)
                 {
                     switch (slot.AllowedItems[0])
                     {
                         case ItemType.Head:
                             Destroy(_head.gameObject);
-                            break;
-                        case ItemType.Shoulder:
-                            Destroy(_shoulder.gameObject);
                             break;
                         case ItemType.Back:
                             Destroy(_back.gameObject);
@@ -264,26 +250,18 @@ public class CharacterInteractController : MonoBehaviour
                         case ItemType.Tool:
                             Destroy(_tool.gameObject);
                             break;
-                        case ItemType.Food:
-                            break;
-                        case ItemType.Default:
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
                     }
                 }
                 break;
             case InterfaceType.Crafting:
-                print(string.Concat("Removed ", slot.ItemObject, " on ", slot.Parent.Inventory.Type, ", Allowed Items: ", string.Join(", ", slot.AllowedItems)));
+                print(string.Concat("Removed ", slot.ItemInfo, " on ", slot.Parent.Inventory.Type, ", Allowed Items: ", string.Join(", ", slot.AllowedItems)));
                 break;
-            default:
-                throw new ArgumentOutOfRangeException();
         }
     }
 
     private void OnAddItem(InventorySlot slot)
     {
-        if (slot.ItemObject == null)
+        if (slot.ItemInfo == null)
         {
             return;
         }
@@ -293,86 +271,73 @@ public class CharacterInteractController : MonoBehaviour
             case InterfaceType.Inventory:
                 break;
             case InterfaceType.Equipment:
-                print(string.Concat("Placed ", slot.ItemObject, " on ", slot.Parent.Inventory.Type, ", Allowed Items: ", string.Join(", ", slot.AllowedItems)));
+                print(string.Concat("Placed ", slot.ItemInfo, " on ", slot.Parent.Inventory.Type, ", Allowed Items: ", string.Join(", ", slot.AllowedItems)));
 
-                for (int i = 0; i < slot.Item.Buffs.Length; i++)
+                for (int i = 0; i < slot.Content.Item.Buffs.Length; i++)
                 {
                     for (int j = 0; j < Attributes.Length; j++)
                     {
-                        if (Attributes[j].Type == slot.Item.Buffs[i].Attribute)
+                        if (Attributes[j].Type == slot.Content.Item.Buffs[i].Attribute)
                         {
-                            Attributes[j].Value.AddModifier(slot.Item.Buffs[i]);
+                            Attributes[j].Value.AddModifier(slot.Content.Item.Buffs[i]);
                         }
                     }
                 }
 
-                if (slot.ItemObject.CharacterDisplay != null)
+                if (slot.ItemInfo.CharacterDisplay != null)
                 {
                     switch (slot.AllowedItems[0])
                     {
                         case ItemType.Head:
-                            _head = Instantiate(slot.ItemObject.CharacterDisplay, _headTransform).transform;
+                            _head = Instantiate(slot.ItemInfo.CharacterDisplay, _headTransform).transform;
 
                             //_head = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
                             break;
-                        case ItemType.Shoulder:
-                            //_shoulder = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
-                            break;
                         case ItemType.Back:
-                            _back = Instantiate(slot.ItemObject.CharacterDisplay, _backpackTransform).transform;
+                            _back = Instantiate(slot.ItemInfo.CharacterDisplay, _backpackTransform).transform;
 
                             //_back = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
                             break;
                         case ItemType.Weapon:
-                            switch (slot.ItemObject.Type)
+                            switch (slot.ItemInfo.Type)
                             {
                                 case ItemType.Weapon:
-                                    _weapon = Instantiate(slot.ItemObject.CharacterDisplay, _weaponHandTransform).transform;
+                                    _weapon = Instantiate(slot.ItemInfo.CharacterDisplay, _weaponHandTransform).transform;
                                     _animator.SetBool("isHoldingWeapon", true);
                                     break;
                                 case ItemType.Tool:
-                                    _weapon = Instantiate(slot.ItemObject.CharacterDisplay, _weaponHandToolTransform).transform;
+                                    _weapon = Instantiate(slot.ItemInfo.CharacterDisplay, _weaponHandToolTransform).transform;
                                     break;
                             }
                             break;
                         case ItemType.Tool:
-                            switch (slot.ItemObject.Type)
+                            switch (slot.ItemInfo.Type)
                             {
                                 case ItemType.Tool:
-                                    _tool = Instantiate(slot.ItemObject.CharacterDisplay, _toolHandTransform).transform;
+                                    _tool = Instantiate(slot.ItemInfo.CharacterDisplay, _toolHandTransform).transform;
                                     break;
                                 case ItemType.Weapon:
-                                    _tool = Instantiate(slot.ItemObject.CharacterDisplay, _toolHandWeaponTransform).transform;
+                                    _tool = Instantiate(slot.ItemInfo.CharacterDisplay, _toolHandWeaponTransform).transform;
                                     break;
-                                default:
-                                    throw new ArgumentOutOfRangeException();
                             }
                             break;
-                        case ItemType.Food:
-                            break;
-                        case ItemType.Default:
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
                     }
                 } 
                 break;
             case InterfaceType.Crafting:
-                print(string.Concat("Placed ", slot.ItemObject, " on ", slot.Parent.Inventory.Type, ", Allowed Items: ", string.Join(", ", slot.AllowedItems)));
+                print(string.Concat("Placed ", slot.ItemInfo, " on ", slot.Parent.Inventory.Type, ", Allowed Items: ", string.Join(", ", slot.AllowedItems)));
                 break;
-            default:
-                throw new ArgumentOutOfRangeException();
         }
     }
 
-    private void SaveInventory()
+    private void SaveInventory(InputAction.CallbackContext context)
     {
         Inventory.Save();
         Equipment.Save();
         Crafting.Save();
     }
 
-    private void LoadInventory()
+    private void LoadInventory(InputAction.CallbackContext context)
     {
         Inventory.Load();
         Equipment.Load();

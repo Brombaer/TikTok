@@ -13,7 +13,7 @@ public class SpawnGroundItems : MonoBehaviour
 
     private void SpawnItems(GameObject[] items, Transform[] spawnPoints, bool allowOverlap)
     {
-        List<GameObject> remaningItems = new List<GameObject>(items);
+        List<GameObject> remainingItems = new List<GameObject>(items);
         List<Transform> freeSpawnPoints = new List<Transform>(spawnPoints);
 
         if (spawnPoints.Length < items.Length)
@@ -21,7 +21,7 @@ public class SpawnGroundItems : MonoBehaviour
             Debug.LogWarning(allowOverlap ? "There are more items than spawnpoints. Some items will overlap." : "There are not enough spawnpoints for all items. Some won't spawn.");
         }
 
-        while (remaningItems.Count > 0)
+        while (remainingItems.Count > 0)
         {
             if (freeSpawnPoints.Count == 0)
             {
@@ -35,12 +35,12 @@ public class SpawnGroundItems : MonoBehaviour
                 }
             }
         
-            int itemIndex = Random.Range(0, remaningItems.Count);
+            int itemIndex = Random.Range(0, remainingItems.Count);
             int spawnPointIndex = Random.Range(0, freeSpawnPoints.Count);
         
-            Instantiate(remaningItems[itemIndex], freeSpawnPoints[spawnPointIndex].position, Quaternion.identity, freeSpawnPoints[spawnPointIndex]);
+            Instantiate(remainingItems[itemIndex], freeSpawnPoints[spawnPointIndex].position, Quaternion.identity, freeSpawnPoints[spawnPointIndex]);
         
-            remaningItems.RemoveAt(itemIndex);
+            remainingItems.RemoveAt(itemIndex);
             freeSpawnPoints.RemoveAt(spawnPointIndex);
         }
     }

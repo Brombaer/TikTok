@@ -19,7 +19,7 @@ public class InventoryObject : ScriptableObject
     public Inventory Container;
     public InventorySlot[] GetSlots => Container.Slots;
 
-    public bool AddItem(Item item, int amount)
+    public bool AddItem(ItemInfo item, int amount)
     {
         if (EmptySlotCount <= 0)
         {
@@ -28,9 +28,9 @@ public class InventoryObject : ScriptableObject
 
         InventorySlot slot = FindItemOnInventory(item);
 
-        if (!Database.ItemObjects[item.Id].Stackable || slot == null)
+        if (!item.Stackable || slot == null)
         {
-            SetFirstEmptySlot(item, amount);
+            SetFirstEmptySlot(new ItemAmountPair(item, amount));
             return true;
         }
 
@@ -46,7 +46,7 @@ public class InventoryObject : ScriptableObject
 
             for (int i = 0; i < GetSlots.Length; i++)
             {
-                if (GetSlots[i].Item.Id <= -1)
+                if (GetSlots[i].IsEmpty())
                 {
                     counter++;
                 }
@@ -56,11 +56,11 @@ public class InventoryObject : ScriptableObject
         }
     }
 
-    private InventorySlot FindItemOnInventory(Item item)
+    private InventorySlot FindItemOnInventory(ItemInfo item)
     {
         for (int i = 0; i < GetSlots.Length; i++)
         {
-            if (GetSlots[i].Item.Id == item.Id)
+            if (GetSlots[i].ContainsItem(item))
             {
                 return GetSlots[i];
             }
@@ -69,13 +69,13 @@ public class InventoryObject : ScriptableObject
         return null;
     }
 
-    private InventorySlot SetFirstEmptySlot(Item item, int amount)
+    private InventorySlot SetFirstEmptySlot(ItemAmountPair content)
     {
         for (int i = 0; i < GetSlots.Length; i++)
         {
-            if (GetSlots[i].Item.Id <= -1)
+            if (GetSlots[i].Content.IsEmpty())
             {
-                GetSlots[i].UpdateSlot(item, amount);
+                GetSlots[i].UpdateSlot(content);
                 return GetSlots[i];
             }
         }
@@ -86,11 +86,11 @@ public class InventoryObject : ScriptableObject
 
     public void SwapItems(InventorySlot item1, InventorySlot item2)
     {
-        if (item2.CanPlaceInSlot(item1.ItemObject) && item1.CanPlaceInSlot(item2.ItemObject))
+        if (item2.CanPlaceInSlot(item1.ItemInfo) && item1.CanPlaceInSlot(item2.ItemInfo))
         {
-            InventorySlot temp = new InventorySlot(item2.Item, item2.Amount);
-            item2.UpdateSlot(item1.Item, item1.Amount);
-            item1.UpdateSlot(temp.Item, temp.Amount);
+            ItemAmountPair temp = item2.Content;
+            item2.UpdateSlot(item1.Content);
+            item1.UpdateSlot(temp);
         }
     }
 
@@ -136,7 +136,7 @@ public class InventoryObject : ScriptableObject
 
             for (int i = 0; i < GetSlots.Length; i++)
             {
-                GetSlots[i].UpdateSlot(newContainer.Slots[i].Item, newContainer.Slots[i].Amount);
+                GetSlots[i].UpdateSlot(newContainer.Slots[i].Content);
             }
 
             stream.Close();
@@ -177,61 +177,48 @@ public class InventorySlot
     [System.NonSerialized] public SlotUpdated OnBeforeUpdate;
     [System.NonSerialized] public SlotUpdated OnAfterUpdate;
 
-    public Item Item;
-    public int Amount;
+    public ItemAmountPair Content;
 
-    public ItemObject ItemObject
+    public ItemInfo ItemInfo
     {
         get
         {
-            if (Item.Id >= 0)
-            {
-                return Parent.Inventory.Database.ItemObjects[Item.Id];
-            }
-
-            return null;
+            return Content.Item;
         }
     }
 
     public InventorySlot()
     {
-        UpdateSlot(new Item(), 0);
+        UpdateSlot(ItemAmountPair.Empty);
     }
 
-    public InventorySlot(Item item, int amount)
+    public InventorySlot(ItemAmountPair content)
     {
-        UpdateSlot(item, amount);
+        UpdateSlot(content);
     }
 
-    public void UpdateSlot(Item item, int amount)
+    public void UpdateSlot(ItemAmountPair content)
     {
-        if (OnBeforeUpdate != null)
-        {
-            OnBeforeUpdate.Invoke(this);
-        }
+        OnBeforeUpdate?.Invoke(this);
 
-        Item = item;
-        Amount = amount;
+        Content = content;
 
-        if (OnAfterUpdate != null)
-        {
-            OnAfterUpdate.Invoke(this);
-        }
+        OnAfterUpdate?.Invoke(this);
     }
 
     public void RemoveItem()
     {
-        UpdateSlot(new Item(), 0);
+        UpdateSlot(ItemAmountPair.Empty);
     }
 
     public void AddAmount(int value)
     {
-        UpdateSlot(Item, Amount += value);
+        UpdateSlot(Content.Add(value));
     }
 
-    public bool CanPlaceInSlot(ItemObject itemObj)
+    public bool CanPlaceInSlot(ItemInfo itemObj)
     {
-        if (AllowedItems.Length <= 0 || itemObj == null || itemObj.Data.Id < 0)
+        if (AllowedItems.Length <= 0 || itemObj == null)
         {
             return true;
         }
@@ -245,5 +232,20 @@ public class InventorySlot
         }
 
         return false;
+    }
+
+    public bool ContainsItem(ItemInfo info)
+    {
+        return Content.Item == info;
+    }
+
+    public bool IsEmpty()
+    {
+        return Content.IsEmpty();
+    }
+
+    public bool IsNotEmpty()
+    {
+        return !Content.IsEmpty();
     }
 }

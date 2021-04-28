@@ -10,7 +10,7 @@ public class CharacterMovement : MonoBehaviour
         Sprinting = 2
     }
     
-    [SerializeField] Camera _characterCamera;
+    [SerializeField] private Camera _characterCamera;
     [SerializeField] private Transform _cameraTransform;
     private CharacterController _characterController;
 
@@ -32,10 +32,9 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float _movementModifier = 2;
 
     private bool _isMoving = false;
-    private bool _isJumping = false;
+    //private bool _isJumping = false;
 
     private bool _isHoldingWeapon = false;
-    private CharacterInteractController _characterInteractController;
 
     private MoveState _moveState = MoveState.Walking;
     
@@ -97,21 +96,14 @@ public class CharacterMovement : MonoBehaviour
         _characterInput = new CharacterInput();
 
         _characterInput.Player.Movement.performed += Move;
-        _characterInput.Player.Jump.performed += context => Jump();
+        _characterInput.Player.Jump.performed += Jump;
         _characterInput.Player.Sprint.performed += Sprint;
         _characterInput.Player.Crouch.performed += Crouch;
     }
-    
-    
 
     private void GroundCheck()
     {
         _isGrounded = Physics.CheckSphere(_groundCheck.position, _groundDistance, _groundMask);
-
-        if (_isGrounded)
-        {
-            _isJumping = false;
-        }
     }
     
     private void Move(InputAction.CallbackContext context)
@@ -119,7 +111,7 @@ public class CharacterMovement : MonoBehaviour
         _isMoving = !_isMoving;
     }
 
-    private void Jump()
+    private void Jump(InputAction.CallbackContext context)
     {
         GroundCheck();
 
@@ -127,7 +119,6 @@ public class CharacterMovement : MonoBehaviour
         {
             _velocity.y = Mathf.Sqrt(_jumpHeight * -2 * _gravity.y);
             _animator.SetTrigger("jump");
-            _isJumping = true;
         }
     }
 
@@ -138,7 +129,6 @@ public class CharacterMovement : MonoBehaviour
             if (_moveState != MoveState.Sprinting)
             {
                 _moveState = MoveState.Sprinting;
-
             }
             else
             {
