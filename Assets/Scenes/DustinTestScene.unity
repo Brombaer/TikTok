@@ -2592,6 +2592,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 821098412, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1408564109, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
       propertyPath: _bloodEffect
       value: 

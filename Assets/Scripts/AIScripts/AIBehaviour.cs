@@ -72,6 +72,11 @@ public class AIBehaviour : MonoBehaviour
             return;
         }
         
+        ChasePlayer();
+    }
+
+    private void ChasePlayer()
+    {
         SearchForPlayer();
         
         if (_isAware)
