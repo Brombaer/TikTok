@@ -12,16 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf739a6823b243c194ab7b70444277e, type: 3}
   m_Name: Ducttape
   m_EditorClassIdentifier: 
+  ItemName: 
+  Buffs: []
   UiDisplay: {fileID: 21300000, guid: 2063f9f537f9a494a8ea640f59ad0f95, type: 3}
-  CharacterDisplay: {fileID: 0}
+  visualisedGameObject: {fileID: 4901181125227460135, guid: aea18182b0d354e6ebf29877391a8f50, type: 3}
+  SpawnRate: 8
   Stackable: 1
   Type: 6
   Description: 
-  Data:
-    Name: 
-    Id: 5
-    Buffs:
-    - Attribute: 1
-      Value: 0
-      Min: 10
-      Max: 20

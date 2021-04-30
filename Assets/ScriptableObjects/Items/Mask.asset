@@ -12,16 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770dc73fe5d714d779dfe2f72b9ca3d0, type: 3}
   m_Name: Mask
   m_EditorClassIdentifier: 
+  ItemName: Mask
+  Buffs:
+  - Attribute: 0
+    Value: 0
+    Min: 5
+    Max: 10
+  - Attribute: 1
+    Value: 0
+    Min: 5
+    Max: 10
+  - Attribute: 2
+    Value: 0
+    Min: 5
+    Max: 10
   UiDisplay: {fileID: 21300000, guid: 0893a58a10169412294f5b7c728c10f9, type: 3}
-  CharacterDisplay: {fileID: 1651151863704352, guid: 34eb936eadc4b1f478dcd77331fa2129, type: 3}
+  visualisedGameObject: {fileID: 1651151863704352, guid: 34eb936eadc4b1f478dcd77331fa2129, type: 3}
+  SpawnRate: 3
   Stackable: 0
   Type: 1
   Description: 
-  Data:
-    Name: 
-    Id: 7
-    Buffs:
-    - Attribute: 0
-      Value: 0
-      Min: 10
-      Max: 15

@@ -1,11 +1,11 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum ItemType
 {
     Food,
     Head,
     Back,
-    Shoulder,
     Weapon,
     Tool,
     Crafting,
@@ -25,7 +25,8 @@ public abstract class ItemInfo : ScriptableObject
     public ItemBuff[] Buffs;
     
     public Sprite UiDisplay;
-    public GameObject CharacterDisplay;
+    [FormerlySerializedAs("CharacterDisplay")] public GameObject visualisedGameObject;
+    public int SpawnRate;
     public bool Stackable;
     public ItemType Type;
     [TextArea(15,20)]

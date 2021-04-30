@@ -12,16 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770dc73fe5d714d779dfe2f72b9ca3d0, type: 3}
   m_Name: Backback
   m_EditorClassIdentifier: 
+  ItemName: Backpack
+  Buffs:
+  - Attribute: 0
+    Value: 0
+    Min: 5
+    Max: 10
+  - Attribute: 1
+    Value: 0
+    Min: 5
+    Max: 10
+  - Attribute: 2
+    Value: 0
+    Min: 5
+    Max: 10
   UiDisplay: {fileID: 21300000, guid: 1790583c247f0405dadfea8c65912b00, type: 3}
-  CharacterDisplay: {fileID: 1564870888801122, guid: ac097a787546bb24ebc0fce58ca8224d, type: 3}
+  visualisedGameObject: {fileID: 1564870888801122, guid: ac097a787546bb24ebc0fce58ca8224d, type: 3}
+  SpawnRate: 4
   Stackable: 0
   Type: 2
   Description: 
-  Data:
-    Name: 
-    Id: 0
-    Buffs:
-    - Attribute: 1
-      Value: 0
-      Min: 5
-      Max: 10

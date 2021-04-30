@@ -12,20 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770dc73fe5d714d779dfe2f72b9ca3d0, type: 3}
   m_Name: Pickaxe
   m_EditorClassIdentifier: 
+  ItemName: 
+  Buffs: []
   UiDisplay: {fileID: 21300000, guid: 6e1cb6f9ad6e8403d9dcbd2695e651cc, type: 3}
-  CharacterDisplay: {fileID: 1436426956864622, guid: 58a3f3f478bd0374aa7b5d42880672f5, type: 3}
+  visualisedGameObject: {fileID: 1436426956864622, guid: 58a3f3f478bd0374aa7b5d42880672f5, type: 3}
+  SpawnRate: 2
   Stackable: 0
   Type: 5
   Description: A pickaxe for heavy item collection
-  Data:
-    Name: 
-    Id: 8
-    Buffs:
-    - Attribute: 0
-      Value: 0
-      Min: 10
-      Max: 20
-    - Attribute: 1
-      Value: 0
-      Min: 10
-      Max: 20

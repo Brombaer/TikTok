@@ -233,7 +233,7 @@ public class CharacterInteractController : MonoBehaviour
                     }
                 }
 
-                if (slot.ItemInfo.CharacterDisplay != null)
+                if (slot.ItemInfo.visualisedGameObject != null)
                 {
                     switch (slot.AllowedItems[0])
                     {
@@ -284,17 +284,17 @@ public class CharacterInteractController : MonoBehaviour
                     }
                 }
 
-                if (slot.ItemInfo.CharacterDisplay != null)
+                if (slot.ItemInfo.visualisedGameObject != null)
                 {
                     switch (slot.AllowedItems[0])
                     {
                         case ItemType.Head:
-                            _head = Instantiate(slot.ItemInfo.CharacterDisplay, _headTransform).transform;
+                            _head = Instantiate(slot.ItemInfo.visualisedGameObject, _headTransform).transform;
 
                             //_head = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
                             break;
                         case ItemType.Back:
-                            _back = Instantiate(slot.ItemInfo.CharacterDisplay, _backpackTransform).transform;
+                            _back = Instantiate(slot.ItemInfo.visualisedGameObject, _backpackTransform).transform;
 
                             //_back = _boneCombiner.AddLimb(slot.ItemObject.CharacterDisplay);
                             break;
@@ -302,11 +302,11 @@ public class CharacterInteractController : MonoBehaviour
                             switch (slot.ItemInfo.Type)
                             {
                                 case ItemType.Weapon:
-                                    _weapon = Instantiate(slot.ItemInfo.CharacterDisplay, _weaponHandTransform).transform;
+                                    _weapon = Instantiate(slot.ItemInfo.visualisedGameObject, _weaponHandTransform).transform;
                                     _animator.SetBool("isHoldingWeapon", true);
                                     break;
                                 case ItemType.Tool:
-                                    _weapon = Instantiate(slot.ItemInfo.CharacterDisplay, _weaponHandToolTransform).transform;
+                                    _weapon = Instantiate(slot.ItemInfo.visualisedGameObject, _weaponHandToolTransform).transform;
                                     break;
                             }
                             break;
@@ -314,10 +314,10 @@ public class CharacterInteractController : MonoBehaviour
                             switch (slot.ItemInfo.Type)
                             {
                                 case ItemType.Tool:
-                                    _tool = Instantiate(slot.ItemInfo.CharacterDisplay, _toolHandTransform).transform;
+                                    _tool = Instantiate(slot.ItemInfo.visualisedGameObject, _toolHandTransform).transform;
                                     break;
                                 case ItemType.Weapon:
-                                    _tool = Instantiate(slot.ItemInfo.CharacterDisplay, _toolHandWeaponTransform).transform;
+                                    _tool = Instantiate(slot.ItemInfo.visualisedGameObject, _toolHandWeaponTransform).transform;
                                     break;
                             }
                             break;

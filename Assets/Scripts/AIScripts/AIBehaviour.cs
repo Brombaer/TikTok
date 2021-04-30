@@ -40,6 +40,14 @@ public class AIBehaviour : MonoBehaviour
     private Collider[] _ragdollColliders;
     private Rigidbody[] _ragdollRigidbodies;
 
+    [SerializeField] private float _timer = 60;
+    [SerializeField] private float _currentTime;
+    [SerializeField] private float _preparationTime = 10;
+    [SerializeField] private float _awarenessFactor = 1.5f;
+
+    private bool _isPreparationTimeOver = false;
+    private SphereCollider _sphereCollider;
+
     public void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -50,6 +58,8 @@ public class AIBehaviour : MonoBehaviour
         _ragdollColliders = GetComponents<Collider>();
         _ragdollRigidbodies = GetComponents<Rigidbody>();
 
+        _sphereCollider = GetComponent<SphereCollider>();
+        
         foreach (Collider collider in _ragdollColliders)
         {
             if (!collider.CompareTag("Zombie"))
@@ -62,6 +72,8 @@ public class AIBehaviour : MonoBehaviour
         {
             rigidbody.isKinematic = true;
         }
+
+        _currentTime = _timer;
     }
 
     public void Update()
@@ -73,6 +85,21 @@ public class AIBehaviour : MonoBehaviour
         }
         
         ChasePlayer();
+
+        _currentTime -= 1 * Time.deltaTime;
+        _preparationTime -= 1 * Time.deltaTime;
+
+        if (_preparationTime <= 0 && _isPreparationTimeOver != true)
+        {
+            ChangeAwareness();
+        }
+    }
+
+    private void ChangeAwareness()
+    {
+        _preparationTime = 0;
+        _isPreparationTimeOver = true;
+        _sphereCollider.radius *= _awarenessFactor;
     }
 
     private void ChasePlayer()

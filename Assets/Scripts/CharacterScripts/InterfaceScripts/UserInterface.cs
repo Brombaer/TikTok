@@ -128,25 +128,3 @@ public static class MouseData
     public static GameObject TempItemBeingDragged;
     public static GameObject SlotHoveredOver;
 }
-
-public static class ExtensionMethods
-{
-    //public static void UpdateSlotDisplay(this Dictionary<GameObject, InventorySlot> slotsOnInterface)
-    //{
-    //    foreach (KeyValuePair<GameObject, InventorySlot> slot in slotsOnInterface)
-    //    {
-    //        if (slot.Value.Item.Id >= 0)
-    //        {
-    //            slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = slot.Value.ItemObject.UiDisplay;
-    //            slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-    //            slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = slot.Value.Amount == 1 ? "" : slot.Value.Amount.ToString("n0");
-    //        }
-    //        else
-    //        {
-    //            slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
-    //            slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
-    //            slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
-    //        }
-    //    }
-    //}
-}
