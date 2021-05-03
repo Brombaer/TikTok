@@ -18,26 +18,10 @@ MonoBehaviour:
   Container:
     Slots:
     - AllowedItems: 
-      Item:
-        Name: 
-        Id: -1
-        Buffs: []
-      Amount: 0
+      Content:
+        Item: {fileID: 0}
+        Amount: 0
     - AllowedItems: 
-      Item:
-        Name: 
-        Id: -1
-        Buffs: []
-      Amount: 0
-    - AllowedItems: 
-      Item:
-        Name: 
-        Id: -1
-        Buffs: []
-      Amount: 0
-    - AllowedItems: 
-      Item:
-        Name: 
-        Id: -1
-        Buffs: []
-      Amount: 0
+      Content:
+        Item: {fileID: 0}
+        Amount: 0

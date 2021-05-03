@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class CharacterInteractController : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
-    [SerializeField] private Transform _target;
+    //[SerializeField] private Transform _target;
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private TextMeshProUGUI _itemNameText;
     [SerializeField] private GameObject _inventoryUI;
@@ -24,7 +24,6 @@ public class CharacterInteractController : MonoBehaviour
     public Attribute[] Attributes;
 
     private Transform _head;
-    private Transform _shoulder;
     private Transform _back;
     private Transform _weapon;
     private Transform _tool;
