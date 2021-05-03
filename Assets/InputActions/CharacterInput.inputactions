@@ -78,9 +78,17 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Escape",
+                    "name": "PauseMenu",
                     "type": "Button",
                     "id": "88a7206b-d959-43d9-b542-f4fa3b5f742e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "ed9d0c2c-fe43-4722-a217-99f5bd426b16",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
@@ -336,7 +344,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Escape",
+                    "action": "PauseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "557b1fac-1eef-4999-8511-be5c474761e9",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "343721e4-35e6-4aa3-ba36-6e4f6908f0a3",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

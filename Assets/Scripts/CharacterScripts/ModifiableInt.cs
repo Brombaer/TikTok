@@ -46,10 +46,7 @@ public class ModifiableInt
 
         ModifiedValue = BaseValue + valueToAdd;
 
-        if (ValueModified != null)
-        {
-            ValueModified.Invoke();
-        }
+        ValueModified?.Invoke();
     }
 
     public void AddModifier(IModifiers modifier)

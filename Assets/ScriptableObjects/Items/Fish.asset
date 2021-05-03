@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2229ef31b5d0b498d95745768439dac2, type: 3}
   m_Name: Fish
   m_EditorClassIdentifier: 
+  ItemName: 
+  Buffs: []
   UiDisplay: {fileID: 21300000, guid: 80f1d54105ce47d488b86f9adb165e70, type: 3}
+  visualisedGameObject: {fileID: 0}
+  SpawnRate: 7
   Stackable: 1
   Type: 0
   Description: Can be fished in the ocean or found in a fridge
-  Data:
-    Name: 
-    Id: 1
-    Buffs: []
