@@ -9,4 +9,13 @@ public class GroundItem : MonoBehaviour
 {
     [FormerlySerializedAs("ItemObject")] [FormerlySerializedAs("Item")] 
     public ItemInfo itemInfo;
+
+    private void Start()
+    {
+        if (itemInfo != null)
+        {
+            itemInfo = Instantiate(itemInfo);
+            itemInfo.InitializeModifiers();
+        }
+    }
 }

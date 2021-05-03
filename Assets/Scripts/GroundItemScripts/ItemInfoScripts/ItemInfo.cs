@@ -31,6 +31,14 @@ public abstract class ItemInfo : ScriptableObject
     public ItemType Type;
     [TextArea(15,20)]
     public string Description;
+
+    public void InitializeModifiers()
+    {
+        foreach (var buff in Buffs)
+        {
+            buff.GenerateValue();
+        }
+    }
 }
 
 [System.Serializable]
@@ -40,14 +48,6 @@ public class ItemBuff : IModifiers
     public int Value;
     public int Min;
     public int Max;
-
-    public ItemBuff(int min, int max)
-    {
-        Min = min;
-        Max = max;
-
-        GenerateValue();
-    }
 
     public void AddValue(ref int baseValue)
     {
