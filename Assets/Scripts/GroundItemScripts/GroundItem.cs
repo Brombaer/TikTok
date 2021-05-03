@@ -3,21 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GroundItem : MonoBehaviour
 {
-    public ItemObject Item;
+    [FormerlySerializedAs("ItemObject")] [FormerlySerializedAs("Item")] 
+    public ItemInfo itemInfo;
 
-    //    public void OnAfterDeserialize()
-    //    {
-    //
-    //    }
-    //
-    //    public void OnBeforeSerialize()
-    //    {
-    //#if UNITY_EDITOR
-    //        GetComponentInChildren<MeshRenderer>().meshFilter = Item.UiDisplay;
-    //        EditorUtility.SetDirty(GetComponentInChildren<SpriteRenderer>());
-    //#endif
-    //    }
+    private void Start()
+    {
+        if (itemInfo != null)
+        {
+            itemInfo = Instantiate(itemInfo);
+            itemInfo.InitializeModifiers();
+        }
+    }
 }

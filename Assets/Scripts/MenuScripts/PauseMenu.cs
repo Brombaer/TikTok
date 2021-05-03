@@ -53,7 +53,7 @@ public class PauseMenu : MonoBehaviour
         _characterInput.Player.Escape.performed += context => TogglePauseMenu();
     }
 
-    public void Resume()
+    private void Resume()
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
