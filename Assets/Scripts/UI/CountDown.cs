@@ -31,7 +31,7 @@ public class CountDown : MonoBehaviour
         if (_currentTime <= 0)
         {
             _currentTime = 0;
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
     }
 }
