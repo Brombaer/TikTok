@@ -12,24 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770dc73fe5d714d779dfe2f72b9ca3d0, type: 3}
   m_Name: Weapon
   m_EditorClassIdentifier: 
-  UiDisplay: {fileID: 21300000, guid: 6b6aaa992c777934cbb1a35de694371e, type: 3}
-  CharacterDisplay: {fileID: 1145237178023060, guid: d855c6cd18605f34dbfdca25cb40d71c, type: 3}
+  ItemName: WoodBat
+  Buffs:
+  - Attribute: 0
+    Value: 0
+    Min: 20
+    Max: 50
+  - Attribute: 1
+    Value: 0
+    Min: 75
+    Max: 100
+  - Attribute: 2
+    Value: 0
+    Min: 0
+    Max: 10
+  UiDisplay: {fileID: 21300000, guid: f364650a2ff1249f3aa4bbbd9a9c7a70, type: 3}
+  visualisedGameObject: {fileID: 1145237178023060, guid: d855c6cd18605f34dbfdca25cb40d71c, type: 3}
+  SpawnRate: 1
   Stackable: 0
-  Type: 4
+  Type: 3
   Description: A weapon for slashing and stabbing
-  Data:
-    Name: 
-    Id: 9
-    Buffs:
-    - Attribute: 0
-      Value: 0
-      Min: 15
-      Max: 50
-    - Attribute: 1
-      Value: 0
-      Min: 5
-      Max: 10
-    - Attribute: 2
-      Value: 0
-      Min: 5
-      Max: 25

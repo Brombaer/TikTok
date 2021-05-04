@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,17 +6,15 @@ public delegate void ModifiedEvent();
 [System.Serializable]
 public class ModifiableInt
 {
-    [SerializeField]
-    private int _baseValue;
-    public int BaseValue { get { return _baseValue; } set { _baseValue = value; UpdateModifiedValue(); } }
+    [SerializeField] private int _baseValue;
+    [SerializeField] private int _modifiedValue;
 
-    [SerializeField]
-    private int _modifiedValue;
+    public int BaseValue { get { return _baseValue; } set { _baseValue = value; UpdateModifiedValue(); } }
     public int ModifiedValue { get { return _modifiedValue; } private set { _modifiedValue = value; } }
 
     public List<IModifiers> Modifiers = new List<IModifiers>();
-
     public event ModifiedEvent ValueModified;
+
     public ModifiableInt(ModifiedEvent method = null)
     {
         _modifiedValue = BaseValue;
@@ -49,10 +46,7 @@ public class ModifiableInt
 
         ModifiedValue = BaseValue + valueToAdd;
 
-        if (ValueModified != null)
-        {
-            ValueModified.Invoke();
-        }
+        ValueModified?.Invoke();
     }
 
     public void AddModifier(IModifiers modifier)
