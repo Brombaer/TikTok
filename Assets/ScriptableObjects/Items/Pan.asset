@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770dc73fe5d714d779dfe2f72b9ca3d0, type: 3}
+  m_Name: Pan
+  m_EditorClassIdentifier: 
+  ItemName: 
+  Buffs:
+  - Attribute: 0
+    Value: 0
+    Min: 5
+    Max: 12
+  - Attribute: 1
+    Value: 0
+    Min: 3
+    Max: 9
+  - Attribute: 2
+    Value: 0
+    Min: 4
+    Max: 8
+  UiDisplay: {fileID: 21300000, guid: 6f2c5ecd3d9424f14b0be4c43a080978, type: 3}
+  visualisedGameObject: {fileID: 1054167787498168, guid: 5fe6320fb6e4c4e92b7e1e49903418b7, type: 3}
+  SpawnRate: 3
+  Stackable: 0
+  Type: 3
+  Description: 

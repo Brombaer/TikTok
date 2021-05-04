@@ -13,9 +13,12 @@ public class SpawnGroundItems : MonoBehaviour
     [SerializeField] private bool _allowOverlap = false;
     [SerializeField] private bool _allowSimilarItems = false;
 
+    private float _timer = 3;
+
     private void Start()
     {
         SpawnItems(_groundItems, _spawnPoints, _allowOverlap, _allowSimilarItems);
+        StartCoroutine(DisableGravity());
     }
 
     private void SpawnItems(GameObject[] items, Transform[] spawnPoints, bool allowOverlap, bool allowSimilarItems)
@@ -76,6 +79,7 @@ public class SpawnGroundItems : MonoBehaviour
            if (randomNumber < item.GetComponent<GroundItem>().itemInfo.SpawnRate)
            {
                tempObject = item;
+               tempObject.GetComponent<Rigidbody>().useGravity = true;
                break;
            }
 
@@ -83,5 +87,15 @@ public class SpawnGroundItems : MonoBehaviour
        }
 
        return tempObject;
+   }
+
+   private IEnumerator DisableGravity()
+   {
+       yield return new WaitForSeconds(_timer);
+
+       foreach (var groundItem in _groundItems)
+       {
+           groundItem.GetComponent<Rigidbody>().useGravity = false;
+       }
    }
 }

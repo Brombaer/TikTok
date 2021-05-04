@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770dc73fe5d714d779dfe2f72b9ca3d0, type: 3}
+  m_Name: BrokenAlcoholBottle2
+  m_EditorClassIdentifier: 
+  ItemName: 
+  Buffs:
+  - Attribute: 0
+    Value: 0
+    Min: 5
+    Max: 15
+  - Attribute: 1
+    Value: 0
+    Min: 5
+    Max: 15
+  - Attribute: 2
+    Value: 0
+    Min: 5
+    Max: 15
+  UiDisplay: {fileID: 21300000, guid: c2d4e90de6b2e4b27beac2333dd18059, type: 3}
+  visualisedGameObject: {fileID: 1698316238075150, guid: 70c7544cf257042e2b6aac8ad566792f, type: 3}
+  SpawnRate: 2
+  Stackable: 0
+  Type: 3
+  Description: 
