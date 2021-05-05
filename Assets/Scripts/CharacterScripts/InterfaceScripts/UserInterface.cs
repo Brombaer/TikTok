@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+[DefaultExecutionOrder(-100)]
 public abstract class UserInterface : MonoBehaviour
 {
     public InventoryObject Inventory;

@@ -36,6 +36,22 @@ public struct ItemAmountPair
         Item = item;
         Amount = amount;
     }
+    
+    public bool IsNotContainedIn(ItemAmountPair[] objects)
+    {
+        foreach (var obj in objects)
+        {
+            if (Item != null && Item.IsSameAs(obj.Item))
+            {
+                if (Amount <= obj.Amount)
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }
 
 [CreateAssetMenu]
@@ -46,6 +62,14 @@ public class CraftingRecipe : ScriptableObject
 
     public bool HasAllIngredients(ItemAmountPair[] objects)
     {
-        return false;
+        for (int i = 0; i < Inputs.Length; i++)
+        {
+            if (Inputs[i].IsNotContainedIn(objects))
+            {
+                return false;
+            }
+        }
+    
+        return true;
     }
 }

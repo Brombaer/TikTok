@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _recipes:
   - {fileID: 11400000, guid: 76040b18033784f12bd5d7fea00fb3e1, type: 2}
-  - {fileID: 11400000, guid: d80fb1e5cc1da4e5ab21a7ef5971e292, type: 2}
+  - {fileID: 0}
   _reference: {fileID: 7668001430512919717, guid: bfabc543ee4d6410b8735c87ffb7ecae, type: 3}
 --- !u!1 &1518213936
 GameObject:
@@ -247,7 +247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1542995840
 Transform:
   m_ObjectHideFlags: 0

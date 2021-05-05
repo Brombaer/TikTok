@@ -4489,6 +4489,10 @@ PrefabInstance:
       propertyPath: Inventory
       value: 
       objectReference: {fileID: 11400000, guid: 7d623d5c226e94de380ccdc599ff2d87, type: 2}
+    - target: {fileID: 7598452904667639771, guid: b254998d8e9e54b5db29bc5565a474f5, type: 3}
+      propertyPath: _recipes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b254998d8e9e54b5db29bc5565a474f5, type: 3}
 --- !u!1001 &8093295972559483782

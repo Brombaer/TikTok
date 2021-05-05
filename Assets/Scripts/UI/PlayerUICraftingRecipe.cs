@@ -14,6 +14,7 @@ public class PlayerUICraftingRecipe : UserInterface
     [SerializeField] private TMP_Text[] _inputItemAmounts;
     [SerializeField] private Image _outputItemImage;
     [SerializeField] private GameObject[] _slots;
+    [SerializeField] private InventoryObject _playerInventory;
 
     public void AssignCraftingRecipe(CraftingRecipe recipe)
     {
@@ -35,8 +36,39 @@ public class PlayerUICraftingRecipe : UserInterface
                 }
             }
         }
+        
+        _craftItemButton.onClick.AddListener(OnCraftButtonClick);
     }
-    
+
+    private void OnCraftButtonClick()
+    {
+        bool hasAllIngredients = _craftingRecipe.HasAllIngredients(GetItemsFromSlots());
+        Debug.Log(hasAllIngredients.ToString());
+
+        if (hasAllIngredients)
+        {
+            if (!_craftingRecipe.Output.IsEmpty())
+            {
+                if (_playerInventory.AddItem(_craftingRecipe.Output.Item, _craftingRecipe.Output.Amount))
+                {
+                    Destroy(_craftingRecipe.Output.Item);
+                }
+            }
+        }
+    }
+
+    private ItemAmountPair[] GetItemsFromSlots()
+    {
+        var items = new ItemAmountPair[_slots.Length];
+
+        for (int i = 0; i < items.Length; i++)
+        {
+            items[i] = (SlotsOnInterface[_slots[i]]).Content;
+        }
+
+        return items;
+    }
+
     protected override void CreateSlots()
     {
         SlotsOnInterface = new Dictionary<GameObject, InventorySlot>();
