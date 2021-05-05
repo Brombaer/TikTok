@@ -103,7 +103,7 @@ public class CharacterInteractController : MonoBehaviour
                 else if (hitItem != _itemBeingPickedUp)
                 {
                     _itemBeingPickedUp = hitItem;
-                    _itemNameText.text = $"Pickup {_itemBeingPickedUp.gameObject.name}";
+                    _itemNameText.text = $"Pickup {_itemBeingPickedUp.itemInfo.ItemName}";
                 }
             }
         }
