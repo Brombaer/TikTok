@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-7224431144593748834
+--- !u!43 &-9071305611861075345
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_Walkway_Stairs_02 LOD1
+  m_Name: SM_Bld_Walkway_Stairs_02 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: ccf5c54fb7b6ccf4a94f0981486487e1, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: -3601092940995418293, guid: ccf5c54fb7b6ccf4a94f0981486487e1, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -7878746044776946400, guid: ccf5c54fb7b6ccf4a94f0981486487e1, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &897898449590412673
+--- !u!43 &8290074637488822741
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_Walkway_Stairs_02 LOD2
+  m_Name: SM_Bld_Walkway_Stairs_02 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

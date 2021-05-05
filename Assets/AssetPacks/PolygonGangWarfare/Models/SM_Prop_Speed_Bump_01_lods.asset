@@ -21,23 +21,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: cee900d4e357d124c95483907237b299, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 6959958467657258858, guid: cee900d4e357d124c95483907237b299, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -3448606199692009837, guid: cee900d4e357d124c95483907237b299, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &4884021415290466275
+--- !u!43 &798377734481145714
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Speed_Bump_01 LOD2
+  m_Name: SM_Prop_Speed_Bump_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -195,13 +195,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &5095391496043232310
+--- !u!43 &6669912007807999555
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Speed_Bump_01 LOD1
+  m_Name: SM_Prop_Speed_Bump_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-7177400866217950976
+--- !u!43 &-3494448679407359285
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_Ceiling_01 LOD1
+  m_Name: SM_Bld_Ceiling_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 51ecc16057aaeaa4385998a7f810294e, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: -8803883525480359215, guid: 51ecc16057aaeaa4385998a7f810294e, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -1536258511074782019, guid: 51ecc16057aaeaa4385998a7f810294e, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &7756578726295618206
+--- !u!43 &1663637482497947142
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_Ceiling_01 LOD2
+  m_Name: SM_Bld_Ceiling_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

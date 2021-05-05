@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-244441512664990011
+--- !u!43 &-5909321106937539312
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Generator_01 LOD2
+  m_Name: SM_Prop_Generator_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 095edcbcc8bbd4246b3ebf8dde09015a, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: -3759155656335363379, guid: 095edcbcc8bbd4246b3ebf8dde09015a, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 3496159379956050059, guid: 095edcbcc8bbd4246b3ebf8dde09015a, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &5401252716710228465
+--- !u!43 &6266071339479947590
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Generator_01 LOD1
+  m_Name: SM_Prop_Generator_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

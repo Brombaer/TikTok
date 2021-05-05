@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-4856717099418754567
+--- !u!43 &-8888124018046536812
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Chr_Attach_Facemask_01 LOD1
+  m_Name: SM_Chr_Attach_Facemask_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: cf4b0448ec04ca5408786bf4f6cd0926, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 8015659907153249159, guid: cf4b0448ec04ca5408786bf4f6cd0926, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 3628213709354070547, guid: cf4b0448ec04ca5408786bf4f6cd0926, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &8241317931857332816
+--- !u!43 &5621585078616202801
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Chr_Attach_Facemask_01 LOD2
+  m_Name: SM_Chr_Attach_Facemask_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

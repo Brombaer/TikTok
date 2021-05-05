@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-8618669567425122000
+--- !u!43 &-7020754480656396017
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_Wall_Metal_Slide_02 LOD2
+  m_Name: SM_Bld_Wall_Metal_Slide_02 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -164,13 +164,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &-7211626917874687704
+--- !u!43 &-2117326322295805469
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_Wall_Metal_Door_Slide_02 LOD1
+  m_Name: SM_Bld_Wall_Metal_Door_Slide_02 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -349,26 +349,26 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 1f3bf825d6d27444a99de687f6b9c0bf, type: 3}
-  - {fileID: -9039209442361764797, guid: 1f3bf825d6d27444a99de687f6b9c0bf, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   lod1:
-  - {fileID: -8572999285516847954, guid: 1f3bf825d6d27444a99de687f6b9c0bf, type: 3}
-  - {fileID: -3016976591217538494, guid: 1f3bf825d6d27444a99de687f6b9c0bf, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   lod2:
-  - {fileID: 3657720573182872137, guid: 1f3bf825d6d27444a99de687f6b9c0bf, type: 3}
-  - {fileID: 7377502473687353183, guid: 1f3bf825d6d27444a99de687f6b9c0bf, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &1209697553864313647
+--- !u!43 &3021946562644854486
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_Wall_Metal_Door_Slide_02 LOD2
+  m_Name: SM_Bld_Wall_Metal_Door_Slide_02 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -526,13 +526,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &7860658867155442164
+--- !u!43 &3553125529814155277
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_Wall_Metal_Slide_02 LOD1
+  m_Name: SM_Bld_Wall_Metal_Slide_02 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

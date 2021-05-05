@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-6047926479987991801
+--- !u!43 &-8487071111581743122
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Tire_01 LOD2
+  m_Name: SM_Prop_Tire_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -164,13 +164,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &-732780531491646626
+--- !u!43 &-2681072433362202810
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Tire_01 LOD1
+  m_Name: SM_Prop_Tire_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -349,11 +349,11 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 9e3991007a877d74a901aac20e9c75c4, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: -720371295758070679, guid: 9e3991007a877d74a901aac20e9c75c4, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 7134029117153189010, guid: 9e3991007a877d74a901aac20e9c75c4, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []

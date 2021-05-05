@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-7712457227443235482
+--- !u!43 &-4739616700068594767
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Char_Attach_Bag_Lvl2 LOD1
+  m_Name: SM_Char_Attach_Bag_Lvl2 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: f8033a124f820234384223a33191f9f0, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 7079550378155777328, guid: f8033a124f820234384223a33191f9f0, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 7941549428500871831, guid: f8033a124f820234384223a33191f9f0, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &1739956812761839148
+--- !u!43 &7579249100797101144
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Char_Attach_Bag_Lvl2 LOD2
+  m_Name: SM_Char_Attach_Bag_Lvl2 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

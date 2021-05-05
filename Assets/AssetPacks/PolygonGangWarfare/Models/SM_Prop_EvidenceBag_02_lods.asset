@@ -21,23 +21,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 68ac54bc5c0dc3143bfe3e440382dc3b, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 9069259237104651652, guid: 68ac54bc5c0dc3143bfe3e440382dc3b, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 5797579288171529595, guid: 68ac54bc5c0dc3143bfe3e440382dc3b, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &4047378105387802601
+--- !u!43 &1993866836606027916
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_EvidenceBag_02 LOD1
+  m_Name: SM_Prop_EvidenceBag_02 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -195,13 +195,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &4722420709763967793
+--- !u!43 &7891849851530483079
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_EvidenceBag_02 LOD2
+  m_Name: SM_Prop_EvidenceBag_02 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

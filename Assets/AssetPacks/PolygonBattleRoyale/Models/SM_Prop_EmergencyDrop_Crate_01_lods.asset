@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-4383608005681833137
+--- !u!43 &-182684936705165301
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_EmergencyDrop_Crate_01 LOD1
+  m_Name: SM_Prop_EmergencyDrop_Crate_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 3340773abaa372742a16bd1fb7966a3b, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: -1849054636407261474, guid: 3340773abaa372742a16bd1fb7966a3b, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -4817231530763756927, guid: 3340773abaa372742a16bd1fb7966a3b, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &6705501846324942128
+--- !u!43 &3639998170139581807
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_EmergencyDrop_Crate_01 LOD2
+  m_Name: SM_Prop_EmergencyDrop_Crate_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

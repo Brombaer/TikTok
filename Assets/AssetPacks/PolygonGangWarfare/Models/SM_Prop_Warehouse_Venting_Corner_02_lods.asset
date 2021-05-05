@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-8622493589773375798
+--- !u!43 &-4648481401565671411
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Warehouse_Venting_Corner_02 LOD1
+  m_Name: SM_Prop_Warehouse_Venting_Corner_02 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -164,13 +164,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &-674667132560222105
+--- !u!43 &-2249863902695197830
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Warehouse_Venting_Corner_02 LOD2
+  m_Name: SM_Prop_Warehouse_Venting_Corner_02 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -349,11 +349,11 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 63e0dbe53b7aa0c4ea6bb225191ab611, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 7876291338121510936, guid: 63e0dbe53b7aa0c4ea6bb225191ab611, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -3965800329598259497, guid: 63e0dbe53b7aa0c4ea6bb225191ab611, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []

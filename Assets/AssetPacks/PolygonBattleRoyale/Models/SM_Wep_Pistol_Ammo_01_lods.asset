@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-2920819828264611050
+--- !u!43 &-7885306809152565456
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Wep_Pistol_Ammo_01 LOD2
+  m_Name: SM_Wep_Pistol_Ammo_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 5c8cb43d7d087134f8cbdd3aa1b1ee8e, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 2154844337859276639, guid: 5c8cb43d7d087134f8cbdd3aa1b1ee8e, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -3726102479650692473, guid: 5c8cb43d7d087134f8cbdd3aa1b1ee8e, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &6156883512083576319
+--- !u!43 &3504733491894401201
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Wep_Pistol_Ammo_01 LOD1
+  m_Name: SM_Wep_Pistol_Ammo_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

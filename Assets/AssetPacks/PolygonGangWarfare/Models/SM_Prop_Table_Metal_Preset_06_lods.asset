@@ -21,23 +21,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 7a1b19ff8b9cd134bae1a94de9646939, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: -4597969632431043387, guid: 7a1b19ff8b9cd134bae1a94de9646939, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -5009087946715666211, guid: 7a1b19ff8b9cd134bae1a94de9646939, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &8463032849856643632
+--- !u!43 &818557010367589825
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Table_Metal_Preset_06 LOD1
+  m_Name: SM_Prop_Table_Metal_Preset_06 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -195,13 +195,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &8624997047677453437
+--- !u!43 &2569811901912314854
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Table_Metal_Preset_06 LOD2
+  m_Name: SM_Prop_Table_Metal_Preset_06 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

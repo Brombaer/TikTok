@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-604154935425895542
+--- !u!43 &-810067064058409910
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Powder_Pile_01 LOD2
+  m_Name: SM_Prop_Powder_Pile_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 33871865379c7c146a59df00ecf8d282, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 4743029396530758988, guid: 33871865379c7c146a59df00ecf8d282, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 3293212384386262258, guid: 33871865379c7c146a59df00ecf8d282, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &6878911351081203471
+--- !u!43 &8596275987995786862
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Powder_Pile_01 LOD1
+  m_Name: SM_Prop_Powder_Pile_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

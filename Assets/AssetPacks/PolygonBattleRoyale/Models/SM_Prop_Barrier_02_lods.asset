@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-8750246745767656700
+--- !u!43 &-9096457799294916601
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Barrier_02 LOD1
+  m_Name: SM_Prop_Barrier_02 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -164,13 +164,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &-4421014797837140596
+--- !u!43 &-3111027935495059609
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Barrier_02 LOD2
+  m_Name: SM_Prop_Barrier_02 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -349,11 +349,11 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 1c28d1614222e5642a0f92a71adc312b, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 630543629712812042, guid: 1c28d1614222e5642a0f92a71adc312b, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 4142234576331166695, guid: 1c28d1614222e5642a0f92a71adc312b, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []

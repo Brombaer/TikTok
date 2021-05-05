@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-2914768411178857609
+--- !u!43 &-5863102895121220248
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Chr_Attach_Beard_02 LOD1
+  m_Name: SM_Chr_Attach_Beard_02 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 5b0b4402694aa2b4186d1b6094658ba6, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 8678101513383607352, guid: 5b0b4402694aa2b4186d1b6094658ba6, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -6701302944862604937, guid: 5b0b4402694aa2b4186d1b6094658ba6, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &6282417422323807748
+--- !u!43 &3795018331368392369
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Chr_Attach_Beard_02 LOD2
+  m_Name: SM_Chr_Attach_Beard_02 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

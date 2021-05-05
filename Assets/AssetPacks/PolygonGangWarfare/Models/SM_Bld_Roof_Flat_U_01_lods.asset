@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-1911445277041736561
+--- !u!43 &-1514713406606180747
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_Roof_Flat_U_01 LOD1
+  m_Name: SM_Bld_Roof_Flat_U_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: f1a7d312892b3b846a5c32594e600dee, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 749365445044493238, guid: f1a7d312892b3b846a5c32594e600dee, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 6160652158510729722, guid: f1a7d312892b3b846a5c32594e600dee, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &8092698242879533253
+--- !u!43 &4391568610779266541
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Bld_Roof_Flat_U_01 LOD2
+  m_Name: SM_Bld_Roof_Flat_U_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

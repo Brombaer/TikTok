@@ -21,23 +21,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 0c401dc271b45c14897aad9d5cd7148e, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 3023328552594999651, guid: 0c401dc271b45c14897aad9d5cd7148e, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 8986213313008810898, guid: 0c401dc271b45c14897aad9d5cd7148e, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &6689236320901975954
+--- !u!43 &2101150324729104887
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_ZipBag_Blue_S_02 LOD2
+  m_Name: SM_Prop_ZipBag_Blue_S_02 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -195,13 +195,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &8805433893002517100
+--- !u!43 &3610397011762382647
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_ZipBag_Blue_S_02 LOD1
+  m_Name: SM_Prop_ZipBag_Blue_S_02 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

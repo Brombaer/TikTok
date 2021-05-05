@@ -21,23 +21,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 2fb675b4d0646934db7621b9fe3d4043, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 499794571525896138, guid: 2fb675b4d0646934db7621b9fe3d4043, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 8128034578815332809, guid: 2fb675b4d0646934db7621b9fe3d4043, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &1980784251880575057
+--- !u!43 &913407885864278921
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Generic_Cloud_01 LOD1
+  m_Name: SM_Generic_Cloud_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -195,13 +195,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &2544654444047066570
+--- !u!43 &8048736372608450182
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Generic_Cloud_01 LOD2
+  m_Name: SM_Generic_Cloud_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-3136831312109074632
+--- !u!43 &-5553416618172342455
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Env_Grass_Circle_02 LOD1
+  m_Name: SM_Env_Grass_Circle_02 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 3b3ff3a247167ab479e01d4cff496979, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 6646510153676305067, guid: 3b3ff3a247167ab479e01d4cff496979, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 9107992885452400658, guid: 3b3ff3a247167ab479e01d4cff496979, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &9084520767997004695
+--- !u!43 &932013451683491212
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Env_Grass_Circle_02 LOD2
+  m_Name: SM_Env_Grass_Circle_02 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

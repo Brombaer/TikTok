@@ -21,23 +21,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: d745b13401dd943438b4a3964e339171, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: -7114849454005384740, guid: d745b13401dd943438b4a3964e339171, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -8480761496087692562, guid: d745b13401dd943438b4a3964e339171, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &5317743185440165149
+--- !u!43 &5007562958851681357
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Env_Bridge_Broken_01 LOD2
+  m_Name: SM_Env_Bridge_Broken_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -195,13 +195,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &5953882532573510032
+--- !u!43 &6821095025589716987
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Env_Bridge_Broken_01 LOD1
+  m_Name: SM_Env_Bridge_Broken_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

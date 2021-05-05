@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-6476806877149236458
+--- !u!43 &-3755975548217459911
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Env_Bush_03 LOD2
+  m_Name: SM_Env_Bush_03 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 04bbdaa8bfe69504ea83e5ea21471860, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 6178160397828194898, guid: 04bbdaa8bfe69504ea83e5ea21471860, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 4616266548187326311, guid: 04bbdaa8bfe69504ea83e5ea21471860, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &8851202095061609483
+--- !u!43 &2937002431634089171
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Env_Bush_03 LOD1
+  m_Name: SM_Env_Bush_03 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-7235196397178785469
+--- !u!43 &-732533886649680910
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_OfficeChair_02 LOD2
+  m_Name: SM_Prop_OfficeChair_02 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: a3864b1a1ab359549ab1f12a632191f5, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 6955226149564454024, guid: a3864b1a1ab359549ab1f12a632191f5, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 4453834343897963238, guid: a3864b1a1ab359549ab1f12a632191f5, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &3678408539806229537
+--- !u!43 &4793538813352418871
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_OfficeChair_02 LOD1
+  m_Name: SM_Prop_OfficeChair_02 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

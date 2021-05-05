@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-8332093813779705679
+--- !u!43 &-3413160564584996678
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_CardboardBox_Open_02 LOD2
+  m_Name: SM_Prop_CardboardBox_Open_02 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: a287ed00fd5fed34895e39db8c2fad0e, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 9145377869710048182, guid: a287ed00fd5fed34895e39db8c2fad0e, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -3649431287094214026, guid: a287ed00fd5fed34895e39db8c2fad0e, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &4549068079471210591
+--- !u!43 &2666070494051622167
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_CardboardBox_Open_02 LOD1
+  m_Name: SM_Prop_CardboardBox_Open_02 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

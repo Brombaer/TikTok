@@ -21,23 +21,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 1a1bb9bb0b41aae4ba9e4c3102912bf7, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: -1613296797407612064, guid: 1a1bb9bb0b41aae4ba9e4c3102912bf7, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 213766025837794956, guid: 1a1bb9bb0b41aae4ba9e4c3102912bf7, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &4462037894349310740
+--- !u!43 &4626799796284519612
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Setup_Clean_01 LOD2
+  m_Name: SM_Prop_Setup_Clean_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -195,13 +195,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &5437500398027293700
+--- !u!43 &4873645635567358692
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Setup_Clean_01 LOD1
+  m_Name: SM_Prop_Setup_Clean_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

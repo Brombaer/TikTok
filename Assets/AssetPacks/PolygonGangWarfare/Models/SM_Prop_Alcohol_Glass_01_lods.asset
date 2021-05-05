@@ -21,23 +21,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: dd729214d43ba7a47976f587ac4ea9eb, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 1560395924387325660, guid: dd729214d43ba7a47976f587ac4ea9eb, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 3009584074738751670, guid: dd729214d43ba7a47976f587ac4ea9eb, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &6186552849997630369
+--- !u!43 &479105416922134559
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Alcohol_Glass_01 LOD2
+  m_Name: SM_Prop_Alcohol_Glass_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -195,13 +195,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &8525418677880894643
+--- !u!43 &9145588020988491057
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Alcohol_Glass_01 LOD1
+  m_Name: SM_Prop_Alcohol_Glass_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

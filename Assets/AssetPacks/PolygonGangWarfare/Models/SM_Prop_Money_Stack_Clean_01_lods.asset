@@ -21,23 +21,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: bc64ff3954b83aa43970023544ee8f99, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 8002420882319590064, guid: bc64ff3954b83aa43970023544ee8f99, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 1354468470611998458, guid: bc64ff3954b83aa43970023544ee8f99, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &4309786872490315623
+--- !u!43 &187026470365938366
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Money_Stack_Clean_01 LOD1
+  m_Name: SM_Prop_Money_Stack_Clean_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -195,13 +195,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &5608638282944832617
+--- !u!43 &2265784850507871096
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Money_Stack_Clean_01 LOD2
+  m_Name: SM_Prop_Money_Stack_Clean_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

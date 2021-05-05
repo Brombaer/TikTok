@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-6884634075976680919
+--- !u!43 &-2059144556499622477
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Barrel_PlasticLid_01 LOD2
+  m_Name: SM_Prop_Barrel_PlasticLid_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -164,13 +164,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &-1676765650395976484
+--- !u!43 &-1923609251012533217
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Barrel_PlasticLid_01 LOD1
+  m_Name: SM_Prop_Barrel_PlasticLid_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -349,11 +349,11 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 06371c7261781e84d93f7a390c0b5015, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: -7558834308251409178, guid: 06371c7261781e84d93f7a390c0b5015, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 3516854290835330381, guid: 06371c7261781e84d93f7a390c0b5015, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []

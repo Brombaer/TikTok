@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-6128612088514563933
+--- !u!43 &-7233493109475855315
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Env_Port_Wall_Corner_01 LOD2
+  m_Name: SM_Env_Port_Wall_Corner_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 8ab522562fa79854e8d588e9f2956d79, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: -3533393422668725814, guid: 8ab522562fa79854e8d588e9f2956d79, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -8116762803006346824, guid: 8ab522562fa79854e8d588e9f2956d79, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &1262344398544055235
+--- !u!43 &1152636830840383296
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Env_Port_Wall_Corner_01 LOD1
+  m_Name: SM_Env_Port_Wall_Corner_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

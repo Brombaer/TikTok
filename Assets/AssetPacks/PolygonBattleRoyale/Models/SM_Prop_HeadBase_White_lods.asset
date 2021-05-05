@@ -21,17 +21,17 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 34fabbb620b42264793420076cef0411, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 4415782119022732146, guid: 34fabbb620b42264793420076cef0411, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -5916912037131894402, guid: 34fabbb620b42264793420076cef0411, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &197202519803782318
+--- !u!43 &8076018650708809199
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,7 +195,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &3837850837270395520
+--- !u!43 &8169723641557457195
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

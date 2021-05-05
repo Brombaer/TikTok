@@ -21,23 +21,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 60201869746d13145a400a0495dea671, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 3509799227013566018, guid: 60201869746d13145a400a0495dea671, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 2884824668986539596, guid: 60201869746d13145a400a0495dea671, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &1395165504498326557
+--- !u!43 &3154288750852136234
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Wep_Bullet_Ammo_Box_02 LOD2
+  m_Name: SM_Wep_Bullet_Ammo_Box_02 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -195,13 +195,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &7272099997268794044
+--- !u!43 &5569592754523037908
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Wep_Bullet_Ammo_Box_02 LOD1
+  m_Name: SM_Wep_Bullet_Ammo_Box_02 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

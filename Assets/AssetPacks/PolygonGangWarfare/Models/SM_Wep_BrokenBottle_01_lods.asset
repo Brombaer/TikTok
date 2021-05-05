@@ -21,23 +21,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 447c8a78f1c53a74c8e6aba65528f607, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 1816314663178950907, guid: 447c8a78f1c53a74c8e6aba65528f607, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -2535256894067161342, guid: 447c8a78f1c53a74c8e6aba65528f607, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &6934714362785529214
+--- !u!43 &4121799207667064990
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Wep_BrokenBottle_01 LOD2
+  m_Name: SM_Wep_BrokenBottle_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -195,13 +195,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &8392439673332017911
+--- !u!43 &7151813045155425884
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Wep_BrokenBottle_01 LOD1
+  m_Name: SM_Wep_BrokenBottle_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

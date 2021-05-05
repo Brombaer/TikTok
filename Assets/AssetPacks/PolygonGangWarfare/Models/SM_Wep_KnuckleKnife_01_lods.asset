@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-9202541601006050700
+--- !u!43 &-6054434933681610920
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Wep_KnuckleKnife_01 LOD2
+  m_Name: SM_Wep_KnuckleKnife_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 1cf0a9ce5b3048347b4602274e4478c6, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 388086340505162694, guid: 1cf0a9ce5b3048347b4602274e4478c6, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -3418753019987616852, guid: 1cf0a9ce5b3048347b4602274e4478c6, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &6221130113814330314
+--- !u!43 &8559260300524824438
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Wep_KnuckleKnife_01 LOD1
+  m_Name: SM_Wep_KnuckleKnife_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

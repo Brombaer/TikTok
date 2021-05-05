@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-7640449172951777157
+--- !u!43 &-8115451452322316889
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Chr_Patch_Star_01 LOD2
+  m_Name: SM_Chr_Patch_Star_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -164,13 +164,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &-1993097776068264263
+--- !u!43 &-2929654554478429944
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Chr_Patch_Star_01 LOD1
+  m_Name: SM_Chr_Patch_Star_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -349,11 +349,11 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 61676258fcad34c4d9583a20d74d8397, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: 8205218758008750257, guid: 61676258fcad34c4d9583a20d74d8397, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: 4618510278168664949, guid: 61676258fcad34c4d9583a20d74d8397, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []

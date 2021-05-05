@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-1089493335118620147
+--- !u!43 &-4584963230572114159
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Table_Metal_Preset_01 LOD1
+  m_Name: SM_Prop_Table_Metal_Preset_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: aa3a4967d368a424091babc070f7e8fd, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: -6680037615303770786, guid: aa3a4967d368a424091babc070f7e8fd, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -3159392967181975527, guid: aa3a4967d368a424091babc070f7e8fd, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &3884966815309001671
+--- !u!43 &7152423669617418901
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Table_Metal_Preset_01 LOD2
+  m_Name: SM_Prop_Table_Metal_Preset_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

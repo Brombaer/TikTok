@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-7973642858822729826
+--- !u!43 &-3796537545886742890
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Chr_Attach_Hat_Beer_01 LOD1
+  m_Name: SM_Chr_Attach_Hat_Beer_01 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: 21d22835c7dee9448894854b5ab4ba3e, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: -8542602223204640966, guid: 21d22835c7dee9448894854b5ab4ba3e, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -48344462652149999, guid: 21d22835c7dee9448894854b5ab4ba3e, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &1147848430682490086
+--- !u!43 &7474053368009207083
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Chr_Attach_Hat_Beer_01 LOD2
+  m_Name: SM_Chr_Attach_Hat_Beer_01 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

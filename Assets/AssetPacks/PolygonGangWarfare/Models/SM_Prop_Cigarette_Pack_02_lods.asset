@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!43 &-4221414735108775665
+--- !u!43 &-6171851360695958763
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Cigarette_Pack_02 LOD1
+  m_Name: SM_Prop_Cigarette_Pack_02 LOD2
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -185,23 +185,23 @@ MonoBehaviour:
     maxLODGenerated: 2
     initialLODMaxPolyCount: 500000
   lod0:
-  - {fileID: 2300000, guid: d2d379dc73ff2a34ab0732c328af387e, type: 3}
+  - {fileID: 0}
   lod1:
-  - {fileID: -1495446459902794863, guid: d2d379dc73ff2a34ab0732c328af387e, type: 3}
+  - {fileID: 0}
   lod2:
-  - {fileID: -6242706656171798295, guid: d2d379dc73ff2a34ab0732c328af387e, type: 3}
+  - {fileID: 0}
   lod3: []
   lod4: []
   lod5: []
   lod6: []
   lod7: []
---- !u!43 &3481464109389464242
+--- !u!43 &4101550381695239673
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SM_Prop_Cigarette_Pack_02 LOD2
+  m_Name: SM_Prop_Cigarette_Pack_02 LOD1
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
