@@ -41,7 +41,7 @@ public class SpawnZombies : MonoBehaviour
 
             Instantiate(remainingZombies[zombieIndex], freeSpawnPositions[spawnPointIndex].position, Quaternion.identity, freeSpawnPositions[spawnPointIndex]);
             
-            remainingZombies.RemoveAt(zombieIndex);
+            //remainingZombies.RemoveAt(zombieIndex);
             freeSpawnPositions.RemoveAt(spawnPointIndex);
         }
     }

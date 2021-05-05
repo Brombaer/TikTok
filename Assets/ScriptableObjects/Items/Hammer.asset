@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770dc73fe5d714d779dfe2f72b9ca3d0, type: 3}
+  m_Name: Hammer
+  m_EditorClassIdentifier: 
+  ItemName: 
+  Buffs:
+  - Attribute: 0
+    Value: 0
+    Min: 5
+    Max: 15
+  - Attribute: 1
+    Value: 0
+    Min: 15
+    Max: 30
+  - Attribute: 2
+    Value: 0
+    Min: 5
+    Max: 12
+  UiDisplay: {fileID: 21300000, guid: ad5032ad3c7b842e4a0ed893e7f0a96c, type: 3}
+  visualisedGameObject: {fileID: 1238499803652380, guid: 93656a99db6e04947b38e01441d06ebe, type: 3}
+  SpawnRate: 3
+  Stackable: 0
+  Type: 3
+  Description: 

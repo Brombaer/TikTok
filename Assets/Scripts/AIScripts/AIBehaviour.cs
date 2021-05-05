@@ -12,8 +12,8 @@ public class AIBehaviour : MonoBehaviour
         Random,
         Waypoint
     };
-    
-    [SerializeField] private GameObject _playerHead;
+
+    private GameObject _playerHead;
     [SerializeField] private float _fieldOfView = 120;
     [SerializeField] private float _viewDistance = 15;
     [SerializeField] private int _health = 100;
@@ -50,6 +50,10 @@ public class AIBehaviour : MonoBehaviour
 
     public void Start()
     {
+        _playerHead =GameObject.Find("Character");
+        //_head = GameObject.Find("RaycastStart");
+        _head = transform.Find("RaycastStart");
+        
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         
@@ -89,9 +93,12 @@ public class AIBehaviour : MonoBehaviour
         _currentTime -= 1 * Time.deltaTime;
         _preparationTime -= 1 * Time.deltaTime;
 
-        if (_preparationTime <= 0 && _isPreparationTimeOver != true)
+        if (_timer != 0 || _preparationTime != 0)
         {
-            ChangeAwareness();
+            if (_preparationTime <= 0 && _isPreparationTimeOver != true)
+            {
+                ChangeAwareness();
+            }
         }
     }
 
@@ -139,9 +146,9 @@ public class AIBehaviour : MonoBehaviour
             {
                 RaycastHit hit;
                 
-                if (Physics.Linecast(_head.position, _playerHead.transform.position, out hit, -1))
+                if (Physics.Linecast(_head.transform.position, _playerHead.transform.position, out hit, -1))
                 {
-                    Debug.DrawLine(_head.position, _playerHead.transform.position, Color.magenta);
+                    Debug.DrawLine(_head.transform.position, _playerHead.transform.position, Color.magenta);
                     
                     if (hit.transform.CompareTag("Player"))
                     {
