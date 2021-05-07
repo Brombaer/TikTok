@@ -22,6 +22,11 @@ public class Restriction : MonoBehaviour
                 SceneManager.LoadScene(2);
 
             }
+            if (effect == KillZoneEnteredEffect.Escape)
+            {
+                gameObject.SetActive(true);
+                SceneManager.LoadScene(3);
+            }
         }
     }
 
