@@ -11,6 +11,8 @@ public class CharacterInteractController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _itemNameText;
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private float _maxInteractionDistance = 3;
+    [SerializeField] private int _health = 100;
+    [SerializeField] private HealthBar _healthBar;
 
     private GroundItem _itemBeingPickedUp;
     private Outline _prevOutlineObj;
@@ -35,10 +37,10 @@ public class CharacterInteractController : MonoBehaviour
     [SerializeField] private Transform _backpackTransform;
     [SerializeField] private Transform _headTransform;
 
-    private BoneCombiner _boneCombiner;
-
     private CharacterInput _characterInput;
     [SerializeField] private Animator _animator;
+
+    private HealthSystem _healthSystem;
 
     private void Awake()
     {
@@ -49,8 +51,9 @@ public class CharacterInteractController : MonoBehaviour
     {
         _inventoryUI.SetActive(false);
         _itemNameText.gameObject.SetActive(false);
-
-        _boneCombiner = new BoneCombiner(gameObject);
+        
+        _healthSystem = new HealthSystem(_health);
+        _healthBar.Setup(_healthSystem);
 
         for (int i = 0; i < Attributes.Length; i++)
         {
@@ -78,6 +81,16 @@ public class CharacterInteractController : MonoBehaviour
             OutlineGroundItem();
 
             _itemNameText.gameObject.SetActive(HasItemTargeted());
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) // Room for improvement
+    {
+        if (other.gameObject.CompareTag("ZombieHandFist"))
+        {
+            _healthSystem.Damage(other.gameObject.GetComponentInParent<AIBehaviour>().AttackDamage);
+            Debug.Log("The player got attacked");
+            Debug.Log(_healthSystem.GetHealth().ToString());
         }
     }
 

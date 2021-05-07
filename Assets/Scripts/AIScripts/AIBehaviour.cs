@@ -18,6 +18,9 @@ public class AIBehaviour : MonoBehaviour
     [SerializeField] private float _viewDistance = 15;
     [SerializeField] private int _health = 100;
     
+    public int AttackDamage;
+    [SerializeField] private float _attackRange = 1;
+    
     [SerializeField] private float _walkSpeed = 1;
     [SerializeField] private float _chaseSpeed = 2;
 
@@ -48,10 +51,14 @@ public class AIBehaviour : MonoBehaviour
     private bool _isPreparationTimeOver = false;
     private SphereCollider _sphereCollider;
 
+    [SerializeField] private GameObject _leftHandFist;
+    [SerializeField] private GameObject _rightHandFist;
+
     public void Start()
     {
-        _playerHead =GameObject.Find("Character");
-        //_head = GameObject.Find("RaycastStart");
+        AttackDamage = Random.Range(10, 20);
+        
+        _playerHead = GameObject.Find("Character");
         _head = transform.Find("RaycastStart");
         
         _agent = GetComponent<NavMeshAgent>();
@@ -63,6 +70,9 @@ public class AIBehaviour : MonoBehaviour
         _ragdollRigidbodies = GetComponents<Rigidbody>();
 
         _sphereCollider = GetComponent<SphereCollider>();
+
+        _leftHandFist = gameObject.transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L").gameObject;
+        _rightHandFist = gameObject.transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R").gameObject;
         
         foreach (Collider collider in _ragdollColliders)
         {
@@ -118,6 +128,11 @@ public class AIBehaviour : MonoBehaviour
             _agent.SetDestination(_playerHead.transform.position);
             _animator.SetBool("isAware", true);
             _agent.speed = _chaseSpeed;
+
+            if (_agent.remainingDistance < _attackRange)
+            {
+                GetComponent<Animator>().SetTrigger("Attack");
+            }
             
             if (_isDetecting == false)
             {
@@ -218,6 +233,18 @@ public class AIBehaviour : MonoBehaviour
     public void OnHit(int damage)
     {
         _health -= damage;
+    }
+
+    public void activateFists()
+    {
+        _leftHandFist.GetComponent<Collider>().enabled = true;
+        _rightHandFist.GetComponent<Collider>().enabled = true;
+    }
+
+    public void deactivateFists()
+    {
+        _leftHandFist.GetComponent<Collider>().enabled = false;
+        _rightHandFist.GetComponent<Collider>().enabled = false;
     }
 
     public void Die()

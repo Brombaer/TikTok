@@ -4611,6 +4611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7447378321831561492}
+  - component: {fileID: 201692588147301276}
   m_Layer: 0
   m_Name: Hand_R
   m_TagString: Untagged
@@ -4635,6 +4636,19 @@ Transform:
   m_Father: {fileID: 7441130768768697534}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &201692588147301276
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7444118764910430434}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.08
+  m_Center: {x: 0.15, y: 0, z: 0}
 --- !u!1 &7444125982227525598
 GameObject:
   m_ObjectHideFlags: 0
@@ -4900,6 +4914,8 @@ MonoBehaviour:
   _fieldOfView: 120
   _viewDistance: 15
   _health: 100
+  AttackDamage: 0
+  _attackRange: 1
   _walkSpeed: 0.25
   _chaseSpeed: 0.75
   _looseThreshold: 5
@@ -4916,6 +4932,8 @@ MonoBehaviour:
   _currentTime: 0
   _preparationTime: 10
   _awarenessFactor: 10
+  _leftHandFist: {fileID: 0}
+  _rightHandFist: {fileID: 0}
 --- !u!195 &7443021325279094157
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5591,9 +5609,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7447287667157191726}
+  - component: {fileID: 565254388606992932}
   m_Layer: 0
   m_Name: Hand_L
-  m_TagString: Untagged
+  m_TagString: ZombieHandFist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5615,6 +5634,19 @@ Transform:
   m_Father: {fileID: 7441183969349965512}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &565254388606992932
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7444301253679423348}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.08
+  m_Center: {x: -0.15, y: 0, z: 0}
 --- !u!1 &7444306143437660068
 GameObject:
   m_ObjectHideFlags: 0
