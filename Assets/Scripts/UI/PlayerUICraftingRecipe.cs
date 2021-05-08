@@ -51,7 +51,10 @@ public class PlayerUICraftingRecipe : UserInterface
             {
                 if (_playerInventory.AddItem(_craftingRecipe.Output.Item, _craftingRecipe.Output.Amount))
                 {
-                    Destroy(_craftingRecipe.Output.Item);
+                    for (int i = 0; i < _craftingRecipe.Inputs.Length; i++)
+                    {
+                        SlotsOnInterface[_slots[i]].RemoveItem();
+                    }
                 }
             }
         }

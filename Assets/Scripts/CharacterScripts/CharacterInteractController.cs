@@ -11,8 +11,11 @@ public class CharacterInteractController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _itemNameText;
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private float _maxInteractionDistance = 3;
+    
     [SerializeField] private int _health = 100;
     [SerializeField] private HealthBar _healthBar;
+    [SerializeField] private TMP_Text _maxHealth;
+    [SerializeField] private TMP_Text _currentHealth;
 
     private GroundItem _itemBeingPickedUp;
     private Outline _prevOutlineObj;
@@ -54,6 +57,8 @@ public class CharacterInteractController : MonoBehaviour
         
         _healthSystem = new HealthSystem(_health);
         _healthBar.Setup(_healthSystem);
+        _maxHealth.text = _healthSystem._maxHealth.ToString();
+        _currentHealth.text = _healthSystem._health.ToString();
 
         for (int i = 0; i < Attributes.Length; i++)
         {
@@ -89,6 +94,8 @@ public class CharacterInteractController : MonoBehaviour
         if (other.gameObject.CompareTag("ZombieHandFist"))
         {
             _healthSystem.Damage(other.gameObject.GetComponentInParent<AIBehaviour>().AttackDamage);
+            _currentHealth.text = _healthSystem._health.ToString();
+            
             Debug.Log("The player got attacked");
             Debug.Log(_healthSystem.GetHealth().ToString());
         }
