@@ -13,7 +13,7 @@ public class AIBehaviour : MonoBehaviour
         Waypoint
     };
 
-    private GameObject _playerHead;
+    private GameObject _playerReference;
     [SerializeField] private float _fieldOfView = 120;
     [SerializeField] private float _viewDistance = 15;
     [SerializeField] private int _health = 100;
@@ -58,7 +58,7 @@ public class AIBehaviour : MonoBehaviour
     {
         AttackDamage = Random.Range(10, 20);
         
-        _playerHead = GameObject.Find("Character");
+        _playerReference = GameObject.Find("Character/Root/Hips/Spine_01");
         _head = transform.Find("RaycastStart");
         
         _agent = GetComponent<NavMeshAgent>();
@@ -125,7 +125,7 @@ public class AIBehaviour : MonoBehaviour
         
         if (_isAware)
         {
-            _agent.SetDestination(_playerHead.transform.position);
+            _agent.SetDestination(_playerReference.transform.position);
             _animator.SetBool("isAware", true);
             _agent.speed = _chaseSpeed;
 
@@ -155,15 +155,15 @@ public class AIBehaviour : MonoBehaviour
 
     private void SearchForPlayer()
     {
-        if (Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(_playerHead.transform.position)) < _fieldOfView / 2)
+        if (Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(_playerReference.transform.position)) < _fieldOfView / 2)
         {
-            if (Vector3.Distance(_playerHead.transform.position, transform.position) < _viewDistance)
+            if (Vector3.Distance(_playerReference.transform.position, transform.position) < _viewDistance)
             {
                 RaycastHit hit;
                 
-                if (Physics.Linecast(_head.transform.position, _playerHead.transform.position, out hit, -1))
+                if (Physics.Linecast(_head.transform.position, _playerReference.transform.position, out hit, -1))
                 {
-                    Debug.DrawLine(_head.transform.position, _playerHead.transform.position, Color.magenta);
+                    Debug.DrawLine(_head.transform.position, _playerReference.transform.position, Color.magenta);
                     
                     if (hit.transform.CompareTag("Player"))
                     {
