@@ -17,11 +17,16 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        QuestEvent a = quest.AddQuestEvent("test1", "description 1", A);
-        QuestEvent b = quest.AddQuestEvent("test2", "description 2", B);
-        QuestEvent c = quest.AddQuestEvent("test3", "description 3", C);
-        QuestEvent d = quest.AddQuestEvent("test4", "description 4", D);
-        QuestEvent e = quest.AddQuestEvent("test5", "description 5", E);
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+
+
+        QuestEvent a = quest.AddQuestEvent("test1", "description 1");
+        QuestEvent b = quest.AddQuestEvent("test2", "description 2");
+        QuestEvent c = quest.AddQuestEvent("test3", "description 3");
+        QuestEvent d = quest.AddQuestEvent("test4", "description 4");
+        QuestEvent e = quest.AddQuestEvent("test5", "description 5");
 
         quest.Addpath(a.GetId(), b.GetId());
         quest.Addpath(b.GetId(), c.GetId());

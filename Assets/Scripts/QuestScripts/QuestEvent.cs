@@ -18,17 +18,17 @@ public class QuestEvent
     public int order = -1;
     public EventStatus status;
     public QuestButton button;
-    public GameObject location;
+   
 
     public List<QuestPath> pathlist = new List<QuestPath>();
 
-    public QuestEvent(string n, string d, GameObject loc)
+    public QuestEvent(string n, string d)
     {
         id = Guid.NewGuid().ToString();
         name = n;
         description = d;
         status = EventStatus.Waiting;
-        location = loc;
+        
     }
 
     public void UpdateQuestEvent(EventStatus es)
