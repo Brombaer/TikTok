@@ -16,6 +16,14 @@ public class PlayerUICraftingRecipe : UserInterface
     [SerializeField] private GameObject[] _slots;
     [SerializeField] private InventoryObject _playerInventory;
 
+    protected override void Start()
+    {
+        Inventory = ScriptableObject.CreateInstance<InventoryObject>();
+        Inventory.Type = InterfaceType.Crafting;
+        Inventory.Container = new Inventory();
+        base.Start();
+    }
+
     public void AssignCraftingRecipe(CraftingRecipe recipe)
     {
         _craftingRecipe = recipe;
@@ -76,7 +84,7 @@ public class PlayerUICraftingRecipe : UserInterface
     {
         SlotsOnInterface = new Dictionary<GameObject, InventorySlot>();
     
-        for (int i = 0; i < Inventory.GetSlots.Length; i++)
+        for (int i = 0; i < _slots.Length; i++)
         {
             var obj = _slots[i];
     

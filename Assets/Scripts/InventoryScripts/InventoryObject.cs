@@ -155,6 +155,14 @@ public class Inventory
 {
     public InventorySlot[] Slots = new InventorySlot[15];
 
+    public Inventory()
+    {
+        for (int i = 0; i < Slots.Length; i++)
+        {
+            Slots[i] = new InventorySlot();
+        }
+    }
+    
     public void Clear()
     {
         for (int i = 0; i < Slots.Length; i++)
