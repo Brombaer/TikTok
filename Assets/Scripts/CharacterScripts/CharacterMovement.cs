@@ -13,6 +13,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Camera _characterCamera;
     [SerializeField] private Transform _cameraTransform;
     private CharacterController _characterController;
+    [SerializeField] private float _maxCameraAngle = 90;
 
     private readonly Vector3 _gravity = Physics.gravity;
     private Vector3 _velocity;
@@ -61,27 +62,11 @@ public class CharacterMovement : MonoBehaviour
             
             if (_isMoving)
             {
-                float cam = _cameraTransform.rotation.eulerAngles.x;
-                transform.rotation = Quaternion.Euler(0, _cameraTransform.rotation.eulerAngles.y, 0);
-                _cameraTransform.localEulerAngles = new Vector3(cam, 0, 0);
-
-                Vector3 moveX = new Vector3(_cameraTransform.right.x, 0, _cameraTransform.right.z).normalized * x;
-                Vector3 moveZ = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z).normalized * z;
-
-                Vector3 move = moveX + moveZ;
-
-                modifier = 1;
-                
-                if (_moveState == MoveState.Sprinting)
-                {
-                    modifier = _movementModifier;
-                }
-                else if (_moveState == MoveState.Crouching)
-                {
-                    modifier = 1 / _movementModifier;
-                }
-                
-                _characterController.Move(move * (_movementSpeed * modifier * Time.deltaTime));
+                modifier = UpdateMovement(x, z);
+            }
+            else
+            {
+                UpdateIdle();
             }
             
             _animator.SetFloat("horizontal", x * modifier);
@@ -89,6 +74,46 @@ public class CharacterMovement : MonoBehaviour
 
             ApplyGravity();
         }
+    }
+
+    private void UpdateIdle()
+    {
+        var cameraForward = _cameraTransform.forward;
+        cameraForward.y = 0;
+        var angle = Vector3.SignedAngle(transform.forward, cameraForward, Vector3.up);
+
+        if (Mathf.Abs(angle) > _maxCameraAngle)
+        {
+            angle = Mathf.Sign(angle) * (Mathf.Abs(angle) - _maxCameraAngle);
+            transform.Rotate(Vector3.up, angle, Space.World);
+        }
+    }
+
+    private float UpdateMovement(float x, float z)
+    {
+        float modifier;
+        float cam = _cameraTransform.rotation.eulerAngles.x;
+        transform.rotation = Quaternion.Euler(0, _cameraTransform.rotation.eulerAngles.y, 0);
+        _cameraTransform.localEulerAngles = new Vector3(cam, 0, 0);
+
+        Vector3 moveX = new Vector3(_cameraTransform.right.x, 0, _cameraTransform.right.z).normalized * x;
+        Vector3 moveZ = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z).normalized * z;
+
+        Vector3 move = moveX + moveZ;
+
+        modifier = 1;
+
+        if (_moveState == MoveState.Sprinting)
+        {
+            modifier = _movementModifier;
+        }
+        else if (_moveState == MoveState.Crouching)
+        {
+            modifier = 1 / _movementModifier;
+        }
+
+        _characterController.Move(move * (_movementSpeed * modifier * Time.deltaTime));
+        return modifier;
     }
 
     private void InitializeInput()
@@ -147,6 +172,7 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             _moveState = MoveState.Walking;
+            
             _animator.SetBool("isCrouching", false);
         }
     }
