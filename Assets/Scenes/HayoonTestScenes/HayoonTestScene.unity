@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 3265409}
   - component: {fileID: 3265408}
   - component: {fileID: 3265407}
+  - component: {fileID: 3265411}
   m_Layer: 0
   m_Name: TargetMiddle
   m_TagString: Untagged
@@ -293,6 +294,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3265411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3265406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48b067cc58277459bac7a1a6080b3ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qManager: {fileID: 981516110}
+  qButton: {fileID: 3395037147271195051, guid: edd1c8e281a204720a95aef0628ea854, type: 3}
 --- !u!1 &27195319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,6 +1943,7 @@ GameObject:
   - component: {fileID: 1648057708}
   - component: {fileID: 1648057707}
   - component: {fileID: 1648057706}
+  - component: {fileID: 1648057710}
   m_Layer: 0
   m_Name: TargetRight
   m_TagString: Untagged
@@ -2011,6 +2027,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1648057710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648057705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48b067cc58277459bac7a1a6080b3ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qManager: {fileID: 981516110}
+  qButton: {fileID: 3395037147271195051, guid: edd1c8e281a204720a95aef0628ea854, type: 3}
 --- !u!1001 &1663677615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2772,7 +2802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1893893183446444725, guid: 76fe0dd7bff3944c78cb60e1d687d0b9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000017463917
+      value: 18.76494
       objectReference: {fileID: 0}
     - target: {fileID: 1893893183583004308, guid: 76fe0dd7bff3944c78cb60e1d687d0b9, type: 3}
       propertyPath: m_AnchorMax.x
