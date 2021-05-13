@@ -98,11 +98,21 @@
 		<property name="length">
 			<value>10.582000000000001</value>
 		</property>
+		<property name="delayType">
+			<value>0</value>
+		</property>
+		<property name="maximumTimeDelay">
+			<value>100</value>
+		</property>
+		<property name="startOffset">
+			<value>8</value>
+		</property>
 		<property name="looping">
 			<value>true</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{5773065c-3074-4900-a51c-2caf0b3630d4}</destination>
+			<destination>{75101429-4329-428f-abc7-29402446b8c2}</destination>
 		</relationship>
 		<relationship name="sounds">
 			<destination>{22e52f53-f1b6-4914-9201-080cc6f03a70}</destination>
@@ -114,7 +124,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{b243a14b-8249-4bff-8a80-b3f9c5819cd0}">
 		<property name="volume">
-			<value>-8.5</value>
+			<value>8</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -156,6 +166,11 @@
 		</property>
 		<property name="amount">
 			<value>2.5</value>
+		</property>
+	</object>
+	<object class="RandomizerModulator" id="{75101429-4329-428f-abc7-29402446b8c2}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
 		</property>
 	</object>
 	<object class="SingleSound" id="{22e52f53-f1b6-4914-9201-080cc6f03a70}">

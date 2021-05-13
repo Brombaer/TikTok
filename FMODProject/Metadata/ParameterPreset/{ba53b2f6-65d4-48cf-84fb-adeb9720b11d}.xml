@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{ba53b2f6-65d4-48cf-84fb-adeb9720b11d}">
+		<property name="name">
+			<value>JumpOrLand</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0e50a1fe-f79e-467d-becd-1bd415c1efdb}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{c62ee739-e07c-437f-afc2-cb20b4669681}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{c62ee739-e07c-437f-afc2-cb20b4669681}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
