@@ -122,7 +122,8 @@ public class CharacterMovement : MonoBehaviour
 
         _characterInput.Player.Movement.performed += Move;
         _characterInput.Player.Jump.performed += Jump;
-        _characterInput.Player.Sprint.performed += Sprint;
+        _characterInput.Player.StartSprint.performed += StartSprint;
+        _characterInput.Player.StopSprint.performed += StopSprint;
         _characterInput.Player.Crouch.performed += Crouch;
     }
 
@@ -147,7 +148,7 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    private void Sprint(InputAction.CallbackContext context)
+    private void StartSprint(InputAction.CallbackContext context)
     {
         if (_moveState != MoveState.Crouching && !_isHoldingWeapon)
         {
@@ -159,6 +160,14 @@ public class CharacterMovement : MonoBehaviour
             {
                 _moveState = MoveState.Walking;
             }
+        }
+    }
+
+    private void StopSprint(InputAction.CallbackContext context)
+    {
+        if (_moveState == MoveState.Sprinting)
+        {
+            _moveState = MoveState.Walking;
         }
     }
 
