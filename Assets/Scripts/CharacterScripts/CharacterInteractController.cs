@@ -98,6 +98,8 @@ public class CharacterInteractController : MonoBehaviour
             
             Debug.Log("The player got attacked");
             Debug.Log(_healthSystem.GetHealth().ToString());
+
+            other.gameObject.GetComponent<Collider>().enabled = false;
         }
     }
 
