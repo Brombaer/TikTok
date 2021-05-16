@@ -8,14 +8,14 @@ public class Restriction : MonoBehaviour
     //Variable
 
 
-    //Function    
+    //Function
     private void OnTriggerEnter(Collider other)
     {
         IKillable killable = other.GetComponent<IKillable>();
         if (killable != null)
         {
-            KillZoneEnteredEffect effect = killable.Kill();
 
+            KillZoneEnteredEffect effect = killable.Kill();
             if (effect == KillZoneEnteredEffect.Kill)
             {
                 gameObject.SetActive(false);
@@ -29,6 +29,7 @@ public class Restriction : MonoBehaviour
             }
         }
     }
+
 
 }
 public enum KillZoneEnteredEffect
