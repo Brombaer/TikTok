@@ -8,9 +8,9 @@ public class QuestLocation : MonoBehaviour
     public QuestEvent qEvent;
     public QuestButton qButton;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.tag != "Player")
+        if (collider.gameObject.tag != "Player")
             return;
 
         if (qEvent.status != QuestEvent.EventStatus.Current)
@@ -19,6 +19,7 @@ public class QuestLocation : MonoBehaviour
         qEvent.UpdateQuestEvent(QuestEvent.EventStatus.Done);
         qButton.UpdateButton(QuestEvent.EventStatus.Done);
         qManager.UpdateQuestsOnCompletion(qEvent);
+
 
     }
 

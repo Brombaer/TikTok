@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
+    [SerializeField] private MainMenu mainMenuUI;
 
     private CharacterInput _characterInput;
 
@@ -16,22 +17,7 @@ public class PauseMenu : MonoBehaviour
         InitializeInput();
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Escape))
-    //    {
-    //        if (GameIsPaused)
-    //        {
-    //            Resume();
-    //        }
-    //
-    //        else
-    //        {
-    //            Pause();
-    //        }
-    //    }
-    //}
-
+  
 
 
     private void TogglePauseMenu()
@@ -64,11 +50,15 @@ public class PauseMenu : MonoBehaviour
 
     private void Pause()
     {
+        if (mainMenuUI == null)
+        {
+            
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+        }
     }
 
 
@@ -90,7 +80,7 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("Menu");
+        mainMenuUI.enabled=true;
     }
 
     public void QuitMenu()

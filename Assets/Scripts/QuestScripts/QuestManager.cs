@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class QuestManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class QuestManager : MonoBehaviour
     public Quest quest = new Quest();
     public GameObject questPrintBox;
     public GameObject buttonPrefab;
+    public GameObject questUI;
+ 
 
     public GameObject A;
     public GameObject B;
@@ -15,13 +18,28 @@ public class QuestManager : MonoBehaviour
     public GameObject D;
     public GameObject E;
 
+
+    private CharacterInput _characterInput;
+
+    private void Awake()
+    {
+        InitializeInput();
+    }
     private void Start()
     {
-        QuestEvent a = quest.AddQuestEvent("test1", "description 1", A);
-        QuestEvent b = quest.AddQuestEvent("test2", "description 2", B);
-        QuestEvent c = quest.AddQuestEvent("test3", "description 3", C);
-        QuestEvent d = quest.AddQuestEvent("test4", "description 4", D);
-        QuestEvent e = quest.AddQuestEvent("test5", "description 5", E);
+        
+
+        questUI.SetActive(false);
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+
+
+        QuestEvent a = quest.AddQuestEvent("test1", "description 1");
+        QuestEvent b = quest.AddQuestEvent("test2", "description 2");
+        QuestEvent c = quest.AddQuestEvent("test3", "description 3");
+        QuestEvent d = quest.AddQuestEvent("test4", "description 4");
+        QuestEvent e = quest.AddQuestEvent("test5", "description 5");
 
         quest.Addpath(a.GetId(), b.GetId());
         quest.Addpath(b.GetId(), c.GetId());
@@ -46,6 +64,25 @@ public class QuestManager : MonoBehaviour
         quest.PrintPath();
 
     }
+    private void ToggleQuestSystem(InputAction.CallbackContext context)
+    {
+        if (questUI.activeSelf)
+        {
+            questUI.SetActive(false);
+        }
+        else if(questUI.activeSelf ==false)
+        {
+            questUI.SetActive(true);
+        }
+
+    }
+
+    private void InitializeInput()
+    {
+        _characterInput = new CharacterInput();
+
+        _characterInput.Player.Quest.performed += ToggleQuestSystem;
+    }
 
     GameObject CreateButton(QuestEvent e)
     {
@@ -59,6 +96,17 @@ public class QuestManager : MonoBehaviour
 
         return b;
     }
+
+    private void OnEnable()
+    {
+        _characterInput.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _characterInput.Disable();
+    }
+
 
     public void UpdateQuestsOnCompletion (QuestEvent e)
     {
