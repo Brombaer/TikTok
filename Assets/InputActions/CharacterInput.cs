@@ -113,6 +113,14 @@ public class @CharacterInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=1)""
+                },
+                {
+                    ""name"": ""Quest"",
+                    ""type"": ""Button"",
+                    ""id"": ""5db88af6-3e6e-4304-85e3-3484a34a3ff0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)""
                 }
             ],
             ""bindings"": [
@@ -401,6 +409,17 @@ public class @CharacterInput : IInputActionCollection, IDisposable
                     ""action"": ""StopSprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d4859eb-aaa2-4854-a1a0-0c7438237342"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -438,6 +457,7 @@ public class @CharacterInput : IInputActionCollection, IDisposable
         m_Player_PauseMenu = m_Player.FindAction("PauseMenu", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_StopSprint = m_Player.FindAction("StopSprint", throwIfNotFound: true);
+        m_Player_Quest = m_Player.FindAction("Quest", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -499,6 +519,7 @@ public class @CharacterInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_PauseMenu;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_StopSprint;
+    private readonly InputAction m_Player_Quest;
     public struct PlayerActions
     {
         private @CharacterInput m_Wrapper;
@@ -515,6 +536,7 @@ public class @CharacterInput : IInputActionCollection, IDisposable
         public InputAction @PauseMenu => m_Wrapper.m_Player_PauseMenu;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @StopSprint => m_Wrapper.m_Player_StopSprint;
+        public InputAction @Quest => m_Wrapper.m_Player_Quest;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -560,6 +582,9 @@ public class @CharacterInput : IInputActionCollection, IDisposable
                 @StopSprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStopSprint;
                 @StopSprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStopSprint;
                 @StopSprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStopSprint;
+                @Quest.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuest;
+                @Quest.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuest;
+                @Quest.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuest;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -600,6 +625,9 @@ public class @CharacterInput : IInputActionCollection, IDisposable
                 @StopSprint.started += instance.OnStopSprint;
                 @StopSprint.performed += instance.OnStopSprint;
                 @StopSprint.canceled += instance.OnStopSprint;
+                @Quest.started += instance.OnQuest;
+                @Quest.performed += instance.OnQuest;
+                @Quest.canceled += instance.OnQuest;
             }
         }
     }
@@ -627,5 +655,6 @@ public class @CharacterInput : IInputActionCollection, IDisposable
         void OnPauseMenu(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnStopSprint(InputAction.CallbackContext context);
+        void OnQuest(InputAction.CallbackContext context);
     }
 }
