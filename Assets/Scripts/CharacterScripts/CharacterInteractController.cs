@@ -11,6 +11,11 @@ public class CharacterInteractController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _itemNameText;
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private float _maxInteractionDistance = 3;
+    
+    [SerializeField] private int _health = 100;
+    [SerializeField] private HealthBar _healthBar;
+    [SerializeField] private TMP_Text _maxHealth;
+    [SerializeField] private TMP_Text _currentHealth;
 
     private GroundItem _itemBeingPickedUp;
     private Outline _prevOutlineObj;
@@ -35,10 +40,10 @@ public class CharacterInteractController : MonoBehaviour
     [SerializeField] private Transform _backpackTransform;
     [SerializeField] private Transform _headTransform;
 
-    private BoneCombiner _boneCombiner;
-
     private CharacterInput _characterInput;
     [SerializeField] private Animator _animator;
+
+    private HealthSystem _healthSystem;
 
     private void Awake()
     {
@@ -49,8 +54,11 @@ public class CharacterInteractController : MonoBehaviour
     {
         _inventoryUI.SetActive(false);
         _itemNameText.gameObject.SetActive(false);
-
-        _boneCombiner = new BoneCombiner(gameObject);
+        
+        _healthSystem = new HealthSystem(_health);
+        _healthBar.Setup(_healthSystem);
+        _maxHealth.text = _healthSystem._maxHealth.ToString();
+        _currentHealth.text = _healthSystem._health.ToString();
 
         for (int i = 0; i < Attributes.Length; i++)
         {
@@ -81,6 +89,20 @@ public class CharacterInteractController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other) // Room for improvement
+    {
+        if (other.gameObject.CompareTag("ZombieHandFist"))
+        {
+            _healthSystem.Damage(other.gameObject.GetComponentInParent<AIBehaviour>().AttackDamage);
+            _currentHealth.text = _healthSystem._health.ToString();
+            
+            Debug.Log("The player got attacked");
+            Debug.Log(_healthSystem.GetHealth().ToString());
+
+            other.gameObject.GetComponent<Collider>().enabled = false;
+        }
+    }
+
     private bool HasItemTargeted()
     {
         return _itemBeingPickedUp != null;
@@ -103,7 +125,7 @@ public class CharacterInteractController : MonoBehaviour
                 else if (hitItem != _itemBeingPickedUp)
                 {
                     _itemBeingPickedUp = hitItem;
-                    _itemNameText.text = $"Pickup {_itemBeingPickedUp.gameObject.name}";
+                    _itemNameText.text = $"Pickup {_itemBeingPickedUp.itemInfo.ItemName}";
                 }
             }
         }
@@ -302,6 +324,7 @@ public class CharacterInteractController : MonoBehaviour
                             {
                                 case ItemType.Weapon:
                                     _weapon = Instantiate(slot.ItemInfo.visualisedGameObject, _weaponHandTransform).transform;
+                                    _weapon.GetComponent<Rigidbody>().isKinematic = true;
                                     _animator.SetBool("isHoldingWeapon", true);
                                     break;
                                 case ItemType.Tool:

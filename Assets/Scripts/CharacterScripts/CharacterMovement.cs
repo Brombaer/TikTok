@@ -13,6 +13,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Camera _characterCamera;
     [SerializeField] private Transform _cameraTransform;
     private CharacterController _characterController;
+    [SerializeField] private float _maxCameraAngle = 90;
 
     private readonly Vector3 _gravity = Physics.gravity;
     private Vector3 _velocity;
@@ -41,7 +42,7 @@ public class CharacterMovement : MonoBehaviour
     private void Awake()
     {
         _characterCamera.gameObject.SetActive(true);
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         _characterController = gameObject.GetComponent<CharacterController>();
 
         InitializeInput();
@@ -61,27 +62,11 @@ public class CharacterMovement : MonoBehaviour
             
             if (_isMoving)
             {
-                float cam = _cameraTransform.rotation.eulerAngles.x;
-                transform.rotation = Quaternion.Euler(0, _cameraTransform.rotation.eulerAngles.y, 0);
-                _cameraTransform.localEulerAngles = new Vector3(cam, 0, 0);
-
-                Vector3 moveX = new Vector3(_cameraTransform.right.x, 0, _cameraTransform.right.z).normalized * x;
-                Vector3 moveZ = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z).normalized * z;
-
-                Vector3 move = moveX + moveZ;
-
-                modifier = 1;
-                
-                if (_moveState == MoveState.Sprinting)
-                {
-                    modifier = _movementModifier;
-                }
-                else if (_moveState == MoveState.Crouching)
-                {
-                    modifier = 1 / _movementModifier;
-                }
-                
-                _characterController.Move(move * (_movementSpeed * modifier * Time.deltaTime));
+                modifier = UpdateMovement(x, z);
+            }
+            else
+            {
+                UpdateIdle();
             }
             
             _animator.SetFloat("horizontal", x * modifier);
@@ -91,13 +76,54 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    private void UpdateIdle()
+    {
+        var cameraForward = _cameraTransform.forward;
+        cameraForward.y = 0;
+        var angle = Vector3.SignedAngle(transform.forward, cameraForward, Vector3.up);
+
+        if (Mathf.Abs(angle) > _maxCameraAngle)
+        {
+            angle = Mathf.Sign(angle) * (Mathf.Abs(angle) - _maxCameraAngle);
+            transform.Rotate(Vector3.up, angle, Space.World);
+        }
+    }
+
+    private float UpdateMovement(float x, float z)
+    {
+        float modifier;
+        float cam = _cameraTransform.rotation.eulerAngles.x;
+        transform.rotation = Quaternion.Euler(0, _cameraTransform.rotation.eulerAngles.y, 0);
+        _cameraTransform.localEulerAngles = new Vector3(cam, 0, 0);
+
+        Vector3 moveX = new Vector3(_cameraTransform.right.x, 0, _cameraTransform.right.z).normalized * x;
+        Vector3 moveZ = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z).normalized * z;
+
+        Vector3 move = moveX + moveZ;
+
+        modifier = 1;
+
+        if (_moveState == MoveState.Sprinting)
+        {
+            modifier = _movementModifier;
+        }
+        else if (_moveState == MoveState.Crouching)
+        {
+            modifier = 1 / _movementModifier;
+        }
+
+        _characterController.Move(move * (_movementSpeed * modifier * Time.deltaTime));
+        return modifier;
+    }
+
     private void InitializeInput()
     {
         _characterInput = new CharacterInput();
 
         _characterInput.Player.Movement.performed += Move;
         _characterInput.Player.Jump.performed += Jump;
-        _characterInput.Player.Sprint.performed += Sprint;
+        _characterInput.Player.StartSprint.performed += StartSprint;
+        _characterInput.Player.StopSprint.performed += StopSprint;
         _characterInput.Player.Crouch.performed += Crouch;
     }
 
@@ -122,7 +148,7 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    private void Sprint(InputAction.CallbackContext context)
+    private void StartSprint(InputAction.CallbackContext context)
     {
         if (_moveState != MoveState.Crouching && !_isHoldingWeapon)
         {
@@ -137,6 +163,14 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    private void StopSprint(InputAction.CallbackContext context)
+    {
+        if (_moveState == MoveState.Sprinting)
+        {
+            _moveState = MoveState.Walking;
+        }
+    }
+
     private void Crouch(InputAction.CallbackContext context)
     {
         if (_moveState != MoveState.Crouching)
@@ -147,6 +181,7 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             _moveState = MoveState.Walking;
+            
             _animator.SetBool("isCrouching", false);
         }
     }

@@ -6,13 +6,14 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+[DefaultExecutionOrder(-100)]
 public abstract class UserInterface : MonoBehaviour
 {
     public InventoryObject Inventory;
 
     public Dictionary<GameObject, InventorySlot> SlotsOnInterface = new Dictionary<GameObject, InventorySlot>();
 
-    private void Start()
+    protected virtual void Start()
     {
         for (int i = 0; i < Inventory.GetSlots.Length; i++)
         {

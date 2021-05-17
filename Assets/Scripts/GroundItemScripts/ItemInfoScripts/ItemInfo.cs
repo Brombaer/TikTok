@@ -39,6 +39,16 @@ public abstract class ItemInfo : ScriptableObject
             buff.GenerateValue();
         }
     }
+
+    public bool IsSameAs(ItemInfo info)
+    {
+        if (info == null)
+        {
+            return false;
+        }
+        
+        return ItemName == info.ItemName;
+    }
 }
 
 [System.Serializable]

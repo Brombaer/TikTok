@@ -22,12 +22,12 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Sprint",
+                    "name": "StartSprint",
                     "type": "Button",
                     "id": "510cfba9-8a92-46a8-8fb3-99eafeb7dd2e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)"
+                    "interactions": "Press"
                 },
                 {
                     "name": "Crouch",
@@ -92,6 +92,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "StopSprint",
+                    "type": "Button",
+                    "id": "39cdef85-b9f2-4d92-a378-53a2caf3a564",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
                 }
             ],
             "bindings": [
@@ -223,7 +231,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and mouse",
-                    "action": "Sprint",
+                    "action": "StartSprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -367,6 +375,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f8baf38c-9dbc-4458-a323-d7e1545c0080",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and mouse",
+                    "action": "StopSprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

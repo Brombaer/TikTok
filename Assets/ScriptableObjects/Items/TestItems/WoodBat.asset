@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770dc73fe5d714d779dfe2f72b9ca3d0, type: 3}
+  m_Name: WoodBat
+  m_EditorClassIdentifier: 
+  ItemName: WoodBat
+  Buffs:
+  - Attribute: 0
+    Value: 0
+    Min: 20
+    Max: 50
+  - Attribute: 1
+    Value: 0
+    Min: 75
+    Max: 100
+  - Attribute: 2
+    Value: 0
+    Min: 0
+    Max: 10
+  UiDisplay: {fileID: 21300000, guid: f364650a2ff1249f3aa4bbbd9a9c7a70, type: 3}
+  visualisedGameObject: {fileID: 1145237178023060, guid: d855c6cd18605f34dbfdca25cb40d71c, type: 3}
+  SpawnRate: 1
+  Stackable: 0
+  Type: 3
+  Description: A weapon for slashing and stabbing

@@ -155,6 +155,14 @@ public class Inventory
 {
     public InventorySlot[] Slots = new InventorySlot[15];
 
+    public Inventory()
+    {
+        for (int i = 0; i < Slots.Length; i++)
+        {
+            Slots[i] = new InventorySlot();
+        }
+    }
+    
     public void Clear()
     {
         for (int i = 0; i < Slots.Length; i++)
@@ -236,7 +244,12 @@ public class InventorySlot
 
     public bool ContainsItem(ItemInfo info)
     {
-        return Content.Item == info;
+        if (Content.Item == null)
+        {
+            return info == null;
+        }
+        
+        return Content.Item.IsSameAs(info);
     }
 
     public bool IsEmpty()

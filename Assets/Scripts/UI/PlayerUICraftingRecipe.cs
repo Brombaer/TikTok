@@ -13,7 +13,17 @@ public class PlayerUICraftingRecipe : UserInterface
     [SerializeField] private Image[] _inputItemImages;
     [SerializeField] private TMP_Text[] _inputItemAmounts;
     [SerializeField] private Image _outputItemImage;
+    [SerializeField] private TMP_Text _outputItemName;
     [SerializeField] private GameObject[] _slots;
+    [SerializeField] private InventoryObject _playerInventory;
+
+    protected override void Start()
+    {
+        Inventory = ScriptableObject.CreateInstance<InventoryObject>();
+        Inventory.Type = InterfaceType.Crafting;
+        Inventory.Container = new Inventory();
+        base.Start();
+    }
 
     public void AssignCraftingRecipe(CraftingRecipe recipe)
     {
@@ -22,6 +32,7 @@ public class PlayerUICraftingRecipe : UserInterface
         if (_craftingRecipe != null)
         {
             _outputItemImage.sprite = recipe.Output.Item.UiDisplay;
+            _outputItemName.text = recipe.Output.Item.ItemName;
         }
 
         for (int i = 0; i < _inputItemImages.Length; i++)
@@ -35,13 +46,47 @@ public class PlayerUICraftingRecipe : UserInterface
                 }
             }
         }
+        
+        _craftItemButton.onClick.AddListener(OnCraftButtonClick);
     }
-    
+
+    private void OnCraftButtonClick()
+    {
+        bool hasAllIngredients = _craftingRecipe.HasAllIngredients(GetItemsFromSlots());
+        Debug.Log(hasAllIngredients.ToString());
+
+        if (hasAllIngredients)
+        {
+            if (!_craftingRecipe.Output.IsEmpty())
+            {
+                if (_playerInventory.AddItem(_craftingRecipe.Output.Item, _craftingRecipe.Output.Amount))
+                {
+                    for (int i = 0; i < _craftingRecipe.Inputs.Length; i++)
+                    {
+                        SlotsOnInterface[_slots[i]].RemoveItem();
+                    }
+                }
+            }
+        }
+    }
+
+    private ItemAmountPair[] GetItemsFromSlots()
+    {
+        var items = new ItemAmountPair[_slots.Length];
+
+        for (int i = 0; i < items.Length; i++)
+        {
+            items[i] = (SlotsOnInterface[_slots[i]]).Content;
+        }
+
+        return items;
+    }
+
     protected override void CreateSlots()
     {
         SlotsOnInterface = new Dictionary<GameObject, InventorySlot>();
     
-        for (int i = 0; i < Inventory.GetSlots.Length; i++)
+        for (int i = 0; i < _slots.Length; i++)
         {
             var obj = _slots[i];
     

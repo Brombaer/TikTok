@@ -6,6 +6,8 @@ public class InventoryInterface : UserInterface
 {
     public GameObject InventoryPrefab;
 
+    [SerializeField] private GameObject _spawnStartPosition;
+
     private int XStart = -175;
     private int YStart = 350;
 
@@ -19,7 +21,7 @@ public class InventoryInterface : UserInterface
 
         for (int i = 0; i < Inventory.GetSlots.Length; i++)
         {
-            var obj = Instantiate(InventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+            var obj = Instantiate(InventoryPrefab, Vector3.zero, Quaternion.identity, _spawnStartPosition.transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
 
             AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });

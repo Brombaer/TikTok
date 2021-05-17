@@ -95,6 +95,11 @@ public class CharacterAiInteractor : MonoBehaviour
             }
         }
     }
+    
+    public void DamageEvent()
+    {
+        Attack();
+    }
 
     public void OnTriggerEnter(Collider other)
     {
