@@ -542,6 +542,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &360797595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1893893183565338410, guid: 76fe0dd7bff3944c78cb60e1d687d0b9, type: 3}
+  m_PrefabInstance: {fileID: 1893893183044397482}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &396945294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1355,6 +1360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1859403255}
+  mainMenuUI: {fileID: 0}
 --- !u!54 &905397853
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1517,6 +1523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questPrintBox: {fileID: 943637278}
   buttonPrefab: {fileID: 2982421469382384637, guid: edd1c8e281a204720a95aef0628ea854, type: 3}
+  questUI: {fileID: 360797595}
   A: {fileID: 1872363824}
   B: {fileID: 3265406}
   C: {fileID: 1648057705}
@@ -2217,6 +2224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1859403255}
+  mainMenuUI: {fileID: 0}
 --- !u!114 &1859403257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2391,7 +2399,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872363824}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2415,7 +2423,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10650, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2802,7 +2810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1893893183446444725, guid: 76fe0dd7bff3944c78cb60e1d687d0b9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 18.76494
+      value: 12.681046
       objectReference: {fileID: 0}
     - target: {fileID: 1893893183583004308, guid: 76fe0dd7bff3944c78cb60e1d687d0b9, type: 3}
       propertyPath: m_AnchorMax.x

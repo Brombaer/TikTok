@@ -8,9 +8,14 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject menuObject;
     [SerializeField] private CinemachineVirtualCamera cinemachine;
+    [SerializeField] private Camera camera1;
+    [SerializeField] private Camera camera2;
+
 
     private void OnEnable()
     {
+        camera1.enabled = true;
+        camera2.enabled = false;
 
         CharacterMovement.IsEnabled = false;
         cinemachine.enabled = false;
@@ -25,6 +30,9 @@ public class MainMenu : MonoBehaviour
         menuObject.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        camera1.enabled = false;
+        camera2.enabled = true;
+
     }
 
     public void Quitgame()
