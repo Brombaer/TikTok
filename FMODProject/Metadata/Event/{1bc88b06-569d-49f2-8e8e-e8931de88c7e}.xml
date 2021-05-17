@@ -59,7 +59,7 @@
 			<destination>{51482640-ccb9-4a22-8325-ac7f1339aed8}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{be645fd4-ce62-4c3f-8130-d2c05486a3a1}</destination>
+			<destination>{7b02c282-1d84-4fab-902b-749c02a8dbcc}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{a9f97db6-eac6-4be8-b294-b125f785d308}" />
@@ -148,6 +148,9 @@
 		</relationship>
 	</object>
 	<object class="MultiSound" id="{631cec3f-bc99-4c57-a659-fb1978656018}">
+		<property name="volume">
+			<value>3</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{854bb0a5-e3a0-47cc-955d-238a1e19f893}</destination>
 			<destination>{5db38576-de18-442c-b94d-47d20893a377}</destination>
@@ -164,6 +167,9 @@
 		<property name="start">
 			<value>2</value>
 		</property>
+		<property name="volume">
+			<value>3</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{5ba5a69f-4d8b-4ca5-8ff8-2c0691afd35f}</destination>
 			<destination>{0e32abb6-6add-4ed6-b912-520fdd6c3ad0}</destination>
@@ -178,6 +184,9 @@
 	</object>
 	<object class="MultiSound" id="{db8caf3b-aca2-47ca-ad34-63f32a4c76d0}">
 		<property name="start">
+			<value>3</value>
+		</property>
+		<property name="volume">
 			<value>3</value>
 		</property>
 		<relationship name="modulators">
@@ -231,6 +240,9 @@
 		<property name="startOffset">
 			<value>1</value>
 		</property>
+		<property name="volume">
+			<value>4</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{f84d86c1-a050-4c02-9694-1c189f3949e9}</destination>
 			<destination>{43ac1081-075d-4028-ab68-81290835f843}</destination>
@@ -249,7 +261,7 @@
 			<value>5</value>
 		</property>
 		<property name="volume">
-			<value>-9</value>
+			<value>-6</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{3c060fb8-ba3d-4ff6-b1f2-65c167bcf3a7}</destination>
@@ -266,6 +278,9 @@
 	<object class="MultiSound" id="{a67bf132-deb2-47e9-b621-24f8854f4dda}">
 		<property name="start">
 			<value>6</value>
+		</property>
+		<property name="volume">
+			<value>3</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{df085914-c843-4b09-8e18-73a35987bdd0}</destination>
@@ -284,7 +299,7 @@
 			<value>1</value>
 		</property>
 		<property name="volume">
-			<value>-2</value>
+			<value>1</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{03868daa-9caf-4d69-9e69-8242a279e755}</destination>
@@ -872,7 +887,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>7</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{b9dd097f-7a44-4240-b716-4f0e39dc82cd}">
