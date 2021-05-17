@@ -13,6 +13,7 @@ public class PlayerUICraftingRecipe : UserInterface
     [SerializeField] private Image[] _inputItemImages;
     [SerializeField] private TMP_Text[] _inputItemAmounts;
     [SerializeField] private Image _outputItemImage;
+    [SerializeField] private TMP_Text _outputItemName;
     [SerializeField] private GameObject[] _slots;
     [SerializeField] private InventoryObject _playerInventory;
 
@@ -31,6 +32,7 @@ public class PlayerUICraftingRecipe : UserInterface
         if (_craftingRecipe != null)
         {
             _outputItemImage.sprite = recipe.Output.Item.UiDisplay;
+            _outputItemName.text = recipe.Output.Item.ItemName;
         }
 
         for (int i = 0; i < _inputItemImages.Length; i++)
