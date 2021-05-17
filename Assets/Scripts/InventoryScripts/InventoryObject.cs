@@ -244,7 +244,12 @@ public class InventorySlot
 
     public bool ContainsItem(ItemInfo info)
     {
-        return Content.Item == info;
+        if (Content.Item == null)
+        {
+            return info == null;
+        }
+        
+        return Content.Item.IsSameAs(info);
     }
 
     public bool IsEmpty()

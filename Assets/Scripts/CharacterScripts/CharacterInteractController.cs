@@ -324,6 +324,7 @@ public class CharacterInteractController : MonoBehaviour
                             {
                                 case ItemType.Weapon:
                                     _weapon = Instantiate(slot.ItemInfo.visualisedGameObject, _weaponHandTransform).transform;
+                                    _weapon.GetComponent<Rigidbody>().isKinematic = true;
                                     _animator.SetBool("isHoldingWeapon", true);
                                     break;
                                 case ItemType.Tool:

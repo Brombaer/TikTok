@@ -17,6 +17,8 @@ public class AIBehaviour : MonoBehaviour
     [SerializeField] private float _fieldOfView = 120;
     [SerializeField] private float _viewDistance = 15;
     [SerializeField] private int _health = 100;
+    [SerializeField] private GameObject _ragdoll;
+    [SerializeField] private GameObject[] _skins;
     
     public int AttackDamage;
     [SerializeField] private float _attackRange = 1;
@@ -40,9 +42,6 @@ public class AIBehaviour : MonoBehaviour
     private Vector3 _movePosition;
     private NavMeshAgent _agent;
     
-    private Collider[] _ragdollColliders;
-    private Rigidbody[] _ragdollRigidbodies;
-
     [SerializeField] private float _timer = 60;
     [SerializeField] private float _currentTime;
     [SerializeField] private float _preparationTime = 10;
@@ -53,6 +52,8 @@ public class AIBehaviour : MonoBehaviour
 
     [SerializeField] private GameObject _leftHandFist;
     [SerializeField] private GameObject _rightHandFist;
+
+    private int _skinIndex;
 
     public void Start()
     {
@@ -66,27 +67,19 @@ public class AIBehaviour : MonoBehaviour
         
         _movePosition = RandomMovePosition();
 
-        _ragdollColliders = GetComponents<Collider>();
-        _ragdollRigidbodies = GetComponents<Rigidbody>();
-
         _sphereCollider = GetComponent<SphereCollider>();
 
         _leftHandFist = gameObject.transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L").gameObject;
         _rightHandFist = gameObject.transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R").gameObject;
+
+        if (_skins != null)
+        {
+            _skins[0].SetActive(false);
+
+            _skinIndex = Random.Range(0, _skins.Length);
+            _skins[_skinIndex].SetActive(true);
+        }
         
-        foreach (Collider collider in _ragdollColliders)
-        {
-            if (!collider.CompareTag("Zombie"))
-            {
-                collider.enabled = false;
-            }
-        }
-
-        foreach (Rigidbody rigidbody in _ragdollRigidbodies)
-        {
-            rigidbody.isKinematic = true;
-        }
-
         _currentTime = _timer;
     }
 
@@ -252,15 +245,14 @@ public class AIBehaviour : MonoBehaviour
         _agent.speed = 0;
         _animator.enabled = false;
 
-        foreach (Collider collider in _ragdollColliders)
+        if (_ragdoll != null)
         {
-            collider.enabled = true;
+            var ragdoll = Instantiate(_ragdoll, transform.position, transform.rotation);
+            ragdoll.GetComponent<Ragdoll>().SetSkin(_skinIndex);
+            Destroy(ragdoll, 10f);
         }
-
-        foreach (Rigidbody rigidbody in _ragdollRigidbodies)
-        {
-            rigidbody.isKinematic = false;
-        }
+        
+        Destroy(gameObject);
     }
 
     private Vector3 RandomMovePosition()
