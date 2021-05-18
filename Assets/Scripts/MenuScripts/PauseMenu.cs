@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
-    [SerializeField] private MainMenu mainMenuUI;
+   
 
     private CharacterInput _characterInput;
 
@@ -50,15 +50,14 @@ public class PauseMenu : MonoBehaviour
 
     private void Pause()
     {
-        if (mainMenuUI == null)
-        {
+        
             
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
-        }
+      
     }
 
 
@@ -78,10 +77,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("WorldScene");
     }
 
-    public void LoadMenu()
-    {
-        mainMenuUI.enabled=true;
-    }
+    
 
     public void QuitMenu()
     {
