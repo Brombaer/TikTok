@@ -35,10 +35,10 @@ public class QuestManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
 
 
-        QuestEvent a = quest.AddQuestEvent("test1", "description 1");
-        QuestEvent b = quest.AddQuestEvent("test2", "description 2");
-        QuestEvent c = quest.AddQuestEvent("test3", "description 3");
-        QuestEvent d = quest.AddQuestEvent("test4", "description 4");
+        QuestEvent a = quest.AddQuestEvent("Quest Tutorial", "Go to the Food Market");
+        QuestEvent b = quest.AddQuestEvent("FInd The Location", "Go to the Repairs");
+        QuestEvent c = quest.AddQuestEvent("Find The Light Source", "Find the Flash light");
+        QuestEvent d = quest.AddQuestEvent("FInd The Light Source", "Find the Flip Lighter");
         QuestEvent e = quest.AddQuestEvent("test5", "description 5");
 
         quest.Addpath(a.GetId(), b.GetId());

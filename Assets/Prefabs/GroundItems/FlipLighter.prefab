@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 5008369413749215493}
   - component: {fileID: 7419555159220891430}
   - component: {fileID: -4515318225191642945}
+  - component: {fileID: 651309885757502080}
   m_Layer: 6
   m_Name: FlipLighter
   m_TagString: InteractableObject
@@ -205,7 +206,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925410267325686}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.044597015, y: 0.105561405, z: 0.0746965}
@@ -223,6 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: 81d0a42e0a22e4fca9a54844e50c991b, type: 2}
+  _timer: 3
 --- !u!114 &-4515318225191642945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,3 +243,17 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &651309885757502080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925410267325686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48b067cc58277459bac7a1a6080b3ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qManager: {fileID: 8786082491860608027, guid: f4bfd2e6f21dd425a8ed6dfc57c1ef1f, type: 3}
+  qButton: {fileID: 3395037147271195051, guid: edd1c8e281a204720a95aef0628ea854, type: 3}

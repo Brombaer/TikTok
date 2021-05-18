@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8477628802274701534}
   - component: {fileID: 6162889146829185205}
   - component: {fileID: -2150767063227037756}
+  - component: {fileID: -7861510566048319858}
   m_Layer: 6
   m_Name: FlashLight
   m_TagString: InteractableObject
@@ -128,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: e7238cadc746e44d3afcf474e201daea, type: 2}
+  _timer: 3
 --- !u!114 &-2150767063227037756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,3 +148,17 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-7861510566048319858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319503299267252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48b067cc58277459bac7a1a6080b3ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qManager: {fileID: 8786082491860608027, guid: f4bfd2e6f21dd425a8ed6dfc57c1ef1f, type: 3}
+  qButton: {fileID: 3395037147271195051, guid: edd1c8e281a204720a95aef0628ea854, type: 3}
