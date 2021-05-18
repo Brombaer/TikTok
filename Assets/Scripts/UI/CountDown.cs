@@ -7,31 +7,41 @@ using UnityEngine;
 public class CountDown : MonoBehaviour
 {
     //Variable
-    [SerializeField]
     private float _currentTime;
     [SerializeField]
     private float _startingTime;
     [SerializeField]
-    private Text _countDownText;
-        
+    private Image _image;
+    private Color _targetColor;
 
-
-    //Function
-    void Start()
+    //function
+    public void Start()
     {
+        _image = gameObject.GetComponent<Image>();
         _currentTime = _startingTime;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        _currentTime -= 1 * Time.deltaTime;
-        _countDownText.text = _currentTime.ToString("0");
-        
-        if (_currentTime <= 0)
+        if (_currentTime != 0)
         {
-            _currentTime = 0;
+            _currentTime -= Time.deltaTime;
+            _image.fillAmount = _currentTime / _startingTime;
+            if (_currentTime < 10)
+            {
+                _image.color = new Color32(255, 255, 0, 100);
+            }
+        }
+        //else if (_currentTime < 10)
+        //{
+        //    _image.color = new Color32(255, 0, 0, 100);
+        //    _image.fillAmount = _currentTime / _startingTime;
+        //}
+        if (_currentTime == 0)
+        {
             SceneManager.LoadScene(2);
         }
     }
+
+
 }
