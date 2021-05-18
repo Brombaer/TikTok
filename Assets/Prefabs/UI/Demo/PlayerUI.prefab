@@ -2403,7 +2403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3007871995874307319, guid: 4b7b47920f6724325b38bd53253b95d2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3007871995874307319, guid: 4b7b47920f6724325b38bd53253b95d2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2411,7 +2411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3007871995874307319, guid: 4b7b47920f6724325b38bd53253b95d2, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3007871995874307319, guid: 4b7b47920f6724325b38bd53253b95d2, type: 3}
       propertyPath: m_AnchorMin.y
@@ -2455,7 +2455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3007871995874307319, guid: 4b7b47920f6724325b38bd53253b95d2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 3007871995874307319, guid: 4b7b47920f6724325b38bd53253b95d2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3382,6 +3382,22 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4576351080045218165, guid: eb0f78aa45ccf4c92ad6fc321303fc3f, type: 3}
+      propertyPath: _recipes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576351080045218165, guid: eb0f78aa45ccf4c92ad6fc321303fc3f, type: 3}
+      propertyPath: _recipes.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e691d0b514f634773b062ed772f5375f, type: 2}
+    - target: {fileID: 4576351080045218165, guid: eb0f78aa45ccf4c92ad6fc321303fc3f, type: 3}
+      propertyPath: _recipes.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1cbd5f292d80c48b786305c62a91a772, type: 2}
+    - target: {fileID: 4576351080045218165, guid: eb0f78aa45ccf4c92ad6fc321303fc3f, type: 3}
+      propertyPath: _recipes.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7fb60eaf9770c4c0dbc1d43b0e9c009b, type: 2}
     - target: {fileID: 6264884932164522248, guid: eb0f78aa45ccf4c92ad6fc321303fc3f, type: 3}
       propertyPath: m_Name
       value: CraftingPanel
