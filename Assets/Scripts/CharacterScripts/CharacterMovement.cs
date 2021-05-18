@@ -42,7 +42,7 @@ public class CharacterMovement : MonoBehaviour
     private void Awake()
     {
         _characterCamera.gameObject.SetActive(true);
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         _characterController = gameObject.GetComponent<CharacterController>();
 
         InitializeInput();
