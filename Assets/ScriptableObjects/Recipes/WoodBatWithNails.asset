@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d5f6059165d46589a8e4cdd2b1ecda, type: 3}
+  m_Name: WoodBatWithNails
+  m_EditorClassIdentifier: 
+  Output:
+    Item: {fileID: 11400000, guid: f4109fe1ccf4347658f3fd8de19b04c7, type: 2}
+    Amount: 1
+  Inputs:
+  - Item: {fileID: 11400000, guid: 75972f0c36ba948a9ad2f3c904d6108d, type: 2}
+    Amount: 1
+  - Item: {fileID: 11400000, guid: d0bead1acd7e64016af0f4b82163a421, type: 2}
+    Amount: 1
