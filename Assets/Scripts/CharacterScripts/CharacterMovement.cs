@@ -23,7 +23,7 @@ public class CharacterMovement : MonoBehaviour
 
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private LayerMask _groundMask;
-    private float _groundDistance = 0.1f;
+    private float _groundDistance = 0.3f;
     private bool _isGrounded = false;
 
     [SerializeField] private Animator _animator;

@@ -21,15 +21,15 @@ MonoBehaviour:
       Content:
         Item: {fileID: 0}
         Amount: 0
-    - AllowedItems: 
-      Content:
-        Item: {fileID: 0}
-        Amount: 1
     - AllowedItems: 02000000
       Content:
         Item: {fileID: 0}
-        Amount: 0
+        Amount: 1
     - AllowedItems: 0300000004000000
       Content:
         Item: {fileID: 0}
-        Amount: 1
+        Amount: 0
+    - AllowedItems: 05000000
+      Content:
+        Item: {fileID: 0}
+        Amount: 0
