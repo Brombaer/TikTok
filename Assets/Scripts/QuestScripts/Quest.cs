@@ -18,13 +18,6 @@ public class Quest
         return questEvent;
     }
 
-    public QuestEvent AddQuestEvent(string n, string d, QuestEvent.ItemToComplete i)
-    {
-        QuestEvent questEvent = new QuestEvent(n, d, i);
-        questEvents.Add(questEvent);
-        return questEvent;
-    }
-
     public void Addpath(string fromQuestEvent, string toQuestEvent)
     {
         QuestEvent from = FindQuestEvent(fromQuestEvent);
