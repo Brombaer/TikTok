@@ -10,7 +10,7 @@ public class QuestManager : MonoBehaviour
     public GameObject questPrintBox;
     public GameObject buttonPrefab;
     public GameObject questUI;
- 
+
 
     public GameObject A;
     public GameObject B;
@@ -27,7 +27,7 @@ public class QuestManager : MonoBehaviour
     }
     private void Start()
     {
-        
+
 
         questUI.SetActive(false);
 
@@ -37,8 +37,8 @@ public class QuestManager : MonoBehaviour
 
         QuestEvent a = quest.AddQuestEvent("Quest Tutorial", "Go to the Food Market");
         QuestEvent b = quest.AddQuestEvent("FInd The Location", "Go to the Repairs");
-        QuestEvent c = quest.AddQuestEvent("Find The Light Source", "Find the Flash light");
-        QuestEvent d = quest.AddQuestEvent("FInd The Light Source", "Find the Flip Lighter");
+        QuestEvent c = quest.AddQuestEvent("Find The Light Source", "Find the Flash light", QuestEvent.ItemToComplete.FlashLight);
+        QuestEvent d = quest.AddQuestEvent("FInd The Light Source", "Find the Flip Lighter", QuestEvent.ItemToComplete.FlipLighter);
         QuestEvent e = quest.AddQuestEvent("test5", "description 5");
 
         quest.Addpath(a.GetId(), b.GetId());
@@ -52,9 +52,9 @@ public class QuestManager : MonoBehaviour
 
         QuestButton button = CreateButton(a).GetComponent<QuestButton>();
         A.GetComponent<QuestLocation>().Setup(this, a, button);
-         button = CreateButton(b).GetComponent<QuestButton>();
+        button = CreateButton(b).GetComponent<QuestButton>();
         B.GetComponent<QuestLocation>().Setup(this, b, button);
-         button = CreateButton(c).GetComponent<QuestButton>();
+        button = CreateButton(c).GetComponent<QuestButton>();
         C.GetComponent<QuestLocation>().Setup(this, c, button);
         button = CreateButton(d).GetComponent<QuestButton>();
         D.GetComponent<QuestLocation>().Setup(this, d, button);
@@ -70,7 +70,7 @@ public class QuestManager : MonoBehaviour
         {
             questUI.SetActive(false);
         }
-        else if(questUI.activeSelf ==false)
+        else if (questUI.activeSelf == false)
         {
             questUI.SetActive(true);
         }
@@ -88,7 +88,7 @@ public class QuestManager : MonoBehaviour
     {
         GameObject b = Instantiate(buttonPrefab);
         b.GetComponent<QuestButton>().Setup(e, questPrintBox);
-        if(e.order == 1)
+        if (e.order == 1)
         {
             b.GetComponent<QuestButton>().UpdateButton(QuestEvent.EventStatus.Current);
             e.status = QuestEvent.EventStatus.Current;
@@ -108,13 +108,17 @@ public class QuestManager : MonoBehaviour
     }
 
 
-    public void UpdateQuestsOnCompletion (QuestEvent e)
+    public void UpdateQuestsOnCompletion(QuestEvent e)
     {
-        foreach(QuestEvent n in quest.questEvents)
+        if (e.itemToComplete == QuestEvent.ItemToComplete.None)
         {
-            if(n.order == (e.order + 1))
+
+            foreach (QuestEvent n in quest.questEvents)
             {
-                n.UpdateQuestEvent(QuestEvent.EventStatus.Current);
+                if (n.order == (e.order + 1))
+                {
+                    n.UpdateQuestEvent(QuestEvent.EventStatus.Current);
+                }
             }
         }
     }

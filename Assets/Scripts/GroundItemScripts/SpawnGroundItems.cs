@@ -13,6 +13,8 @@ public class SpawnGroundItems : MonoBehaviour
     [SerializeField] private bool _allowOverlap = false;
     [SerializeField] private bool _allowSimilarItems = false;
 
+    [SerializeField] private QuestManager questManager;
+
     private float _timer = 3;
 
     private void Start()
@@ -52,12 +54,27 @@ public class SpawnGroundItems : MonoBehaviour
 
             if (allowSimilarItems)
             {
-                Instantiate(GetObjectWithMaxProb(), freeSpawnPoints[spawnPointIndex].position, Quaternion.identity, freeSpawnPoints[spawnPointIndex]);
+
+                GameObject gameobject = Instantiate(GetObjectWithMaxProb(), freeSpawnPoints[spawnPointIndex].position, Quaternion.identity, freeSpawnPoints[spawnPointIndex]);
+                QuestPickupable pickupable = gameobject.GetComponent<QuestPickupable>();
+
+                if (pickupable != null)
+                {
+                    pickupable.qManager = questManager;
+
+                }
                 //remainingItems.AddRange(items);
             }
             else
             {
-                Instantiate(remainingItems[itemIndex], freeSpawnPoints[spawnPointIndex].position, Quaternion.identity, freeSpawnPoints[spawnPointIndex]);
+                GameObject gameobject = Instantiate(remainingItems[itemIndex], freeSpawnPoints[spawnPointIndex].position, Quaternion.identity, freeSpawnPoints[spawnPointIndex]);
+                QuestPickupable pickupable = gameobject.GetComponent<QuestPickupable>();
+
+                if (pickupable != null)
+                {
+                    pickupable.qManager = questManager;
+
+                }
             }
             
             //remainingItems.RemoveAt(itemIndex);
