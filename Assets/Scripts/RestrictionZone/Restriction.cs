@@ -6,19 +6,9 @@ using UnityEngine.SceneManagement;
 public class Restriction : MonoBehaviour
 {
     //Variable
-    //private bool[] _isFull;
-    //private GameObject[] _slots;
-
-
 
 
     //Function
-    //Check if have item
-    private void checkItem()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         IKillable killable = other.GetComponent<IKillable>();
@@ -29,13 +19,13 @@ public class Restriction : MonoBehaviour
             if (effect == KillZoneEnteredEffect.Kill)
             {
                 gameObject.SetActive(false);
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
 
             }
-            if (effect == KillZoneEnteredEffect.Escape )
+            if (effect == KillZoneEnteredEffect.Escape)
             {
                 gameObject.SetActive(true);
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(3);
             }
         }
     }
