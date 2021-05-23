@@ -98,7 +98,7 @@ public class CharacterInteractController : MonoBehaviour
             
             Debug.Log("The player got attacked");
             Debug.Log(_healthSystem.GetHealth().ToString());
-
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Character/Damage", transform.position);
             other.gameObject.GetComponent<Collider>().enabled = false;
         }
     }

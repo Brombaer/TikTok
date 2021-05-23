@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3731299081236697387}
   - component: {fileID: 3996394942240583725}
   - component: {fileID: -1261585601653182841}
+  - component: {fileID: 2116121845}
   m_Layer: 6
   m_Name: MetalBat
   m_TagString: InteractableObject
@@ -29,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123592119813206}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -149,6 +150,19 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &2116121845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123592119813206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0462821929cf97d4ab2e95f14570c65f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: 4
 --- !u!1 &1717559231547676
 GameObject:
   m_ObjectHideFlags: 0

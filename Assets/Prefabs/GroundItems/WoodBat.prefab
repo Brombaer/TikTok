@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6904586595930622504}
   - component: {fileID: 7033952879332916327}
   - component: {fileID: -1148624409636793367}
+  - component: {fileID: 1093698925}
   m_Layer: 6
   m_Name: WoodBat
   m_TagString: InteractableObject
@@ -147,6 +148,19 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &1093698925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836969342857340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0462821929cf97d4ab2e95f14570c65f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: 7
 --- !u!1001 &1117554957717032962
 PrefabInstance:
   m_ObjectHideFlags: 0
