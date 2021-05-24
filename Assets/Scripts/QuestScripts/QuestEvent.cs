@@ -15,8 +15,15 @@ public class QuestEvent
     public enum ItemToComplete
     {
         None,
-        FlashLight,
-        FlipLighter
+        Crowbar,
+        Hammer,
+        Katana,
+        BuzzBlade,
+        BrokenAlcoholBottle1,
+        BrokenAlcoholBottle2,
+        MetalBat,
+        WoodBat,
+        Pan
     }
 
     public string name;

@@ -37,8 +37,8 @@ public class QuestManager : MonoBehaviour
 
         QuestEvent a = quest.AddQuestEvent("Quest Tutorial", "Go to the Food Market");
         QuestEvent b = quest.AddQuestEvent("FInd The Location", "Go to the Repairs");
-        QuestEvent c = quest.AddQuestEvent("Find The Light Source", "Find the Flash light", QuestEvent.ItemToComplete.FlashLight);
-        QuestEvent d = quest.AddQuestEvent("FInd The Light Source", "Find the Flip Lighter", QuestEvent.ItemToComplete.FlipLighter);
+        QuestEvent c = quest.AddQuestEvent("Find The Light Source", "Find the Flash light", QuestEvent.ItemToComplete.WoodBat);
+        QuestEvent d = quest.AddQuestEvent("FInd The Light Source", "Find the Flip Lighter", QuestEvent.ItemToComplete.MetalBat);
         QuestEvent e = quest.AddQuestEvent("test5", "description 5");
 
         quest.Addpath(a.GetId(), b.GetId());
