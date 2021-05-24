@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{acd5e300-2298-4e18-a431-4119fd03dff0}">
+		<property name="assetPath">
+			<value>Music/MainMenu/GTR Lead.01_02.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>32.415166666666664</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e491800d-d4d5-4681-96cc-9269640defb4}</destination>
+		</relationship>
+	</object>
+</objects>
