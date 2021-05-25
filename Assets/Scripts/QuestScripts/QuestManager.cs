@@ -35,11 +35,11 @@ public class QuestManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
 
 
-        QuestEvent a = quest.AddQuestEvent("Quest Tutorial", "Go to the Food Market");
-        QuestEvent b = quest.AddQuestEvent("FInd The Location", "Go to the Repairs");
+        QuestEvent a = quest.AddQuestEvent("Quest Tutorial", "Go to the Food Market",QuestEvent.ItemToComplete.BrokenAlcoholBottle1);
+        QuestEvent b = quest.AddQuestEvent("FInd The Location", "Go to the Repairs",QuestEvent.ItemToComplete.BrokenAlcoholBottle2);
         QuestEvent c = quest.AddQuestEvent("Find The Light Source", "Find the Flash light", QuestEvent.ItemToComplete.WoodBat);
         QuestEvent d = quest.AddQuestEvent("FInd The Light Source", "Find the Flip Lighter", QuestEvent.ItemToComplete.MetalBat);
-        QuestEvent e = quest.AddQuestEvent("test5", "description 5");
+        QuestEvent e = quest.AddQuestEvent("test5", "description 5",QuestEvent.ItemToComplete.Hammer);
 
         quest.Addpath(a.GetId(), b.GetId());
         quest.Addpath(b.GetId(), c.GetId());
@@ -55,6 +55,7 @@ public class QuestManager : MonoBehaviour
         button = CreateButton(b).GetComponent<QuestButton>();
         B.GetComponent<QuestLocation>().Setup(this, b, button);
         button = CreateButton(c).GetComponent<QuestButton>();
+         button = CreateButton(c).GetComponent<QuestButton>();
         C.GetComponent<QuestLocation>().Setup(this, c, button);
         button = CreateButton(d).GetComponent<QuestButton>();
         D.GetComponent<QuestLocation>().Setup(this, d, button);
@@ -70,7 +71,7 @@ public class QuestManager : MonoBehaviour
         {
             questUI.SetActive(false);
         }
-        else if (questUI.activeSelf == false)
+        else if(questUI.activeSelf ==false)
         {
             questUI.SetActive(true);
         }
@@ -88,7 +89,7 @@ public class QuestManager : MonoBehaviour
     {
         GameObject b = Instantiate(buttonPrefab);
         b.GetComponent<QuestButton>().Setup(e, questPrintBox);
-        if (e.order == 1)
+        if(e.order == 1)
         {
             b.GetComponent<QuestButton>().UpdateButton(QuestEvent.EventStatus.Current);
             e.status = QuestEvent.EventStatus.Current;
@@ -111,14 +112,12 @@ public class QuestManager : MonoBehaviour
     public void UpdateQuestsOnCompletion(QuestEvent e)
     {
         if (e.itemToComplete == QuestEvent.ItemToComplete.None)
-        {
 
             foreach (QuestEvent n in quest.questEvents)
+        {
+            if(n.order == (e.order + 1))
             {
-                if (n.order == (e.order + 1))
-                {
-                    n.UpdateQuestEvent(QuestEvent.EventStatus.Current);
-                }
+                n.UpdateQuestEvent(QuestEvent.EventStatus.Current);
             }
         }
     }

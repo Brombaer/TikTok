@@ -9,11 +9,11 @@ public class SpawnGroundItems : MonoBehaviour
 {
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private GameObject[] _groundItems;
+    [SerializeField] private QuestManager questManager;
+
 
     [SerializeField] private bool _allowOverlap = false;
     [SerializeField] private bool _allowSimilarItems = false;
-
-    [SerializeField] private QuestManager questManager;
 
     private float _timer = 3;
 
@@ -63,6 +63,8 @@ public class SpawnGroundItems : MonoBehaviour
                     pickupable.qManager = questManager;
 
                 }
+
+                Instantiate(GetObjectWithMaxProb(), freeSpawnPoints[spawnPointIndex].position, Quaternion.identity, freeSpawnPoints[spawnPointIndex]);
                 //remainingItems.AddRange(items);
             }
             else
@@ -75,6 +77,8 @@ public class SpawnGroundItems : MonoBehaviour
                     pickupable.qManager = questManager;
 
                 }
+
+                Instantiate(remainingItems[itemIndex], freeSpawnPoints[spawnPointIndex].position, Quaternion.identity, freeSpawnPoints[spawnPointIndex]);
             }
             
             //remainingItems.RemoveAt(itemIndex);

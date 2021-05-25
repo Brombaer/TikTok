@@ -9,10 +9,9 @@ public class Target : MonoBehaviour, IKillable
     private KillZoneEnteredEffect _effect;
 
     //Function
-    public KillZoneEnteredEffect Kill()
+    public KillZoneEnteredEffect Effect()
     {
         return _effect;
     }
-
 
 }

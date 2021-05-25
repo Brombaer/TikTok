@@ -35,16 +35,12 @@ public class QuestEvent
     public ItemToComplete itemToComplete = ItemToComplete.None;
    
 
+
+
     public List<QuestPath> pathlist = new List<QuestPath>();
 
-    public QuestEvent(string n, string d)
-    {
-        id = Guid.NewGuid().ToString();
-        name = n;
-        description = d;
-        status = EventStatus.Waiting;
-        
-    }
+
+
     public QuestEvent(string n, string d, ItemToComplete i)
     {
         id = Guid.NewGuid().ToString();

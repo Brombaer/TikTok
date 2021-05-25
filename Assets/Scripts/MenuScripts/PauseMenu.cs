@@ -77,9 +77,10 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("WorldScene");
         Time.timeScale = 1f;
         GameIsPaused = false;
+
     }
 
-    
+
 
     public void QuitMenu()
     {

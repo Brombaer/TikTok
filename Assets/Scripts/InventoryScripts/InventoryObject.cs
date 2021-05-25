@@ -56,7 +56,7 @@ public class InventoryObject : ScriptableObject
         }
     }
 
-    private InventorySlot FindItemOnInventory(ItemInfo item)
+    public InventorySlot FindItemOnInventory(ItemInfo item)
     {
         for (int i = 0; i < GetSlots.Length; i++)
         {

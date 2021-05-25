@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IKillable
 {
-    KillZoneEnteredEffect Kill();
+    KillZoneEnteredEffect Effect();
 }

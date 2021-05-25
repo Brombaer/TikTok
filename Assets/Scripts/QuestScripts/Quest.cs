@@ -11,12 +11,6 @@ public class Quest
     {
     }
 
-    public QuestEvent AddQuestEvent(string n, string d)
-    {
-        QuestEvent questEvent = new QuestEvent(n, d);
-        questEvents.Add(questEvent);
-        return questEvent;
-    }
 
     public QuestEvent AddQuestEvent(string n, string d, QuestEvent.ItemToComplete i)
     {
