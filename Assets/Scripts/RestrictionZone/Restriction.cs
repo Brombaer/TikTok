@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Restriction : MonoBehaviour
 {
     //Variable
+    [SerializeField]
+    private ItemInfo[] _itemsToEscape;
 
 
     //Function
@@ -15,17 +17,37 @@ public class Restriction : MonoBehaviour
         if (killable != null)
         {
 
-            KillZoneEnteredEffect effect = killable.Kill();
+            KillZoneEnteredEffect effect = killable.Effect();
             if (effect == KillZoneEnteredEffect.Kill)
             {
                 gameObject.SetActive(false);
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(1);
 
             }
             if (effect == KillZoneEnteredEffect.Escape)
             {
+                //gameObject.SetActive(true);
+                //SceneManager.LoadScene(2);
+                CheckSyringe();
+            }
+        }
+    }
+
+    private void CheckSyringe()
+    {
+        InventoryObject inventoryObject = GetComponent<InventoryObject>();
+        for (int i = 0; i < _itemsToEscape.Length; i++)
+        {
+
+            if (inventoryObject.FindItemOnInventory(_itemsToEscape[i]) != null)
+            {
                 gameObject.SetActive(true);
-                SceneManager.LoadScene(3);
+                SceneManager.LoadScene(2);
+                
+            }
+            else
+            {
+                Debug.Log("You need a syringe");
             }
         }
     }
