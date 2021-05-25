@@ -341,8 +341,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1030859162}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: QuitMenu
+        m_TargetAssemblyTypeName: WinLoseScene, Assembly-CSharp
+        m_MethodName: Quitgame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -795,10 +795,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1030859158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a525b05577a334a63bca473f6c54e497, type: 3}
+  m_Script: {fileID: 11500000, guid: 835f1f088980b4132a97634498685a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
 --- !u!1 &1238525242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,8 +1124,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1030859162}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: RestartMenu
+        m_TargetAssemblyTypeName: WinLoseScene, Assembly-CSharp
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
