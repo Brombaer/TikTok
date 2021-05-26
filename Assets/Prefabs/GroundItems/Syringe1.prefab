@@ -145,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 1
   outlineColor: {r: 1, g: 0, b: 0, a: 1}
-  outlineWidth: 5
+  outlineWidth: 10
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -207,6 +207,22 @@ PrefabInstance:
     - target: {fileID: 2142991057830628788, guid: 82cecfbb0d76e491e90103624aed3aab, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8008916677960898626, guid: 82cecfbb0d76e491e90103624aed3aab, type: 3}
+      propertyPath: outlineWidth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8008916677960898626, guid: 82cecfbb0d76e491e90103624aed3aab, type: 3}
+      propertyPath: precomputeOutline
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8008916677960898626, guid: 82cecfbb0d76e491e90103624aed3aab, type: 3}
+      propertyPath: bakeKeys.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8008916677960898626, guid: 82cecfbb0d76e491e90103624aed3aab, type: 3}
+      propertyPath: bakeValues.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82cecfbb0d76e491e90103624aed3aab, type: 3}
@@ -284,6 +300,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4007964887196304}
     m_Modifications:
+    - target: {fileID: -3314743515660693961, guid: 10fd477937de9490da427ca4f2e10e3f, type: 3}
+      propertyPath: outlineWidth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3314743515660693961, guid: 10fd477937de9490da427ca4f2e10e3f, type: 3}
+      propertyPath: precomputeOutline
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3314743515660693961, guid: 10fd477937de9490da427ca4f2e10e3f, type: 3}
+      propertyPath: bakeKeys.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3314743515660693961, guid: 10fd477937de9490da427ca4f2e10e3f, type: 3}
+      propertyPath: bakeValues.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7823600678297703606, guid: 10fd477937de9490da427ca4f2e10e3f, type: 3}
       propertyPath: m_RootOrder
       value: 0

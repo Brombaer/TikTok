@@ -189,6 +189,7 @@ public class CharacterInteractController : MonoBehaviour
         {
             _inventoryUI.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             Time.timeScale = 1;
 
             //GetComponent<CharacterController>().enabled = true;
@@ -198,7 +199,8 @@ public class CharacterInteractController : MonoBehaviour
         else if (_inventoryUI.activeSelf == false)
         {
             _inventoryUI.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
             Time.timeScale = 0;
 
             //GetComponent<CharacterController>().enabled = false;

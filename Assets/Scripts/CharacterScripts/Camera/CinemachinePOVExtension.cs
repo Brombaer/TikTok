@@ -14,7 +14,9 @@ public class CinemachinePOVExtension : CinemachineExtension /* MonoBehaviour */
 
     private void Awake()
     {
-        //InitialiseInput();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        
         _characterInput = new CharacterInput();
         base.Awake();
     }
@@ -30,11 +32,6 @@ public class CinemachinePOVExtension : CinemachineExtension /* MonoBehaviour */
         {
             if (stage == CinemachineCore.Stage.Aim)
             {
-                if (_startingRotation == null)
-                {
-                    _startingRotation = transform.localRotation.eulerAngles;
-                }
-                
                 Vector2 deltaInput = _characterInput.Player.Look.ReadValue<Vector2>();
 
                 _startingRotation.x += deltaInput.x * _mouseSensitivity * deltaTime;
@@ -45,21 +42,6 @@ public class CinemachinePOVExtension : CinemachineExtension /* MonoBehaviour */
             }
         }
     }
-
-    //private void InitialiseInput()
-    //{
-    //    _characterInput = new CharacterInput();
-    //    _characterInput.Player.Look.performed += context => UpdateMouse(context.ReadValue<Vector2>());
-    //}
-
-    //private void UpdateMouse(Vector3 mouseInput)
-    //{
-    //    float moveX = mouseInput.x * _mouseSensitivity * Time.deltaTime;
-    //    float moveY = -mouseInput.y * _mouseSensitivity * Time.deltaTime;
-//
-    //    Vector3 startRotation = new Vector3(moveY, moveX, 0f);
-    //    startRotation.y = Mathf.Clamp(moveY, -_clampAngle, _clampAngle);
-    //}
 
     private void OnEnable()
     {

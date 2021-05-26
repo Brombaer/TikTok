@@ -249,6 +249,7 @@ public class AIBehaviour : MonoBehaviour
         {
             var ragdoll = Instantiate(_ragdoll, transform.position, transform.rotation);
             ragdoll.GetComponent<Ragdoll>().SetSkin(_skinIndex);
+            ragdoll.GetComponent<Ragdoll>().ConfigureRagdollPosition(transform, ragdoll.transform);
             Destroy(ragdoll, 10f);
         }
         

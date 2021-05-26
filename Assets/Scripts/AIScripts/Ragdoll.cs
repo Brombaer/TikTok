@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,23 @@ public class Ragdoll : MonoBehaviour
         {
             _skins[0].SetActive(false);
             _skins[index].SetActive(true);
+        }
+    }
+
+    public void ConfigureRagdollPosition(Transform reference, Transform ragdollPart)
+    {
+        ragdollPart.localPosition = reference.localPosition;
+        ragdollPart.localRotation = reference.localRotation;
+
+        for (int i = 0; i < reference.childCount; i++)
+        {
+            Transform referenceTransfrom = reference.GetChild(i);
+            Transform ragdollTransform = ragdollPart.GetChild(i);
+
+            if (referenceTransfrom != null && ragdollTransform != null)
+            {
+                ConfigureRagdollPosition(referenceTransfrom, ragdollTransform);
+            }
         }
     }
 }

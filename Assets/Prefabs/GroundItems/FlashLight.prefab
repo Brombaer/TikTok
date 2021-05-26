@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8477628802274701534}
   - component: {fileID: 6162889146829185205}
   - component: {fileID: -2150767063227037756}
-  - component: {fileID: -7861510566048319858}
   m_Layer: 6
   m_Name: FlashLight
   m_TagString: InteractableObject
@@ -145,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 1
   outlineColor: {r: 1, g: 0, b: 0, a: 1}
-  outlineWidth: 5
+  outlineWidth: 10
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
