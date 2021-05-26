@@ -56,7 +56,7 @@ public class InventoryObject : ScriptableObject
         }
     }
 
-    private InventorySlot FindItemOnInventory(ItemInfo item)
+    public InventorySlot FindItemOnInventory(ItemInfo item)
     {
         for (int i = 0; i < GetSlots.Length; i++)
         {
@@ -235,6 +235,7 @@ public class InventorySlot
         {
             if (itemObj.Type == AllowedItems[i])
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/MenuButtons/Inventory/Equip");
                 return true;
             }
         }

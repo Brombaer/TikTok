@@ -23,56 +23,6 @@ public class Audio_Movement : MonoBehaviour
     private void DetermineTerrain()
     {
 
-        /*RaycastHit[] hit;
-
-
-        hit = Physics.RaycastAll(transform.position + (Vector3.up * offset), Vector3.down, 0.6f);
-
-      
-
-        foreach (RaycastHit rayhit in hit)
-        {
-
-            if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Grass"))
-            {
-                currentTerrain = CURRENT_TERRAIN.GRASS;
-
-            }
-
-            else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Dirt"))
-            {
-                currentTerrain = CURRENT_TERRAIN.DIRT;
-
-            }
-            else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Sand"))
-            {
-                currentTerrain = CURRENT_TERRAIN.SAND;
-
-            }
-            else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Wood"))
-            {
-                currentTerrain = CURRENT_TERRAIN.WOOD;
-
-            }
-            else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Metal"))
-            {
-                currentTerrain = CURRENT_TERRAIN.METAL;
-
-            }
-
-            else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Puddle"))
-            {
-                currentTerrain = CURRENT_TERRAIN.PUDDLE;
-            }
-            else
-            {
-                currentTerrain = CURRENT_TERRAIN.CONCRETE;
-            }
-
-
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Surface", (int)currentTerrain);
-
-        }*/
 
         RaycastHit hit;
 

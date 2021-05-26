@@ -6,36 +6,48 @@ using UnityEngine.SceneManagement;
 public class Restriction : MonoBehaviour
 {
     //Variable
-    //private bool[] _isFull;
-    //private GameObject[] _slots;
-
-
+    [SerializeField]
+    private ItemInfo[] _itemsToEscape;
 
 
     //Function
-    //Check if have item
-    private void checkItem()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         IKillable killable = other.GetComponent<IKillable>();
         if (killable != null)
         {
 
-            KillZoneEnteredEffect effect = killable.Kill();
+            KillZoneEnteredEffect effect = killable.Effect();
             if (effect == KillZoneEnteredEffect.Kill)
             {
                 gameObject.SetActive(false);
                 SceneManager.LoadScene(1);
 
             }
-            if (effect == KillZoneEnteredEffect.Escape )
+            if (effect == KillZoneEnteredEffect.Escape)
+            {
+                //gameObject.SetActive(true);
+                //SceneManager.LoadScene(2);
+                CheckSyringe();
+            }
+        }
+    }
+
+    private void CheckSyringe()
+    {
+        InventoryObject inventoryObject = GetComponent<InventoryObject>();
+        for (int i = 0; i < _itemsToEscape.Length; i++)
+        {
+
+            if (inventoryObject.FindItemOnInventory(_itemsToEscape[i]) != null)
             {
                 gameObject.SetActive(true);
                 SceneManager.LoadScene(2);
+                
+            }
+            else
+            {
+                Debug.Log("You need a syringe");
             }
         }
     }

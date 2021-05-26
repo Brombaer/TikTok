@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{a3991b31-f71a-4126-a157-b1d6721517ad}">
+		<property name="name">
+			<value>Indoors_Outdoors</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0e50a1fe-f79e-467d-becd-1bd415c1efdb}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{7ba9f9d9-0934-47d8-965d-12eccac49fb4}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{7ba9f9d9-0934-47d8-965d-12eccac49fb4}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>10</value>
+		</property>
+	</object>
+</objects>

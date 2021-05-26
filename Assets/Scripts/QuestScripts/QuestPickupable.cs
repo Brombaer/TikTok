@@ -11,7 +11,7 @@ public class QuestPickupable : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     public void PickupableItems()
@@ -22,3 +22,4 @@ public class QuestPickupable : MonoBehaviour
     }
 
 }
+

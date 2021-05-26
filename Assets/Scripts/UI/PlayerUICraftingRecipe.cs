@@ -65,6 +65,7 @@ public class PlayerUICraftingRecipe : UserInterface
                     {
                         SlotsOnInterface[_slots[i]].RemoveItem();
                     }
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/MenuButtons/Inventory/Craft");
                 }
             }
         }

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5766802806837106455}
   - component: {fileID: 5146557363408910798}
   - component: {fileID: -4841257842021654627}
+  - component: {fileID: 6395804000265737152}
   m_Layer: 6
   m_Name: Katana
   m_TagString: InteractableObject
@@ -147,6 +148,19 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &6395804000265737152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104172259794306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0462821929cf97d4ab2e95f14570c65f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: 3
 --- !u!1001 &6257973064678689569
 PrefabInstance:
   m_ObjectHideFlags: 0
