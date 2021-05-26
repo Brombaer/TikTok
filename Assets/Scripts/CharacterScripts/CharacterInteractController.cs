@@ -178,6 +178,11 @@ public class CharacterInteractController : MonoBehaviour
         {
             if (Inventory.AddItem(_itemBeingPickedUp.itemInfo, 1))
             {
+                var pickupable = _itemBeingPickedUp.GetComponent<QuestPickupable>();
+                if (pickupable !=  null)
+                {
+                    pickupable.PickupableItems();
+                }
                 Destroy(_itemBeingPickedUp.gameObject);
             }
         }
