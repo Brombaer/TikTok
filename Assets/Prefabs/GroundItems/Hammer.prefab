@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3458144509920243016}
   - component: {fileID: 4684586671097670863}
   - component: {fileID: 3105147615297152750}
-  - component: {fileID: 994013718}
   m_Layer: 6
   m_Name: Hammer
   m_TagString: InteractableObject
@@ -30,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1238499803652380}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -148,19 +147,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &994013718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238499803652380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0462821929cf97d4ab2e95f14570c65f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentWeapon: 2
 --- !u!1001 &3560740819871982846
 PrefabInstance:
   m_ObjectHideFlags: 0

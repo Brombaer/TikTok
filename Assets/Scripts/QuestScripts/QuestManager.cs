@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
+
 public class QuestManager : MonoBehaviour
 {
+
     public Quest quest = new Quest();
     public GameObject questPrintBox;
     public GameObject buttonPrefab;
     public GameObject questUI;
- 
+
 
     public GameObject A;
     public GameObject B;
@@ -27,19 +30,29 @@ public class QuestManager : MonoBehaviour
     }
     private void Start()
     {
-        
+
 
         questUI.SetActive(false);
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+       
 
-
+        QuestEvent b = quest.AddQuestEvent("Find The Location", "Go to the Repairs");
         QuestEvent a = quest.AddQuestEvent("Quest Tutorial", "Go to the Food Market");
-        QuestEvent b = quest.AddQuestEvent("FInd The Location", "Go to the Repairs");
-        QuestEvent c = quest.AddQuestEvent("Find The Light Source", "Find the Flash light");
-        QuestEvent d = quest.AddQuestEvent("FInd The Light Source", "Find the Flip Lighter");
-        QuestEvent e = quest.AddQuestEvent("test5", "description 5");
+        QuestEvent c = quest.AddQuestEvent("Pick Up Any Weapon", "You Can Kill Zombies With Weapon", new QuestEvent.ItemToComplete[]
+        { QuestEvent.ItemToComplete.Crowbar,
+        QuestEvent.ItemToComplete.Hammer,
+        QuestEvent.ItemToComplete.Katana,
+        QuestEvent.ItemToComplete.BuzzBlade,
+        QuestEvent.ItemToComplete.BrokenAlcoholBottle1,
+        QuestEvent.ItemToComplete.BrokenAlcoholBottle2,
+        QuestEvent.ItemToComplete.MetalBat,
+        QuestEvent.ItemToComplete.WoodBat,
+            QuestEvent.ItemToComplete.Pan
+         });
+        QuestEvent d = quest.AddQuestEvent("Getting Ready for Crafting", "Find The Crafting Materials");
+        QuestEvent e = quest.AddQuestEvent("Craft your Syringe", "You May Survive");
 
         quest.Addpath(a.GetId(), b.GetId());
         quest.Addpath(b.GetId(), c.GetId());
@@ -52,8 +65,9 @@ public class QuestManager : MonoBehaviour
 
         QuestButton button = CreateButton(a).GetComponent<QuestButton>();
         A.GetComponent<QuestLocation>().Setup(this, a, button);
-         button = CreateButton(b).GetComponent<QuestButton>();
+        button = CreateButton(b).GetComponent<QuestButton>();
         B.GetComponent<QuestLocation>().Setup(this, b, button);
+        
          button = CreateButton(c).GetComponent<QuestButton>();
         C.GetComponent<QuestLocation>().Setup(this, c, button);
         button = CreateButton(d).GetComponent<QuestButton>();
@@ -108,13 +122,30 @@ public class QuestManager : MonoBehaviour
     }
 
 
-    public void UpdateQuestsOnCompletion (QuestEvent e)
+    public void UpdateQuestsOnCompletion(QuestEvent e)
     {
-        foreach(QuestEvent n in quest.questEvents)
+        if (e.itemsToComplete[0] == QuestEvent.ItemToComplete.None)
+
+            foreach (QuestEvent n in quest.questEvents)
         {
             if(n.order == (e.order + 1))
             {
                 n.UpdateQuestEvent(QuestEvent.EventStatus.Current);
+            }
+        }
+        else
+        {
+            foreach (QuestEvent n in quest.questEvents)
+            {
+                for (int i = 0; i < n.itemsToComplete.Length ; i++)
+                {
+
+                    if (e.itemsToComplete.Contains(n.itemsToComplete[i]))
+                    {
+                        n.UpdateQuestEvent(QuestEvent.EventStatus.Current);
+
+                    }
+                }
             }
         }
     }

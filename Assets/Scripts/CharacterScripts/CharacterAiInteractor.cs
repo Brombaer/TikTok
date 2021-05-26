@@ -24,7 +24,7 @@ public class CharacterAiInteractor : MonoBehaviour
 
     private Animator _animator;
     private CharacterInput _characterInput;
-    FMOD.Studio.EventInstance AudioAttack;
+
     private void Awake()
     {
         InitializeInput();
@@ -99,9 +99,6 @@ public class CharacterAiInteractor : MonoBehaviour
     public void DamageEvent()
     {
         Attack();
-        AudioAttack = FMODUnity.RuntimeManager.CreateInstance("event:/Character/Attack");
-        AudioAttack.start();
-        AudioAttack.release();
     }
 
     public void OnTriggerEnter(Collider other)

@@ -41,8 +41,4 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quit Game");
     }
 
-    public void LoadMenu()
-    {
-        SceneManager.LoadScene("Menu");
-    }
 }

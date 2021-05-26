@@ -98,7 +98,7 @@ public class CharacterInteractController : MonoBehaviour
             
             Debug.Log("The player got attacked");
             Debug.Log(_healthSystem.GetHealth().ToString());
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Character/Damage", transform.position);
+
             other.gameObject.GetComponent<Collider>().enabled = false;
         }
     }
@@ -178,6 +178,11 @@ public class CharacterInteractController : MonoBehaviour
         {
             if (Inventory.AddItem(_itemBeingPickedUp.itemInfo, 1))
             {
+                var pickupable = _itemBeingPickedUp.GetComponent<QuestPickupable>();
+                if (pickupable !=  null)
+                {
+                    pickupable.PickupableItems();
+                }
                 Destroy(_itemBeingPickedUp.gameObject);
             }
         }

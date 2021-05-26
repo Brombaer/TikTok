@@ -587,7 +587,7 @@ MonoBehaviour:
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 1
   BankLoadType: 0
-  AutomaticSampleLoading: 1
+  AutomaticSampleLoading: 0
   EncryptionKey: 
   ImportType: 0
   TargetAssetPath: FMODBanks
@@ -612,7 +612,7 @@ MonoBehaviour:
   EnableMemoryTracking: 0
   AndroidUseOBB: 0
   MeterChannelOrdering: 0
-  StopEventsOutsideMaxDistance: 1
+  StopEventsOutsideMaxDistance: 0
   BoltUnitOptionsBuildPending: 0
   MigratedPlatforms: 0c000000150000000b0000000a00000009000000120000000800000005000000060000000200000001000000
 --- !u!114 &1578280256217041410

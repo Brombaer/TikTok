@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8776217867203336042}
   - component: {fileID: 7624408230466531372}
   - component: {fileID: 4394243118780657336}
-  - component: {fileID: 1889289291}
   m_Layer: 6
   m_Name: Crowbar
   m_TagString: InteractableObject
@@ -30,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750927141268108}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -148,19 +147,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &1889289291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750927141268108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0462821929cf97d4ab2e95f14570c65f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentWeapon: 1
 --- !u!1001 &794772988995909851
 PrefabInstance:
   m_ObjectHideFlags: 0
