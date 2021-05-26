@@ -83,10 +83,12 @@ public class QuestManager : MonoBehaviour
         if (questUI.activeSelf)
         {
             questUI.SetActive(false);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/MenuButtons/Questlog/Activate");
         }
         else if(questUI.activeSelf ==false)
         {
             questUI.SetActive(true);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/MenuButtons/Questlog/Deactivate");
         }
 
     }
@@ -131,7 +133,8 @@ public class QuestManager : MonoBehaviour
             if(n.order == (e.order + 1))
             {
                 n.UpdateQuestEvent(QuestEvent.EventStatus.Current);
-            }
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/MenuButtons/Questlog/New");
+                }
         }
         else
         {

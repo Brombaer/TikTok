@@ -54,6 +54,10 @@ public class AIBehaviour : MonoBehaviour
     [SerializeField] private GameObject _rightHandFist;
 
     private int _skinIndex;
+    FMOD.Studio.EventInstance ZombieAudio;
+    FMOD.Studio.EventInstance DeathHit;
+    private int maleVoice;
+    private int femVoice;
 
     public void Start()
     {
@@ -79,7 +83,10 @@ public class AIBehaviour : MonoBehaviour
             _skinIndex = Random.Range(0, _skins.Length);
             _skins[_skinIndex].SetActive(true);
         }
-        
+
+        maleVoice = Random.Range(0, 5);
+        femVoice = Random.Range(6, 14);
+        SetZombieVoice();
         _currentTime = _timer;
     }
 
@@ -88,6 +95,7 @@ public class AIBehaviour : MonoBehaviour
         if (_health <= 0)
         {
             Die();
+            DeathAudio();
             return;
         }
         
@@ -226,6 +234,10 @@ public class AIBehaviour : MonoBehaviour
     public void OnHit(int damage)
     {
         _health -= damage;
+        if (damage != 0)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Zombies/WeaponHit", GetComponent<Transform>().position);
+        }
     }
 
     public void activateFists()
@@ -269,5 +281,79 @@ public class AIBehaviour : MonoBehaviour
         _isAware = true;
         _isDetecting = true;
         _looseTimer = 0;
+    }
+
+
+    //FMODAudio
+
+
+
+    public void SetZombieVoice()
+    {
+
+        if (_skinIndex <= 15)
+        {
+            ZombieAudio.setParameterByName("Zombie#", maleVoice);
+        }
+        else
+        {
+            ZombieAudio.setParameterByName("Zombie#", femVoice);
+        }
+
+    }
+
+
+    public void DeathAudio()
+    {
+
+        DeathHit = FMODUnity.RuntimeManager.CreateInstance("event:/Zombies/Death");
+        if (_skinIndex <= 15)
+        {
+            DeathHit.setParameterByName("Zombie#", maleVoice);
+
+        }
+        else
+        {
+            DeathHit.setParameterByName("Zombie#", femVoice);
+
+        }
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(DeathHit, transform, GetComponent<Rigidbody>());
+        DeathHit.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        DeathHit.start();
+        DeathHit.release();
+    }
+
+    public void Roaming()
+    {
+        ZombieAudio = FMODUnity.RuntimeManager.CreateInstance("event:/Zombies/Roaming");
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(ZombieAudio, transform, GetComponent<Rigidbody>());
+        ZombieAudio.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        ZombieAudio.start();
+        ZombieAudio.release();
+
+    }
+
+    private void StopAudio()
+    {
+        ZombieAudio.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        FMODUnity.RuntimeManager.DetachInstanceFromGameObject(ZombieAudio);
+        ZombieAudio.release();
+        ZombieAudio.clearHandle();
+
+        DeathHit.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        DeathHit.release();
+        DeathHit.clearHandle();
+    }
+    private void OnEnable()
+    {
+        Roaming();
+
+
+    }
+
+
+    private void OnDisable()
+    {
+        StopAudio();
     }
 }

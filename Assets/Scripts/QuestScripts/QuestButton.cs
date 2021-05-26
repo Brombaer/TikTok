@@ -35,6 +35,7 @@ public class QuestButton : MonoBehaviour
         {
             icon.texture = doneImage.texture;
             buttonComponent.interactable = false;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/MenuButtons/Questlog/Finished");
         }
 
         else if (status == QuestEvent.EventStatus.Waiting)

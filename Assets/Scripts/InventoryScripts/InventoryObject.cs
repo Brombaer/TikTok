@@ -235,6 +235,7 @@ public class InventorySlot
         {
             if (itemObj.Type == AllowedItems[i])
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/MenuButtons/Inventory/Equip");
                 return true;
             }
         }

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6561279352732971487}
   - component: {fileID: 7535524130941532083}
   - component: {fileID: 168093745931578547}
+  - component: {fileID: -8814238915735157043}
   m_Layer: 6
   m_Name: Pipe
   m_TagString: InteractableObject
@@ -148,6 +149,19 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-8814238915735157043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449313484441434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0462821929cf97d4ab2e95f14570c65f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: 6
 --- !u!1001 &893673712711408213
 PrefabInstance:
   m_ObjectHideFlags: 0

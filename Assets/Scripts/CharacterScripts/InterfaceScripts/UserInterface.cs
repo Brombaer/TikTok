@@ -77,6 +77,7 @@ public abstract class UserInterface : MonoBehaviour
     public void OnDragStart(GameObject obj)
     {
         MouseData.TempItemBeingDragged = CreateTempItem(obj);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MenuButtons/Inventory/Select");
     }
 
     public GameObject CreateTempItem(GameObject obj)
@@ -111,6 +112,7 @@ public abstract class UserInterface : MonoBehaviour
         {
             InventorySlot mouseHoverSlotData = MouseData.InterfaceMouseIsOver.SlotsOnInterface[MouseData.SlotHoveredOver];
             Inventory.SwapItems(SlotsOnInterface[obj], mouseHoverSlotData);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/MenuButtons/Inventory/Select");
         }
     }
 

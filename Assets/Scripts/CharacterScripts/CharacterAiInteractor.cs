@@ -99,6 +99,7 @@ public class CharacterAiInteractor : MonoBehaviour
     public void DamageEvent()
     {
         Attack();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Character/Attack");
     }
 
     public void OnTriggerEnter(Collider other)

@@ -98,7 +98,7 @@ public class CharacterInteractController : MonoBehaviour
             
             Debug.Log("The player got attacked");
             Debug.Log(_healthSystem.GetHealth().ToString());
-
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Character/Damage");
             other.gameObject.GetComponent<Collider>().enabled = false;
         }
     }
@@ -184,6 +184,7 @@ public class CharacterInteractController : MonoBehaviour
                     pickupable.PickupableItems();
                 }
                 Destroy(_itemBeingPickedUp.gameObject);
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Collect");
             }
         }
     }
