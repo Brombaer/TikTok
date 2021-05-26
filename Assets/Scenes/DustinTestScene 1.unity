@@ -3445,23 +3445,6 @@ Transform:
   m_Father: {fileID: 1962188606}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1442243375 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1604872976, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
-  m_PrefabInstance: {fileID: 284854712856966462}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1442243378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442243375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8afd29b4fcedc45cba87f2c1b854add7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1447484764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5104,14 +5087,6 @@ PrefabInstance:
       propertyPath: pauseMenuUI
       value: 
       objectReference: {fileID: 1931424792}
-    - target: {fileID: 284854712771445868, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.068
-      objectReference: {fileID: 0}
-    - target: {fileID: 284854712771445868, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.117
-      objectReference: {fileID: 0}
     - target: {fileID: 284854713363499752, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -5180,20 +5155,7 @@ PrefabInstance:
       propertyPath: _currentHealth
       value: 
       objectReference: {fileID: 1967322972}
-    - target: {fileID: 284854714325447930, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 284854714325447930, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.155
-      objectReference: {fileID: 0}
-    - target: {fileID: 285871840328191784, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 905397849, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2281dd9caeefd46cbaf77ffd23d4fc77, type: 3}
 --- !u!1001 &2571888034834138027
 PrefabInstance:
