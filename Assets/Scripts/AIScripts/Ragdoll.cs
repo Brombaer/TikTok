@@ -6,6 +6,7 @@ using UnityEngine;
 public class Ragdoll : MonoBehaviour
 {
     [SerializeField] private GameObject[] _skins;
+    [SerializeField] private Transform _rigRoot;
 
     public void SetSkin(int index)
     {
@@ -14,6 +15,11 @@ public class Ragdoll : MonoBehaviour
             _skins[0].SetActive(false);
             _skins[index].SetActive(true);
         }
+    }
+
+    public void MatchRig(Transform reference)
+    {
+        ConfigureRagdollPosition(reference, _rigRoot);
     }
 
     public void ConfigureRagdollPosition(Transform reference, Transform ragdollPart)

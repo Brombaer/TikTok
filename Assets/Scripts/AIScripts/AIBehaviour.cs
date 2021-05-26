@@ -19,6 +19,7 @@ public class AIBehaviour : MonoBehaviour
     [SerializeField] private int _health = 100;
     [SerializeField] private GameObject _ragdoll;
     [SerializeField] private GameObject[] _skins;
+    [SerializeField] private Transform _rigRoot;
     
     public int AttackDamage;
     [SerializeField] private float _attackRange = 1;
@@ -249,7 +250,9 @@ public class AIBehaviour : MonoBehaviour
         {
             var ragdoll = Instantiate(_ragdoll, transform.position, transform.rotation);
             ragdoll.GetComponent<Ragdoll>().SetSkin(_skinIndex);
-            ragdoll.GetComponent<Ragdoll>().ConfigureRagdollPosition(transform, ragdoll.transform);
+            
+            Debug.Break();
+            ragdoll.GetComponent<Ragdoll>().MatchRig(_rigRoot);
             Destroy(ragdoll, 10f);
         }
         
