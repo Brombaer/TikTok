@@ -32,7 +32,7 @@ public class QuestEvent
     public int order = -1;
     public EventStatus status;
     public QuestButton button;
-    public ItemToComplete itemToComplete = ItemToComplete.None;
+    public ItemToComplete[] itemsToComplete;
    
 
 
@@ -41,13 +41,22 @@ public class QuestEvent
 
 
 
-    public QuestEvent(string n, string d, ItemToComplete i)
+    public QuestEvent(string n, string d, ItemToComplete[] i)
     {
         id = Guid.NewGuid().ToString();
         name = n;
         description = d;
-        itemToComplete = i;
+        itemsToComplete = i;
         status = EventStatus.Waiting;
+
+    }
+    public QuestEvent(string n, string d)
+    {
+        id = Guid.NewGuid().ToString();
+        name = n;
+        description = d;
+        status = EventStatus.Waiting;
+        itemsToComplete = new ItemToComplete[1] {ItemToComplete.None };
 
     }
 
