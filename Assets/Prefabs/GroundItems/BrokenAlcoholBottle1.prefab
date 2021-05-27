@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6723966910008571141}
   - component: {fileID: 1573637320565456872}
   - component: {fileID: -147804698506104575}
+  - component: {fileID: -2525130677900615516}
   m_Layer: 6
   m_Name: BrokenAlcoholBottle1
   m_TagString: InteractableObject
@@ -162,6 +163,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: 0
+--- !u!114 &-2525130677900615516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904209494814440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e69b3daf54c4f55bef1e0926ee2fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 5
+  qManager: {fileID: 0}
+  qButton: {fileID: 3395037147271195051, guid: edd1c8e281a204720a95aef0628ea854, type: 3}
 --- !u!1001 &4571474404184148957
 PrefabInstance:
   m_ObjectHideFlags: 0

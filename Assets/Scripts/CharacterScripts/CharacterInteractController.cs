@@ -183,6 +183,7 @@ public class CharacterInteractController : MonoBehaviour
                 {
                     pickupable.PickupableItems();
                 }
+                
                 Destroy(_itemBeingPickedUp.gameObject);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/Collect");
             }
