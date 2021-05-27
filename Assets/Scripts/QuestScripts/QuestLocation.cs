@@ -16,9 +16,8 @@ public class QuestLocation : MonoBehaviour
         if (qEvent.status != QuestEvent.EventStatus.Current)
             return;
 
-        qEvent.UpdateQuestEvent(QuestEvent.EventStatus.Done);
-        qButton.UpdateButton(QuestEvent.EventStatus.Done);
-        qManager.UpdateQuestsOnCompletion(qEvent);
+       
+        qManager.UpdateQuestsOnCompletion(QuestEvent.ItemToComplete.None);
 
 
     }

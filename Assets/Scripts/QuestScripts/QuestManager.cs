@@ -15,6 +15,8 @@ public class QuestManager : MonoBehaviour
     public GameObject questUI;
 
 
+    List<QuestButton> buttons = new List<QuestButton>();
+
     public GameObject A;
     public GameObject B;
     public GameObject C;
@@ -38,9 +40,7 @@ public class QuestManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
        
 
-        QuestEvent b = quest.AddQuestEvent("Find The Location", "Go to the Repairs");
-        QuestEvent a = quest.AddQuestEvent("Quest Tutorial", "Go to the Food Market");
-        QuestEvent c = quest.AddQuestEvent("Pick Up Any Weapon", "You Can Kill Zombies With Weapon", new QuestEvent.ItemToComplete[]
+        QuestEvent a = quest.AddQuestEvent("Pick Up Any Weapon", "You Can Kill Zombies With Weapon", new QuestEvent.ItemToComplete[]
         { QuestEvent.ItemToComplete.Crowbar,
         QuestEvent.ItemToComplete.Hammer,
         QuestEvent.ItemToComplete.Katana,
@@ -51,29 +51,39 @@ public class QuestManager : MonoBehaviour
         QuestEvent.ItemToComplete.WoodBat,
             QuestEvent.ItemToComplete.Pan
          });
+        QuestEvent b = quest.AddQuestEvent("Quest Tutorial", "Go to the Food Market");
+        QuestEvent c = quest.AddQuestEvent("Find The Location", "Go to the Repairs");
         QuestEvent d = quest.AddQuestEvent("Getting Ready for Crafting", "Find The Crafting Materials");
         QuestEvent e = quest.AddQuestEvent("Craft your Syringe", "You May Survive");
 
         quest.Addpath(a.GetId(), b.GetId());
         quest.Addpath(b.GetId(), c.GetId());
-        quest.Addpath(b.GetId(), d.GetId());
-        quest.Addpath(c.GetId(), e.GetId());
+        quest.Addpath(c.GetId(), d.GetId());
         quest.Addpath(d.GetId(), e.GetId());
+        //quest.Addpath(d.GetId(), e.GetId());
 
         quest.BFS(a.GetId());
 
 
+
         QuestButton button = CreateButton(a).GetComponent<QuestButton>();
         A.GetComponent<QuestLocation>().Setup(this, a, button);
+        buttons.Add(button);
         button = CreateButton(b).GetComponent<QuestButton>();
         B.GetComponent<QuestLocation>().Setup(this, b, button);
-        
-         button = CreateButton(c).GetComponent<QuestButton>();
-        C.GetComponent<QuestLocation>().Setup(this, c, button);
+        buttons.Add(button);
+
+        button = CreateButton(c).GetComponent<QuestButton>();
+      
+        buttons.Add(button);
+
         button = CreateButton(d).GetComponent<QuestButton>();
-        D.GetComponent<QuestLocation>().Setup(this, d, button);
+       
+        buttons.Add(button);
+
         button = CreateButton(e).GetComponent<QuestButton>();
-        E.GetComponent<QuestLocation>().Setup(this, e, button);
+        
+        buttons.Add(button);
 
         quest.PrintPath();
 
@@ -124,32 +134,41 @@ public class QuestManager : MonoBehaviour
     }
 
 
-    public void UpdateQuestsOnCompletion(QuestEvent e)
+    public void UpdateQuestsOnCompletion(QuestEvent.ItemToComplete e)
     {
-        if (e.itemsToComplete[0] == QuestEvent.ItemToComplete.None)
-
-            foreach (QuestEvent n in quest.questEvents)
+        if (e == QuestEvent.ItemToComplete.None)
         {
-            if(n.order == (e.order + 1))
+            quest.questEvents[0].UpdateQuestEvent(QuestEvent.EventStatus.Done);
+            buttons[0].UpdateButton(QuestEvent.EventStatus.Done);
+            buttons.RemoveAt(0);
+            buttons[0].UpdateButton(QuestEvent.EventStatus.Current);
+            quest.questEvents.RemoveAt(0);
+            quest.questEvents[0].UpdateQuestEvent(QuestEvent.EventStatus.Current);
+
+            /*foreach (QuestEvent n in quest.questEvents)
             {
-                n.UpdateQuestEvent(QuestEvent.EventStatus.Current);
+                if (n.order == (e.order + 1))
+                {
+                    n.UpdateQuestEvent(QuestEvent.EventStatus.Current);
                     FMODUnity.RuntimeManager.PlayOneShot("event:/MenuButtons/Questlog/New");
                 }
+            }*/
         }
         else
         {
-            foreach (QuestEvent n in quest.questEvents)
-            {
-                for (int i = 0; i < n.itemsToComplete.Length ; i++)
-                {
-
-                    if (e.itemsToComplete.Contains(n.itemsToComplete[i]))
+           
+                    if (quest.questEvents[0].itemsToComplete.Contains(e))
                     {
-                        n.UpdateQuestEvent(QuestEvent.EventStatus.Current);
+                        quest.questEvents[0].UpdateQuestEvent(QuestEvent.EventStatus.Done);
+                        buttons[0].UpdateButton(QuestEvent.EventStatus.Done);
+                        buttons.RemoveAt(0);
+                        buttons[0].UpdateButton(QuestEvent.EventStatus.Current);
+                        quest.questEvents.RemoveAt(0);
+                        quest.questEvents[0].UpdateQuestEvent(QuestEvent.EventStatus.Current);
+                        
 
                     }
-                }
-            }
+                
         }
     }
 }

@@ -181,7 +181,6 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             _moveState = MoveState.Walking;
-            
             _animator.SetBool("isCrouching", false);
         }
     }
