@@ -40,9 +40,7 @@ public class QuestManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
        
 
-        QuestEvent a = quest.AddQuestEvent("Quest Tutorial", "Go to the Food Market");
-        QuestEvent b = quest.AddQuestEvent("Find The Location", "Go to the Repairs");
-        QuestEvent c = quest.AddQuestEvent("Pick Up Any Weapon", "You Can Kill Zombies With Weapon", new QuestEvent.ItemToComplete[]
+        QuestEvent a = quest.AddQuestEvent("Pick Up Any Weapon", "You Can Kill Zombies With Weapon", new QuestEvent.ItemToComplete[]
         { QuestEvent.ItemToComplete.Crowbar,
         QuestEvent.ItemToComplete.Hammer,
         QuestEvent.ItemToComplete.Katana,
@@ -53,6 +51,8 @@ public class QuestManager : MonoBehaviour
         QuestEvent.ItemToComplete.WoodBat,
             QuestEvent.ItemToComplete.Pan
          });
+        QuestEvent b = quest.AddQuestEvent("Quest Tutorial", "Go to the Food Market");
+        QuestEvent c = quest.AddQuestEvent("Find The Location", "Go to the Repairs");
         QuestEvent d = quest.AddQuestEvent("Getting Ready for Crafting", "Find The Crafting Materials");
         QuestEvent e = quest.AddQuestEvent("Craft your Syringe", "You May Survive");
 
