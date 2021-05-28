@@ -3,7 +3,7 @@ using System.Collections;
 
 public class QuestPickupable : MonoBehaviour
 {
-    public QuestEvent.ItemToComplete item;
+    public QuestEvent.ItemToComplete item = QuestEvent.ItemToComplete.None;
     public QuestManager qManager;
     public QuestEvent qEvent;
     public QuestButton qButton;
@@ -16,9 +16,11 @@ public class QuestPickupable : MonoBehaviour
 
     public void PickupableItems()
     {
-        qEvent.UpdateQuestEvent(QuestEvent.EventStatus.Done);
-        qButton.UpdateButton(QuestEvent.EventStatus.Done);
-        qManager.UpdateQuestsOnCompletion(qEvent);
+
+        if (qManager != null)
+        {
+            qManager.UpdateQuestsOnCompletion(item);
+        }
     }
 
 }

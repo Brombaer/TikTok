@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5146557363408910798}
   - component: {fileID: -4841257842021654627}
   - component: {fileID: 6395804000265737152}
+  - component: {fileID: 4881988958227051359}
   m_Layer: 6
   m_Name: Katana
   m_TagString: InteractableObject
@@ -161,6 +162,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: 3
+--- !u!114 &4881988958227051359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104172259794306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e69b3daf54c4f55bef1e0926ee2fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 3
+  qManager: {fileID: 8786082491860608027, guid: f4bfd2e6f21dd425a8ed6dfc57c1ef1f, type: 3}
+  qButton: {fileID: 3395037147271195051, guid: edd1c8e281a204720a95aef0628ea854, type: 3}
 --- !u!1001 &6257973064678689569
 PrefabInstance:
   m_ObjectHideFlags: 0

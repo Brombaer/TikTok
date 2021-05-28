@@ -26,9 +26,7 @@ public class Restriction : MonoBehaviour
 
             }
             if (effect == KillZoneEnteredEffect.Escape)
-            {
-                //gameObject.SetActive(true);
-                //SceneManager.LoadScene(2);
+            {            
                 CheckSyringe();
             }
         }
@@ -42,7 +40,7 @@ public class Restriction : MonoBehaviour
 
             if (inventoryObject.FindItemOnInventory(_itemsToEscape[i]) != null)
             {
-                gameObject.SetActive(true);
+                /*gameObject.SetActive(true);*/
                 SceneManager.LoadScene(2);
                 
             }

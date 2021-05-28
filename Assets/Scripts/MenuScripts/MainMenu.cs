@@ -10,7 +10,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera cinemachine;
     [SerializeField] private Camera camera1;
     [SerializeField] private Camera camera2;
-
+    [SerializeField] private GameObject minimap;
+    [SerializeField] private GameObject healthbar;
 
     private void OnEnable()
     {
@@ -21,6 +22,8 @@ public class MainMenu : MonoBehaviour
         cinemachine.enabled = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+        minimap.gameObject.SetActive(false);
+        healthbar.gameObject.SetActive(false);
     }
 
     public void Playgame()
@@ -32,8 +35,11 @@ public class MainMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         camera1.enabled = false;
         camera2.enabled = true;
+        minimap.gameObject.SetActive(true);
+        healthbar.gameObject.SetActive(true);
 
     }
+
 
     public void Quitgame()
     {
