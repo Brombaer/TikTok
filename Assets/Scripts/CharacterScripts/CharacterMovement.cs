@@ -10,16 +10,16 @@ public class CharacterMovement : MonoBehaviour
         Sprinting = 2
     }
     
+    public static bool IsEnabled = true;
+    
     [SerializeField] private Camera _characterCamera;
     [SerializeField] private Transform _cameraTransform;
-    private CharacterController _characterController;
     [SerializeField] private float _maxCameraAngle = 90;
 
+    private CharacterController _characterController;
     private readonly Vector3 _gravity = Physics.gravity;
     private Vector3 _velocity;
-
     private CharacterInput _characterInput;
-    public static bool IsEnabled = true;
 
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private LayerMask _groundMask;
@@ -33,16 +33,18 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float _movementModifier = 2;
 
     private bool _isMoving = false;
-    //private bool _isJumping = false;
-
     private bool _isHoldingWeapon = false;
 
     private MoveState _moveState = MoveState.Walking;
-    
+    private static readonly int horizontal = Animator.StringToHash("horizontal");
+    private static readonly int vertical = Animator.StringToHash("vertical");
+    private static readonly int jump = Animator.StringToHash("jump");
+    private static readonly int isCrouching = Animator.StringToHash("isCrouching");
+    private static readonly int isHoldingWeapon = Animator.StringToHash("isHoldingWeapon");
+
     private void Awake()
     {
         _characterCamera.gameObject.SetActive(true);
-        //Cursor.lockState = CursorLockMode.Locked;
         _characterController = gameObject.GetComponent<CharacterController>();
 
         InitializeInput();
@@ -69,8 +71,8 @@ public class CharacterMovement : MonoBehaviour
                 UpdateIdle();
             }
             
-            _animator.SetFloat("horizontal", x * modifier);
-            _animator.SetFloat("vertical", z * modifier);
+            _animator.SetFloat(horizontal, x * modifier);
+            _animator.SetFloat(vertical, z * modifier);
 
             ApplyGravity();
         }
@@ -144,7 +146,7 @@ public class CharacterMovement : MonoBehaviour
         if (_isGrounded && _moveState != MoveState.Crouching)
         {
             _velocity.y = Mathf.Sqrt(_jumpHeight * -2 * _gravity.y);
-            _animator.SetTrigger("jump");
+            _animator.SetTrigger(jump);
         }
     }
 
@@ -176,18 +178,18 @@ public class CharacterMovement : MonoBehaviour
         if (_moveState != MoveState.Crouching)
         {
             _moveState = MoveState.Crouching;
-            _animator.SetBool("isCrouching", true);
+            _animator.SetBool(isCrouching, true);
         }
         else
         {
             _moveState = MoveState.Walking;
-            _animator.SetBool("isCrouching", false);
+            _animator.SetBool(isCrouching, false);
         }
     }
 
     private void CheckIfWeaponIsEquipped()
     {
-        _isHoldingWeapon = _animator.GetBool("isHoldingWeapon");
+        _isHoldingWeapon = _animator.GetBool(isHoldingWeapon);
     }
 
     private void ApplyGravity()

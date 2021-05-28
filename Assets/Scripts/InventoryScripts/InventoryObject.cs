@@ -80,7 +80,6 @@ public class InventoryObject : ScriptableObject
             }
         }
 
-        // Set up functionality for full inventory
         return null;
     }
 
@@ -94,26 +93,9 @@ public class InventoryObject : ScriptableObject
         }
     }
 
-    //public void RemoveItem(Item item)
-    //{
-    //    for (int i = 0; i < GetSlots.Length; i++)
-    //    {
-    //        if (GetSlots[i].Item == item)
-    //        {
-    //            GetSlots[i].UpdateSlot(null, 0);
-    //        }
-    //    }
-    //}
-
     [ContextMenu("Save")]
     public void Save()
     {
-        //string saveData = JsonUtility.ToJson(this, true);
-        //BinaryFormatter bf = new BinaryFormatter();
-        //FileStream file = File.Create(string.Concat(Application.persistentDataPath, SavePath));
-        //bf.Serialize(file, saveData);
-        //file.Close();
-
         IFormatter formatter = new BinaryFormatter();
         Stream stream = new FileStream(string.Concat(Application.persistentDataPath, SavePath), FileMode.Create, FileAccess.Write);
         formatter.Serialize(stream, Container);
@@ -125,11 +107,6 @@ public class InventoryObject : ScriptableObject
     {
         if (File.Exists(string.Concat(Application.persistentDataPath, SavePath)))
         {
-            //BinaryFormatter bf = new BinaryFormatter();
-            //FileStream file = File.Open(string.Concat(Application.persistentDataPath, SavePath), FileMode.Open);
-            //JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), this);
-            //file.Close();
-
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream(string.Concat(Application.persistentDataPath, SavePath), FileMode.Open, FileAccess.Read);
             Inventory newContainer = (Inventory)formatter.Deserialize(stream);

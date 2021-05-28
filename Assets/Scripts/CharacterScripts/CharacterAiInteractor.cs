@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CharacterAiInteractor : MonoBehaviour
 {
@@ -12,18 +8,20 @@ public class CharacterAiInteractor : MonoBehaviour
     [SerializeField] private float _sprintZombiePerceptionRadius = 1.5f;
     [SerializeField] private Transform _spherecastSpawn;
     
-    [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private AudioClip AttackSound;
     [SerializeField] private float _soundIntensity = 5;
     [SerializeField] private LayerMask _aiLayer;
     [SerializeField] private GameObject _bloodEffect;
 
     private CharacterMovement _playerMovement;
     private CharacterInteractController _characterInteractController;
-    private SphereCollider _sphereCollider;
+    private BoxCollider _boxCollider;
+    private Vector3 _boxColliderSize;
+
 
     private Animator _animator;
     private CharacterInput _characterInput;
+    private static readonly int attack = Animator.StringToHash("attack");
+    private static readonly int isHoldingWeapon = Animator.StringToHash("isHoldingWeapon");
 
     private void Awake()
     {
@@ -32,9 +30,9 @@ public class CharacterAiInteractor : MonoBehaviour
 
     private void Start()
     {
-        //_audioSource = GetComponent<AudioSource>();
         _playerMovement = GetComponent<CharacterMovement>();
-        _sphereCollider = GetComponent<SphereCollider>();
+        _boxCollider = GetComponent<BoxCollider>();
+        _boxCollider.size = _boxColliderSize;
         _characterInteractController = GetComponent<CharacterInteractController>();
         
         _animator = GetComponent<Animator>();
@@ -49,19 +47,27 @@ public class CharacterAiInteractor : MonoBehaviour
     {
         if (_playerMovement.GetPlayerStealthProfile() == 0)
         {
-            _sphereCollider.radius = _crouchZombiePerceptionRadius;
+            _boxColliderSize.x = _crouchZombiePerceptionRadius;
+            _boxColliderSize.z = _crouchZombiePerceptionRadius;
+            _boxCollider.size = _boxColliderSize;
         }
         else if (_playerMovement.GetPlayerStealthProfile() == 1)
         {
-            _sphereCollider.radius = _walkZombiePerceptionRadius;
+            _boxColliderSize.x = _walkZombiePerceptionRadius;
+            _boxColliderSize.z = _walkZombiePerceptionRadius;
+            _boxCollider.size = _boxColliderSize;
         }
         else if (_playerMovement.GetPlayerStealthProfile() == 2)
         {
-            _sphereCollider.radius = _sprintZombiePerceptionRadius;
+            _boxColliderSize.x = _sprintZombiePerceptionRadius;
+            _boxColliderSize.z = _sprintZombiePerceptionRadius;
+            _boxCollider.size = _boxColliderSize;
         }
         else
         {
-            _sphereCollider.radius = 0.2f;
+            _boxColliderSize.x = 1f;
+            _boxColliderSize.z = 1f;
+            _boxCollider.size = _boxColliderSize;
         }
     }
     
@@ -69,15 +75,13 @@ public class CharacterAiInteractor : MonoBehaviour
     {
         _characterInput = new CharacterInput();
 
-        _characterInput.Player.Attack.performed += context => _animator.SetTrigger("attack");
+        _characterInput.Player.Attack.performed += context => _animator.SetTrigger(attack);
     }
 
     public void Attack()
     {
-        if (_animator.GetBool("isHoldingWeapon"))
+        if (_animator.GetBool(isHoldingWeapon))
         {
-            //_audioSource.PlayOneShot(AttackSound);
-            //_animator.SetTrigger("attack");
             Collider[] zombies = Physics.OverlapSphere(transform.position, _soundIntensity, _aiLayer);
 
             for (int i = 0; i < zombies.Length; i++)
@@ -86,6 +90,7 @@ public class CharacterAiInteractor : MonoBehaviour
             }
 
             RaycastHit hit;
+            
             if (Physics.SphereCast(_spherecastSpawn.position, 0.5f, _spherecastSpawn.TransformDirection(Vector3.forward), out hit, 2, _aiLayer))
             {
                 int damage = _characterInteractController.Attributes[0].Value.ModifiedValue;

@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,7 +5,6 @@ using UnityEngine.InputSystem;
 public class CharacterInteractController : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
-    //[SerializeField] private Transform _target;
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private TextMeshProUGUI _itemNameText;
     [SerializeField] private GameObject _inventoryUI;
@@ -44,6 +42,7 @@ public class CharacterInteractController : MonoBehaviour
     [SerializeField] private Animator _animator;
 
     private HealthSystem _healthSystem;
+    private static readonly int isHoldingWeapon = Animator.StringToHash("isHoldingWeapon");
 
     private void Awake()
     {
@@ -57,8 +56,8 @@ public class CharacterInteractController : MonoBehaviour
         
         _healthSystem = new HealthSystem(_health);
         _healthBar.Setup(_healthSystem);
-        _maxHealth.text = _healthSystem._maxHealth.ToString();
-        _currentHealth.text = _healthSystem._health.ToString();
+        _maxHealth.text = _healthSystem.MaxHealth.ToString();
+        _currentHealth.text = _healthSystem.Health.ToString();
 
         for (int i = 0; i < Attributes.Length; i++)
         {
@@ -89,14 +88,13 @@ public class CharacterInteractController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other) // Room for improvement
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("ZombieHandFist"))
         {
             _healthSystem.Damage(other.gameObject.GetComponentInParent<AIBehaviour>().AttackDamage);
-            _currentHealth.text = _healthSystem._health.ToString();
+            _currentHealth.text = _healthSystem.Health.ToString();
             
-            Debug.Log("The player got attacked");
             Debug.Log(_healthSystem.GetHealth().ToString());
             FMODUnity.RuntimeManager.PlayOneShot("event:/Character/Damage");
             other.gameObject.GetComponent<Collider>().enabled = false;
@@ -198,10 +196,6 @@ public class CharacterInteractController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             Time.timeScale = 1;
-
-            //GetComponent<CharacterController>().enabled = true;
-            //CharacterMovement.IsEnabled = true;
-            //_camera.GetComponent<CinemachineBrain>().enabled = true;
         }
         else if (_inventoryUI.activeSelf == false)
         {
@@ -209,24 +203,8 @@ public class CharacterInteractController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             Time.timeScale = 0;
-
-            //GetComponent<CharacterController>().enabled = false;
-            //CharacterMovement.IsEnabled = false;
-            //_camera.GetComponent<CinemachineBrain>().enabled = false;
         }
     }
-
-    //private void ToggleCharacterInput()
-    //{
-    //    if (GetComponent<CharacterController>().enabled)
-    //    {
-    //        GetComponent<CharacterController>().enabled = false;
-    //    }
-    //    else
-    //    {
-    //        GetComponent<CharacterController>().enabled = true;
-    //    }
-    //}
 
     private void InitializeInput()
     {
@@ -275,7 +253,7 @@ public class CharacterInteractController : MonoBehaviour
                             break;
                         case ItemType.Weapon:
                             Destroy(_weapon.gameObject);
-                            _animator.SetBool("isHoldingWeapon", false);
+                            _animator.SetBool(isHoldingWeapon, false);
                             break;
                         case ItemType.Tool:
                             Destroy(_tool.gameObject);
@@ -335,7 +313,7 @@ public class CharacterInteractController : MonoBehaviour
                                     _weapon = Instantiate(slot.ItemInfo.visualisedGameObject, _weaponHandTransform).transform;
                                     _weapon.GetComponent<Rigidbody>().isKinematic = true;
                                     _weapon.GetChild(0).gameObject.SetActive(false);
-                                    _animator.SetBool("isHoldingWeapon", true);
+                                    _animator.SetBool(isHoldingWeapon, true);
                                     break;
                                 case ItemType.Tool:
                                     _weapon = Instantiate(slot.ItemInfo.visualisedGameObject, _weaponHandToolTransform).transform;

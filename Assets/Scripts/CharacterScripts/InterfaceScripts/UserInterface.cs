@@ -10,7 +10,6 @@ using UnityEngine.InputSystem;
 public abstract class UserInterface : MonoBehaviour
 {
     public InventoryObject Inventory;
-
     public Dictionary<GameObject, InventorySlot> SlotsOnInterface = new Dictionary<GameObject, InventorySlot>();
 
     protected virtual void Start()

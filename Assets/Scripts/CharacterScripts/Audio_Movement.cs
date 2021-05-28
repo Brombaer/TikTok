@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Audio_Movement : MonoBehaviour
@@ -9,11 +7,9 @@ public class Audio_Movement : MonoBehaviour
     [SerializeField]
     private CURRENT_TERRAIN currentTerrain;
 
-
     private FMOD.Studio.EventInstance foosteps;
     private FMOD.Studio.EventInstance jumporland;
     private float offset = 0.5f;
-
 
     private void Update()
     {
@@ -22,8 +18,6 @@ public class Audio_Movement : MonoBehaviour
 
     private void DetermineTerrain()
     {
-
-
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position + (Vector3.up * offset), Vector3.down, out hit, 0.6f))
@@ -63,14 +57,9 @@ public class Audio_Movement : MonoBehaviour
                 currentTerrain = CURRENT_TERRAIN.CONCRETE;
             }
 
-
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Surface", (int)currentTerrain);
         }
-
-
-
-
-        }
+    }
 
     public void PlayFootsteps()
     {
@@ -102,19 +91,17 @@ public class Audio_Movement : MonoBehaviour
     {
         jumporland = FMODUnity.RuntimeManager.CreateInstance("event:/Character/Jump_Land");
         jumporland.setParameterByName("JumpOrLand", 0);
-       // jumporland.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        // jumporland.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
         jumporland.start();
         jumporland.release();
     }
-
 
     public void PlayLand()
     {
         jumporland = FMODUnity.RuntimeManager.CreateInstance("event:/Character/Jump_Land");
         jumporland.setParameterByName("JumpOrLand", 1);
-       // jumporland.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        // jumporland.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
         jumporland.start();
         jumporland.release();
     }
-
 }

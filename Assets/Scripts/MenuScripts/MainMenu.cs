@@ -12,7 +12,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Camera camera2;
     [SerializeField] private GameObject minimap;
     [SerializeField] private GameObject healthbar;
-
+    [SerializeField] private GameObject zombies;
+    [SerializeField] private GameObject groundItems;
+   
     private void OnEnable()
     {
         camera1.enabled = true;
@@ -24,6 +26,8 @@ public class MainMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         minimap.gameObject.SetActive(false);
         healthbar.gameObject.SetActive(false);
+        zombies.gameObject.SetActive(false);
+        groundItems.gameObject.SetActive(false);
     }
 
     public void Playgame()
@@ -37,6 +41,8 @@ public class MainMenu : MonoBehaviour
         camera2.enabled = true;
         minimap.gameObject.SetActive(true);
         healthbar.gameObject.SetActive(true);
+        zombies.gameObject.SetActive(true);
+        groundItems.gameObject.SetActive(true);
 
     }
 
