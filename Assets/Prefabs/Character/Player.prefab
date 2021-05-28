@@ -891,7 +891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13220fc50767c4d14b251bc6fa518182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mouseSensitivity: 30
+  _mouseSensitivity: 10
   _clampAngle: 70
   _startingRotation: {x: 180, y: 0, z: 0}
 --- !u!1 &284854714325447933
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterCamera: {fileID: 284854713433070827}
   _cameraTransform: {fileID: 284854713433070825}
-  _maxCameraAngle: 90
+  _maxCameraAngle: 70
   _groundCheck: {fileID: 280505422574404794}
   _groundMask:
     serializedVersion: 2
