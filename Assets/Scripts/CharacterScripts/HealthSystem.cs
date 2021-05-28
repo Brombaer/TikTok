@@ -36,8 +36,9 @@ public class HealthSystem
             _health = 0;
         }
         if (_health == 0)
-        {
-                SceneManager.LoadScene(1);
+        { 
+            Debug.Log("Your health is 0, you die");
+            SceneManager.LoadScene(1);
         }
 
         if (OnHealthChanged != null)

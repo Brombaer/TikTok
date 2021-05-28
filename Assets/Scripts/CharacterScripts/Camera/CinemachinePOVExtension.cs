@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class CinemachinePOVExtension : CinemachineExtension /* MonoBehaviour */
+public class CinemachinePOVExtension : CinemachineExtension
 {
     public float _mouseSensitivity = 10f;
     [SerializeField] private float _clampAngle = 90f;
@@ -32,13 +32,16 @@ public class CinemachinePOVExtension : CinemachineExtension /* MonoBehaviour */
         {
             if (stage == CinemachineCore.Stage.Aim)
             {
-                Vector2 deltaInput = _characterInput.Player.Look.ReadValue<Vector2>();
+                if (_characterInput != null)
+                {
+                    Vector2 deltaInput = _characterInput.Player.Look.ReadValue<Vector2>();
+                
+                    _startingRotation.x += deltaInput.x * _mouseSensitivity * deltaTime;
+                    _startingRotation.y += deltaInput.y * _mouseSensitivity * deltaTime;
 
-                _startingRotation.x += deltaInput.x * _mouseSensitivity * deltaTime;
-                _startingRotation.y += deltaInput.y * _mouseSensitivity * deltaTime;
-
-                _startingRotation.y = Mathf.Clamp(_startingRotation.y, -_clampAngle, _clampAngle);
-                state.RawOrientation = Quaternion.Euler(-_startingRotation.y, _startingRotation.x, 0f);
+                    _startingRotation.y = Mathf.Clamp(_startingRotation.y, -_clampAngle, _clampAngle);
+                    state.RawOrientation = Quaternion.Euler(-_startingRotation.y, _startingRotation.x, 0f);
+                }
             }
         }
     }

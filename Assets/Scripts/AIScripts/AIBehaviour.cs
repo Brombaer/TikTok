@@ -131,7 +131,7 @@ public class AIBehaviour : MonoBehaviour
             _animator.SetBool("isAware", true);
             _agent.speed = _chaseSpeed;
 
-            if (_agent.remainingDistance < _attackRange)
+            if (_agent.remainingDistance <= _attackRange)
             {
                 GetComponent<Animator>().SetTrigger("Attack");
             }

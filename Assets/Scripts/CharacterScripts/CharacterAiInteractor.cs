@@ -21,6 +21,9 @@ public class CharacterAiInteractor : MonoBehaviour
     private CharacterMovement _playerMovement;
     private CharacterInteractController _characterInteractController;
     private SphereCollider _sphereCollider;
+    private BoxCollider _boxCollider;
+    private Vector3 _boxColliderSize;
+
 
     private Animator _animator;
     private CharacterInput _characterInput;
@@ -34,7 +37,8 @@ public class CharacterAiInteractor : MonoBehaviour
     {
         //_audioSource = GetComponent<AudioSource>();
         _playerMovement = GetComponent<CharacterMovement>();
-        _sphereCollider = GetComponent<SphereCollider>();
+        _boxCollider = GetComponent<BoxCollider>();
+        _boxCollider.size = _boxColliderSize;
         _characterInteractController = GetComponent<CharacterInteractController>();
         
         _animator = GetComponent<Animator>();
@@ -47,21 +51,30 @@ public class CharacterAiInteractor : MonoBehaviour
 
     private void CheckPlayerStealthProfile()
     {
+        
         if (_playerMovement.GetPlayerStealthProfile() == 0)
         {
-            _sphereCollider.radius = _crouchZombiePerceptionRadius;
+            _boxColliderSize.x = _crouchZombiePerceptionRadius;
+            _boxColliderSize.z = _crouchZombiePerceptionRadius;
+            _boxCollider.size = _boxColliderSize;
         }
         else if (_playerMovement.GetPlayerStealthProfile() == 1)
         {
-            _sphereCollider.radius = _walkZombiePerceptionRadius;
+            _boxColliderSize.x = _walkZombiePerceptionRadius;
+            _boxColliderSize.z = _walkZombiePerceptionRadius;
+            _boxCollider.size = _boxColliderSize;
         }
         else if (_playerMovement.GetPlayerStealthProfile() == 2)
         {
-            _sphereCollider.radius = _sprintZombiePerceptionRadius;
+            _boxColliderSize.x = _sprintZombiePerceptionRadius;
+            _boxColliderSize.z = _sprintZombiePerceptionRadius;
+            _boxCollider.size = _boxColliderSize;
         }
         else
         {
-            _sphereCollider.radius = 0.2f;
+            _boxColliderSize.x = 1f;
+            _boxColliderSize.z = 1f;
+            _boxCollider.size = _boxColliderSize;
         }
     }
     
