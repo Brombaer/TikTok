@@ -14,12 +14,13 @@ public class Restriction : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         IKillable killable = other.GetComponent<IKillable>();
-        if (killable != null)
+        if (killable != null && !other.isTrigger)
         {
 
             KillZoneEnteredEffect effect = killable.Effect();
             if (effect == KillZoneEnteredEffect.Kill)
             {
+                Debug.Log("The killzone killed you");
                 gameObject.SetActive(false);
                 SceneManager.LoadScene(1);
 

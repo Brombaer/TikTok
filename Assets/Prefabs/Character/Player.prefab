@@ -267,13 +267,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284854712771445871}
-  m_LocalRotation: {x: 0.9898893, y: -0.00000077998254, z: 0.0000000074505797, w: 0.14184253}
-  m_LocalPosition: {x: 0.119, y: 0.068, z: 0.117}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalPosition: {x: 0.101, y: 0.0119, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 286731296344573086}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 163.691, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!65 &555309399
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -837,13 +837,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284854714325447933}
-  m_LocalRotation: {x: -0.10281858, y: 0.00000037997947, z: -0.00000027869817, w: 0.99470013}
-  m_LocalPosition: {x: -0.1, y: -0.05, z: -0.155}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.11, y: -0.011, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 286618279316344910}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -11.803, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &400508034
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -860,8 +860,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
---- !u!135 &1408564113
-SphereCollider:
+--- !u!65 &399293588
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -871,7 +871,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!143 &284854713655017643
 CharacterController:
@@ -919,19 +919,6 @@ MonoBehaviour:
   _itemsToEscape:
   - {fileID: 11400000, guid: be3bdeb5a985d40b5ac4bc0ec0e192f6, type: 2}
   - {fileID: 11400000, guid: 6a96cdd43cf9140c4a09fd81902c25b6, type: 2}
---- !u!114 &451595447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285871840328191784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a525b05577a334a63bca473f6c54e497, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
 --- !u!114 &1408564109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,9 +931,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e1c91a3e0e04ec3a5b0ca13ddd563e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crouchZombiePerceptionRadius: 0.5
-  _walkZombiePerceptionRadius: 2
-  _sprintZombiePerceptionRadius: 5
+  _crouchZombiePerceptionRadius: 1
+  _walkZombiePerceptionRadius: 4
+  _sprintZombiePerceptionRadius: 10
   _spherecastSpawn: {fileID: 284854713433070825}
   _audioSource: {fileID: 0}
   AttackSound: {fileID: 0}
