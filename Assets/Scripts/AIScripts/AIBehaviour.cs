@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -59,6 +56,8 @@ public class AIBehaviour : MonoBehaviour
     FMOD.Studio.EventInstance DeathHit;
     private int maleVoice;
     private int femVoice;
+    private static readonly int isAware = Animator.StringToHash("isAware");
+    private static readonly int attack = Animator.StringToHash("Attack");
 
     public void Start()
     {
@@ -128,12 +127,12 @@ public class AIBehaviour : MonoBehaviour
         if (_isAware)
         {
             _agent.SetDestination(_playerReference.transform.position);
-            _animator.SetBool("isAware", true);
+            _animator.SetBool(isAware, true);
             _agent.speed = _chaseSpeed;
 
             if (_agent.remainingDistance <= _attackRange)
             {
-                GetComponent<Animator>().SetTrigger("Attack");
+                GetComponent<Animator>().SetTrigger(attack);
             }
             
             if (_isDetecting == false)
@@ -150,7 +149,7 @@ public class AIBehaviour : MonoBehaviour
         else
         {
             Move();
-            _animator.SetBool("isAware", false);
+            _animator.SetBool(isAware, false);
             _agent.speed = _walkSpeed;
         }
     }
@@ -287,7 +286,6 @@ public class AIBehaviour : MonoBehaviour
         _looseTimer = 0;
     }
 
-
     //FMODAudio
 
 
@@ -303,24 +301,22 @@ public class AIBehaviour : MonoBehaviour
         {
             ZombieAudio.setParameterByName("Zombie#", femVoice);
         }
-
     }
 
 
     public void DeathAudio()
     {
-
         DeathHit = FMODUnity.RuntimeManager.CreateInstance("event:/Zombies/Death");
+        
         if (_skinIndex <= 15)
         {
             DeathHit.setParameterByName("Zombie#", maleVoice);
-
         }
         else
         {
             DeathHit.setParameterByName("Zombie#", femVoice);
-
         }
+        
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(DeathHit, transform, GetComponent<Rigidbody>());
         DeathHit.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
         DeathHit.start();
@@ -334,7 +330,6 @@ public class AIBehaviour : MonoBehaviour
         ZombieAudio.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
         ZombieAudio.start();
         ZombieAudio.release();
-
     }
 
     private void StopAudio()
@@ -348,13 +343,11 @@ public class AIBehaviour : MonoBehaviour
         DeathHit.release();
         DeathHit.clearHandle();
     }
+    
     private void OnEnable()
     {
         Roaming();
-
-
     }
-
 
     private void OnDisable()
     {

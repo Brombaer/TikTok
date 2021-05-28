@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,8 +13,6 @@ public class PauseMenu : MonoBehaviour
     private CharacterInput _characterInput;
     
     private FMOD.Studio.Bus _master;
-    private float _masterVolume = 1;
-    private Slider _slider;
     private Resolution[] _resolutions;
 
     private void Awake()
@@ -28,8 +24,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         
-        _master = FMODUnity.RuntimeManager.GetBus("bus:/");
-        _slider = GetComponent<Slider>();
+        _master = FMODUnity.RuntimeManager.GetBus("bus:/Master");
 
         _resolutions = Screen.resolutions;
         ResolutionDropdown.ClearOptions();
@@ -52,11 +47,6 @@ public class PauseMenu : MonoBehaviour
         ResolutionDropdown.value = currentResolutionIndex;
         ResolutionDropdown.RefreshShownValue();
     }
-
-    //private void Update()
-    //{
-    //    _master.setVolume(_masterVolume);
-    //}
 
     private void TogglePauseMenu()
     {
@@ -94,9 +84,7 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
-      
     }
-
 
     //important 
     private void OnEnable()
@@ -118,7 +106,6 @@ public class PauseMenu : MonoBehaviour
 
     public void SetMasterVolume(float newMasterVolume)
     {
-        //_masterVolume = newMasterVolume;
         _master.setVolume(newMasterVolume);
     }
 

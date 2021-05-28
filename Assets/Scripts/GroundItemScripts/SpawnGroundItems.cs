@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,7 +8,6 @@ public class SpawnGroundItems : MonoBehaviour
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private GameObject[] _groundItems;
     [SerializeField] private QuestManager questManager;
-
 
     [SerializeField] private bool _allowOverlap = false;
     [SerializeField] private bool _allowSimilarItems = false;
@@ -49,23 +46,17 @@ public class SpawnGroundItems : MonoBehaviour
             int itemIndex = Random.Range(0, remainingItems.Count);
             int spawnPointIndex = Random.Range(0, freeSpawnPoints.Count);
         
-
-            //remainingItems[itemIndex].GetComponent<Rigidbody>().isKinematic = true;
-
             if (allowSimilarItems)
             {
-
                 GameObject gameobject = Instantiate(GetObjectWithMaxProb(), freeSpawnPoints[spawnPointIndex].position, Quaternion.identity, freeSpawnPoints[spawnPointIndex]);
                 QuestPickupable pickupable = gameobject.GetComponent<QuestPickupable>();
 
                 if (pickupable != null)
                 {
                     pickupable.qManager = questManager;
-
                 }
 
                 Instantiate(GetObjectWithMaxProb(), freeSpawnPoints[spawnPointIndex].position, Quaternion.identity, freeSpawnPoints[spawnPointIndex]);
-                //remainingItems.AddRange(items);
             }
             else
             {
@@ -75,20 +66,17 @@ public class SpawnGroundItems : MonoBehaviour
                 if (pickupable != null)
                 {
                     pickupable.qManager = questManager;
-
                 }
 
                 Instantiate(remainingItems[itemIndex], freeSpawnPoints[spawnPointIndex].position, Quaternion.identity, freeSpawnPoints[spawnPointIndex]);
             }
             
-            //remainingItems.RemoveAt(itemIndex);
             freeSpawnPoints.RemoveAt(spawnPointIndex);
         }
     }
     
    private GameObject GetObjectWithMaxProb()
    {
-       //int totalSpawnRate = ObjectList.Sum(t => t.SpawnRate);
        int totalSpawnRate = _groundItems.Sum(t => t.GetComponent<GroundItem>().itemInfo.SpawnRate);
        int randomNumber = Random.Range(0, totalSpawnRate);
        

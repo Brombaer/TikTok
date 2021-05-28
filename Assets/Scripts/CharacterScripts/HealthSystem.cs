@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,34 +6,34 @@ public class HealthSystem
 {
     public event EventHandler OnHealthChanged;
     
-    public int _health;
-    public int _maxHealth;
+    public int Health;
+    public int MaxHealth;
 
     public HealthSystem(int maxHealth)
     {
-        _maxHealth = maxHealth;
-        _health = maxHealth;
+        MaxHealth = maxHealth;
+        Health = maxHealth;
     }
 
     public int GetHealth()
     {
-        return _health;
+        return Health;
     }
 
     public float GetHealthPercent()
     {
-        return (float)_health / _maxHealth;
+        return (float)Health / MaxHealth;
     }
 
     public void Damage(int damageAmount)
     {
-        _health -= damageAmount;
+        Health -= damageAmount;
 
-        if (_health <= 0)
+        if (Health <= 0)
         {
-            _health = 0;
+            Health = 0;
         }
-        if (_health == 0)
+        if (Health == 0)
         { 
             Debug.Log("Your health is 0, you die");
             SceneManager.LoadScene(1);
@@ -49,11 +47,11 @@ public class HealthSystem
 
     public void Heal(int healAmount)
     {
-        _health += healAmount;
+        Health += healAmount;
 
-        if (_health > _maxHealth)
+        if (Health > MaxHealth)
         {
-            _health = _maxHealth;
+            Health = MaxHealth;
         }
         
         if (OnHealthChanged != null)

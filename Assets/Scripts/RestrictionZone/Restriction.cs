@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,29 +18,27 @@ public class Restriction : MonoBehaviour
             KillZoneEnteredEffect effect = killable.Effect();
             if (effect == KillZoneEnteredEffect.Kill)
             {
-                Debug.Log("The killzone killed you");
                 gameObject.SetActive(false);
                 SceneManager.LoadScene(1);
 
             }
             if (effect == KillZoneEnteredEffect.Escape)
             {            
-                CheckSyringe();
+                TryToEscape();
             }
         }
     }
 
-    private void CheckSyringe()
+    private void TryToEscape()
     {
-        InventoryObject inventoryObject = GetComponent<InventoryObject>();
+        CharacterInteractController interactController = GetComponent<CharacterInteractController>();
+        
         for (int i = 0; i < _itemsToEscape.Length; i++)
         {
-
-            if (inventoryObject.FindItemOnInventory(_itemsToEscape[i]) != null)
+            if (interactController.Inventory.FindItemOnInventory(_itemsToEscape[i]) != null)
             {
                 /*gameObject.SetActive(true);*/
                 SceneManager.LoadScene(2);
-                
             }
             else
             {
@@ -50,8 +46,6 @@ public class Restriction : MonoBehaviour
             }
         }
     }
-
-
 }
 public enum KillZoneEnteredEffect
 {

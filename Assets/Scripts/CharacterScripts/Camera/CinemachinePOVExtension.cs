@@ -1,16 +1,14 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
 public class CinemachinePOVExtension : CinemachineExtension
 {
     public float _mouseSensitivity = 10f;
-    [SerializeField] private float _clampAngle = 90f;
     
+    [SerializeField] private float _clampAngle = 90f;
+    [SerializeField] private Vector3 _startingRotation;
+
     private CharacterInput _characterInput;
-    private Vector3 _startingRotation;
 
     private void Awake()
     {
