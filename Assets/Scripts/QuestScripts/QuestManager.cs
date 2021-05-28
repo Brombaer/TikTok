@@ -40,7 +40,7 @@ public class QuestManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
        
 
-        QuestEvent a = quest.AddQuestEvent("Pick Up Any Weapon", "You Can Kill Zombies With Weapon", new QuestEvent.ItemToComplete[]
+        /*QuestEvent a = quest.AddQuestEvent("Pick Up Any Weapon", "You Can Kill Zombies With Weapon", new QuestEvent.ItemToComplete[]
         { QuestEvent.ItemToComplete.Crowbar,
         QuestEvent.ItemToComplete.Hammer,
         QuestEvent.ItemToComplete.Katana,
@@ -50,17 +50,18 @@ public class QuestManager : MonoBehaviour
         QuestEvent.ItemToComplete.MetalBat,
         QuestEvent.ItemToComplete.WoodBat,
             QuestEvent.ItemToComplete.Pan
-         });
+         });*/
+        QuestEvent a = quest.AddQuestEvent("Kill the zombies", "Pick up any weapon");
         QuestEvent b = quest.AddQuestEvent("Quest Tutorial", "Go to the Food Market");
-        QuestEvent c = quest.AddQuestEvent("Find The Location", "Go to the Repairs");
-        QuestEvent d = quest.AddQuestEvent("Getting Ready for Crafting", "Find The Crafting Materials");
+        QuestEvent c = quest.AddQuestEvent("Find The Location", "Go to the Repairs to find materials");
+        QuestEvent d = quest.AddQuestEvent("Find The Location", "Go to the Motel and loot some more");
         QuestEvent e = quest.AddQuestEvent("Craft your Syringe", "You May Survive");
 
         quest.Addpath(a.GetId(), b.GetId());
         quest.Addpath(b.GetId(), c.GetId());
         quest.Addpath(c.GetId(), d.GetId());
+       
         quest.Addpath(d.GetId(), e.GetId());
-        //quest.Addpath(d.GetId(), e.GetId());
 
         quest.BFS(a.GetId());
 
@@ -74,11 +75,13 @@ public class QuestManager : MonoBehaviour
         buttons.Add(button);
 
         button = CreateButton(c).GetComponent<QuestButton>();
+        C.GetComponent<QuestLocation>().Setup(this, c, button);
       
         buttons.Add(button);
 
         button = CreateButton(d).GetComponent<QuestButton>();
-       
+        D.GetComponent<QuestLocation>().Setup(this, d, button);
+
         buttons.Add(button);
 
         button = CreateButton(e).GetComponent<QuestButton>();
@@ -144,13 +147,13 @@ public class QuestManager : MonoBehaviour
             buttons[0].UpdateButton(QuestEvent.EventStatus.Current);
             quest.questEvents.RemoveAt(0);
             quest.questEvents[0].UpdateQuestEvent(QuestEvent.EventStatus.Current);
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/MenuButtons/Questlog/New");
 
             /*foreach (QuestEvent n in quest.questEvents)
             {
                 if (n.order == (e.order + 1))
                 {
                     n.UpdateQuestEvent(QuestEvent.EventStatus.Current);
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/MenuButtons/Questlog/New");
                 }
             }*/
         }
