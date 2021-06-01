@@ -14,6 +14,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject healthbar;
     [SerializeField] private GameObject zombies;
     [SerializeField] private GameObject groundItems;
+    [SerializeField] private GameObject pausemenu;
+    [SerializeField] private GameObject player;
    
     private void OnEnable()
     {
@@ -28,6 +30,8 @@ public class MainMenu : MonoBehaviour
         healthbar.gameObject.SetActive(false);
         zombies.gameObject.SetActive(false);
         groundItems.gameObject.SetActive(false);
+        pausemenu.gameObject.SetActive(false);
+        player.gameObject.SetActive(false);
     }
 
     public void Playgame()
@@ -43,6 +47,8 @@ public class MainMenu : MonoBehaviour
         healthbar.gameObject.SetActive(true);
         zombies.gameObject.SetActive(true);
         groundItems.gameObject.SetActive(true);
+        pausemenu.gameObject.SetActive(true);
+        player.gameObject.SetActive(true);
 
     }
 
