@@ -40,7 +40,7 @@ public class QuestManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
        
 
-        /*QuestEvent a = quest.AddQuestEvent("Pick Up Any Weapon", "You Can Kill Zombies With Weapon", new QuestEvent.ItemToComplete[]
+        QuestEvent a = quest.AddQuestEvent("Pick Up Any Weapon", "You Can Kill Zombies With Weapon", new QuestEvent.ItemToComplete[]
         { QuestEvent.ItemToComplete.Crowbar,
         QuestEvent.ItemToComplete.Hammer,
         QuestEvent.ItemToComplete.Katana,
@@ -50,8 +50,7 @@ public class QuestManager : MonoBehaviour
         QuestEvent.ItemToComplete.MetalBat,
         QuestEvent.ItemToComplete.WoodBat,
             QuestEvent.ItemToComplete.Pan
-         });*/
-        QuestEvent a = quest.AddQuestEvent("Kill the zombies", "Pick up any weapon");
+         });
         QuestEvent b = quest.AddQuestEvent("Quest Tutorial", "Go to the Food Market");
         QuestEvent c = quest.AddQuestEvent("Find The Location", "Go to the Repairs to find materials");
         QuestEvent d = quest.AddQuestEvent("Find The Location", "Go to the Motel and loot some more");
@@ -68,7 +67,7 @@ public class QuestManager : MonoBehaviour
 
 
         QuestButton button = CreateButton(a).GetComponent<QuestButton>();
-        A.GetComponent<QuestLocation>().Setup(this, a, button);
+       
         buttons.Add(button);
         button = CreateButton(b).GetComponent<QuestButton>();
         B.GetComponent<QuestLocation>().Setup(this, b, button);
